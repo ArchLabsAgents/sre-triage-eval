@@ -1,0 +1,10 @@
+sre-triage-eval
+Copyright 2026 ArchLabs
+
+This product includes software developed by ArchLabs.
+
+tools/triage-eval/kind/vendor/calico-v3.28.2.yaml is the upstream Calico v3.28.2 manifest,
+Copyright Tigera, Inc., licensed under the Apache License, Version 2.0.
+
+Fault scenarios run on AIOpsLab (Microsoft, MIT License), which is a runtime dependency and is not
+vendored here.

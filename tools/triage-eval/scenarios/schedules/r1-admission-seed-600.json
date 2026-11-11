@@ -1,0 +1,26 @@
+{
+  "entries": [
+    {"duration_minutes": 23, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "fault", "start_minute": 0},
+    {"duration_minutes": 26, "fault_family": "revoke_auth_mongodb", "kind": "fault", "start_minute": 53},
+    {"duration_minutes": 34, "fault_family": "user_unregistered_mongodb", "kind": "fault", "start_minute": 109},
+    {"duration_minutes": 21, "fault_family": "user_unregistered_mongodb_rate", "kind": "fault", "start_minute": 173},
+    {"duration_minutes": 20, "fault_family": "misconfig_app_hotel_res", "kind": "fault", "start_minute": 224},
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb", "kind": "fault", "start_minute": 274},
+    {"duration_minutes": 32, "fault_family": "misconfig_app_hotel_res", "kind": "fault", "start_minute": 324},
+    {"duration_minutes": 5, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "false_alarm", "start_minute": 386},
+    {"duration_minutes": 23, "fault_family": "redeploy_without_PV", "kind": "fault", "start_minute": 391},
+    {"duration_minutes": 187, "fault_family": null, "kind": "quiet", "start_minute": 444},
+    {"duration_minutes": 20, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "fault", "start_minute": 631},
+    {"duration_minutes": 360, "fault_family": null, "kind": "quiet", "start_minute": 681},
+    {"duration_minutes": 20, "fault_family": "user_unregistered_mongodb_rate", "kind": "fault", "start_minute": 1041},
+    {"duration_minutes": 5, "fault_family": "misconfig_app_hotel_res", "kind": "false_alarm", "start_minute": 1091},
+    {"duration_minutes": 20, "fault_family": "user_unregistered_mongodb", "kind": "fault", "start_minute": 1096},
+    {"duration_minutes": 21, "fault_family": "redeploy_without_PV", "kind": "fault", "start_minute": 1146},
+    {"duration_minutes": 40, "fault_family": "wrong_bin_usage", "kind": "fault", "start_minute": 1197},
+    {"duration_minutes": 39, "fault_family": "revoke_auth_mongodb_rate", "kind": "fault", "start_minute": 1267},
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb_rate", "kind": "fault", "start_minute": 1336},
+    {"duration_minutes": 24, "fault_family": "wrong_bin_usage", "kind": "fault", "start_minute": 1386}
+  ],
+  "seed": 600,
+  "window_hours": 24.0
+}

@@ -1,0 +1,84 @@
+# C1 (read-only exec, contained) + C2 (reversible mutation, gated) as actual RBAC, scoped to the
+# APP's namespace -- never the agent's own namespace (sslm-agent).
+#
+#   C1  pods/exec with the binary allowlist enforced in harness/envelope.py (RBAC only grants
+#       the "create" verb on the exec subresource; which binaries are allowed inside that exec
+#       is the parser's job, not RBAC's -- RBAC has no notion of "the third token after --").
+#       `kubectl top` (envelope.py's other C1 verb) needs metrics.k8s.io/pods, get+list: the
+#       Metrics API is served through the aggregation layer and is RBAC-gated same as any other
+#       API (an earlier version of this file's sibling ClusterRole incorrectly
+#       assumed `top` needed no RBAC entry anywhere). Granted here, namespace-scoped,
+#       not in clusterrole-read-only.yaml: C1 is confined to the app namespace by design
+#       (a Role in the app namespace), and metrics.k8s.io/pods is a namespaced
+#       resource, so it can be.
+#   C2  update on deployments/scale       (`kubectl scale`, harness/envelope.py's _classify_scale)
+#       delete on pods                     (`kubectl delete pod`, _classify_delete: only "pod" is
+#                                           C2, any other delete target is C3 and gets no verb here)
+#       patch on deployments                (`kubectl rollout restart|undo`, _classify_rollout)
+#
+# Verb choice per action (confirmed against how each kubectl subcommand actually calls the
+# apiserver, not against a hand-written RBAC table, which had the patch/update pairing swapped):
+#   - `kubectl scale` issues an Update (PUT) against the deployments/scale subresource -- the same
+#     verb the HorizontalPodAutoscaler controller's own ClusterRole
+#     (system:controller:horizontal-pod-autoscaler) is granted on */scale, for the same reason.
+#   - `kubectl rollout restart` and `kubectl rollout undo` both fetch the Deployment client-side
+#     and send a strategic-merge Patch against the Deployment resource itself (rollout restart
+#     patches the pod template's restart annotation; rollout undo patches to the target
+#     revision's template) -- Patch, not Update, and against `deployments`, not `deployments/scale`.
+#
+# What is deliberately absent, i.e. what "deny the rest" means here: no create/delete on
+# deployments' full spec, and no `patch`/`update` combination beyond the two exact shapes above
+# (that's how `kubectl apply`/`patch`/`edit` outside those shapes would otherwise mutate the
+# Deployment -- C3), no verb at all on secrets/configmaps/rbac objects, no delete on
+# anything but pods, no verb on persistentvolumeclaims/services/namespaces. C3 has no gate that
+# grants it in v1 (no gate releases C3 in this version); the second, independent
+# enforcement layer for that is this Role's absence of the verb, checked by
+# tests/triage_eval/test_k8s_manifests.py against the C3 exemplars (patch, delete pvc, delete
+# deployment, secret/configmap/rbac mutation).
+#
+# NAMESPACE IS A PLACEHOLDER, not a value: `${APP_NAMESPACE}` is substituted at apply time (see
+# setup_cluster.sh's AGENT_INSTALL=1 block and this repo's README). The scenario's reference lab
+# app is hotelReservation, but which namespace that lands in is a fact of the AIOpsLab problem
+# definition in $AIOPSLAB_HOME, not something this repo owns or should hardcode: a guessed
+# namespace here would be an unverified assumption. Never a hardcoded namespace, never a silent
+# default.
+#
+# HONEST LIMIT, not glossed over -- Resolved: the envelope's "exec into a database pod is
+# excluded in any case" and C2's "a database resource is excluded from mutation in any case" are enforced by harness/envelope.py's
+# parser (`_mentions_db_pod`), and for `pods/exec create` and `pods delete` specifically, vanilla
+# K8s RBAC alone has no way to grant a verb on "pods" while excluding pods whose name matches a
+# pattern (mongo/memcached) -- `resourceNames` is an exact-name allowlist, not a pattern-based
+# denylist, and pod names here are controller-generated (unstable), so it cannot enumerate "every
+# pod except the db ones" either. This is unlike the C3 exclusions above, where RBAC genuinely IS
+# the independent second layer (the verb simply doesn't exist, regardless of which resource is
+# named).
+#
+# The second, independent layer this comment used to ask for now exists:
+# k8s/validatingadmissionpolicy-deny-db-pod.yaml, a native ValidatingAdmissionPolicy (CEL-based,
+# GA since Kubernetes 1.30) that denies `pods/exec` CONNECT and `pods` DELETE against any pod
+# whose name matches the same mongo/memcached pattern `_mentions_db_pod` checks, applied cluster-
+# wide alongside this Role by setup_cluster.sh's AGENT_INSTALL=1 block. See that manifest's own
+# comment for the live-cluster proof this enforces (a fresh kind cluster, mongo-0/memcached-1 test
+# pods, exec/delete denied on both, exec/delete still allowed on a non-db pod) and why native VAP
+# was chosen over Kyverno/OPA Gatekeeper.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: sslm-agent-mutate
+  namespace: ${APP_NAMESPACE}
+rules:
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["create"]
+  - apiGroups: ["metrics.k8s.io"]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+  - apiGroups: ["apps"]
+    resources: ["deployments/scale"]
+    verbs: ["update"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["delete"]
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["patch"]

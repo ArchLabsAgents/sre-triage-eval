@@ -1,0 +1,181 @@
+# Runs entrypoint.py as a K8s Deployment, never a sidecar and never an external process with an
+# admin kubeconfig (that would leave no governance to demonstrate).
+#
+# `${AGENT_IMAGE}` is a placeholder, substituted at apply time (setup_cluster.sh's
+# AGENT_INSTALL=1 block defaults it to sslm-agent:local when unset -- see that script -- so a
+# plain `kubectl apply -f deployment.yaml` without substitution is never correct; go through
+# setup_cluster.sh or envsubst by hand). Overriding the registry/tag for a non-local build is
+# exactly why this is a variable and not a fixed string.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sslm-agent
+  namespace: sslm-agent
+  labels:
+    app.kubernetes.io/name: sslm-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sslm-agent
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sslm-agent
+    spec:
+      serviceAccountName: sslm-agent
+      # One extra worker dedicated to the agent (role=sslm-agent + taint). A logical dedicated
+      # node at zero hardware cost (each kind node is its own Docker container / cgroup), so the
+      # agent's footprint never mixes with the app's or wrk's on the same cAdvisor series. See tools/triage-eval/kind/ for how that node gets its
+      # label/taint.
+      nodeSelector:
+        role: sslm-agent
+      tolerations:
+        - key: sslm-agent
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001 # matches the Dockerfile's `useradd --uid 10001 sslm-agent`
+        fsGroup: 10001
+      volumes:
+        - name: triage-log
+          # A round writes tens of records of a few KB each; the cap only bites on a runaway
+          # writer, and evicting this pod then beats filling the agent node's ephemeral storage.
+          emptyDir:
+            sizeLimit: 64Mi
+      containers:
+        - name: sslm-agent
+          image: ${AGENT_IMAGE}
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            # Same contract as adapters/vllm_model_client.py / cloud_adapter.py: VLLM_BASE_URL
+            # comes from the environment and nowhere else, never a baked-in value -- the address
+            # changes every time the cloud GPU VM is recreated, and a
+            # committed literal here would be stale state in git the same way a committed IP in
+            # a YAML would be (that module's own comment). `${VLLM_BASE_URL}` /
+            # `${VLLM_API_KEY}` are placeholders substituted at apply time, exactly like
+            # `${AGENT_IMAGE}` above -- see setup_cluster.sh's AGENT_INSTALL=1 block.
+            - name: VLLM_BASE_URL
+              value: "${VLLM_BASE_URL}"
+            - name: VLLM_API_KEY
+              value: "${VLLM_API_KEY}" # optional per VllmModelConfig.api_key: the loopback lab
+              # vLLM runs with no --api-key by default, so an empty substitution here is the
+              # expected common case, not a misconfiguration (same note as that module's).
+            # harness/episode_runner.py's c2_dry_run_enabled(): read once at wiring time
+            # (entrypoint.py), same contract as the two vars above. Operational decision
+            # (2026-09-22, once the runner had a real rollback_state/read-back path): a
+            # deployment applied through setup_cluster.sh should run C2 for real by
+            # default once it is actually exercising the real orchestrator; the library-level
+            # fallback (unset env var) stays dry-run-safe for any other caller, see that
+            # function's own docstring. setup_cluster.sh's AGENT_INSTALL=1 block sets this to "0"
+            # unless the caller overrides it explicitly.
+            #
+            # entrypoint.py's _build_episode_runner only reads SSLM_C2_DRY_RUN on the
+            # real-orchestrator path, which needs APP_NAMESPACE and PROMETHEUS_URL below as well;
+            # with all three wired, this var is live the moment a Deployment is applied via
+            # setup_cluster.sh AGENT_INSTALL=1.
+            - name: SSLM_C2_DRY_RUN
+              value: "${SSLM_C2_DRY_RUN}"
+            # The admission round (round 1) admits Alertmanager, receiver, and fault
+            # instrumentation before a model is involved. Its launcher sets this to 1; later
+            # rounds keep the default 0.
+            - name: SSLM_LOG_ONLY
+              value: "${SSLM_LOG_ONLY}"
+            # History budget (harness.agent.history_budget_enabled). setup_cluster.sh sets "on"
+            # for the default agent and "off" only when COMPARATOR_ARM=1 (the API comparison arm
+            # keeps the exact prompt of the earlier measured rounds, as pre-registered).
+            - name: SSLM_HISTORY_BUDGET
+              value: "${SSLM_HISTORY_BUDGET}"
+            # Whole-call prompt budget (harness.agent.prompt_budget_from_env, added
+            # 2026-10-19). Empty keeps the prompt of every earlier round; setup_cluster.sh refuses
+            # it on the comparator arm and the entrypoint refuses to start on a malformed value.
+            - name: SSLM_PROMPT_BUDGET_CHARS
+              value: "${SSLM_PROMPT_BUDGET_CHARS}"
+            # Tool contract text appended to the system prompt (harness.agent.tool_contract_from_env,
+            # added 2026-10-20). Empty keeps the prompt of every earlier round
+            # byte for byte; setup_cluster.sh refuses it on the comparator arm and the entrypoint
+            # refuses to start on a value that is neither on nor off.
+            - name: SSLM_TOOL_CONTRACT
+              value: "${SSLM_TOOL_CONTRACT}"
+            # Served model name and request dialect of the vLLM arm (added 2026-10-20). Empty
+            # keeps Qwen2.5-7B-Instruct and the guided_json request of every earlier round; the entrypoint refuses to start on an unknown dialect. The model
+            # name must match the server's --served-model-name, or every call is a 404.
+            - name: VLLM_MODEL
+              value: "${VLLM_MODEL}"
+            - name: VLLM_DECODING_DIALECT
+              value: "${VLLM_DECODING_DIALECT}"
+            # Comparator arm (Anthropic API). entrypoint.py reads COMPARATOR_ARM once at wiring time:
+            # "1" builds the Anthropic client, "0" keeps the vLLM one. setup_cluster.sh only ever
+            # substitutes "0" or "1". The spend cap is per pod (one pod per seed); empty on the
+            # vLLM arm, which never reads it.
+            - name: COMPARATOR_ARM
+              value: "${COMPARATOR_ARM}"
+            - name: SSLM_COMPARATOR_MAX_COST_USD
+              value: "${SSLM_COMPARATOR_MAX_COST_USD}"
+            # Per-request API usage JSONL, on the same emptyDir as the triage log. Fixed path for
+            # the same reason as SSLM_TRIAGE_LOG; the comparator smoke reads this variable from
+            # the pod itself to count new request lines, so the path lives only here.
+            - name: SSLM_COMPARATOR_USAGE_LOG
+              value: "/var/lib/sslm/comparator-usage.jsonl"
+            # The key only ever comes from this Secret (setup_cluster.sh creates it from
+            # ANTHROPIC_API_KEY when COMPARATOR_ARM=1 and deletes it otherwise), never from a
+            # placeholder in this file. optional: the vLLM arm has no Secret and must still start;
+            # a comparator pod without the key refuses to start in entrypoint.py instead.
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sslm-agent-anthropic
+                  key: ANTHROPIC_API_KEY
+                  optional: true
+            # APP_NAMESPACE / PROMETHEUS_URL: entrypoint.py's
+            # _build_episode_runner only wires the real orchestrator (harness/episode_runner.py)
+            # when both of these AND VLLM_BASE_URL above are set -- without them it falls back to
+            # log_only_episode_runner (see entrypoint.py's module docstring). Placeholders, same
+            # "never a committed value" contract as VLLM_BASE_URL: APP_NAMESPACE is a fact of the
+            # round (which namespace the app under test landed in, e.g. hotelReservation), never
+            # guessed here; PROMETHEUS_URL is derived by setup_cluster.sh from KPS_NAMESPACE
+            # (see that script's AGENT_INSTALL=1 block) at apply time, not fixed in this file.
+            - name: APP_NAMESPACE
+              value: "${APP_NAMESPACE}"
+            - name: PROMETHEUS_URL
+              value: "${PROMETHEUS_URL}"
+            # harness/episode_runner.py's JsonlTriageSink appends every TriageRecord here, for
+            # the scorer bridge to harvest after the round. A fixed in-pod path, not a
+            # placeholder: it names the mount below, not a fact of the round.
+            - name: SSLM_TRIAGE_LOG
+              value: "/var/lib/sslm/triage.jsonl"
+          # readOnlyRootFilesystem stays on; the sink writes only to this emptyDir. emptyDir, not
+          # hostPath: it honors fsGroup 10001 (a hostPath dir is created root-owned and uid 10001
+          # could not write it) and survives a container restart. A pod deletion loses it, which
+          # is why the sink also logs every record to stdout.
+          volumeMounts:
+            - name: triage-log
+              mountPath: /var/lib/sslm
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]

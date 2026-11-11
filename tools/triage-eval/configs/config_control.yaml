@@ -1,0 +1,11 @@
+# Control round: same harness as config_a (plain prompt, no schema-constrained decoding, no
+# memory), run with --control (no fault injected). The point is not to retest decoding/memory
+# but to isolate one variable: does the eval verdict change when there is nothing to mitigate?
+# That is why only this one control config exists, not control_a/control_b/control_c (running
+# the 3 harness combinations against a healthy cluster would ask the same question 3 times, not
+# a new one).
+name: control
+extends: base.yaml
+schema_constrained_decoding: false
+memory:
+  enabled: false

@@ -1,0 +1,25 @@
+{
+  "entries": [
+    {"duration_minutes": 35, "fault_family": "redeploy_without_PV", "kind": "fault", "start_minute": 0},
+    {"duration_minutes": 35, "fault_family": "wrong_bin_usage", "kind": "fault", "start_minute": 65},
+    {"duration_minutes": 20, "fault_family": "redeploy_without_PV", "kind": "fault", "start_minute": 130},
+    {"duration_minutes": 5, "fault_family": "user_unregistered_mongodb", "kind": "false_alarm", "start_minute": 180},
+    {"duration_minutes": 30, "fault_family": "revoke_auth_mongodb", "kind": "fault", "start_minute": 185},
+    {"duration_minutes": 25, "fault_family": "user_unregistered_mongodb_rate", "kind": "fault", "start_minute": 245},
+    {"duration_minutes": 360, "fault_family": null, "kind": "quiet", "start_minute": 300},
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb_rate", "kind": "fault", "start_minute": 660},
+    {"duration_minutes": 158, "fault_family": null, "kind": "quiet", "start_minute": 710},
+    {"duration_minutes": 24, "fault_family": "misconfig_app_hotel_res", "kind": "fault", "start_minute": 868},
+    {"duration_minutes": 26, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "fault", "start_minute": 922},
+    {"duration_minutes": 28, "fault_family": "user_unregistered_mongodb_rate", "kind": "fault", "start_minute": 978},
+    {"duration_minutes": 26, "fault_family": "revoke_auth_mongodb_rate", "kind": "fault", "start_minute": 1036},
+    {"duration_minutes": 32, "fault_family": "user_unregistered_mongodb", "kind": "fault", "start_minute": 1092},
+    {"duration_minutes": 20, "fault_family": "user_unregistered_mongodb", "kind": "fault", "start_minute": 1154},
+    {"duration_minutes": 28, "fault_family": "wrong_bin_usage", "kind": "fault", "start_minute": 1204},
+    {"duration_minutes": 34, "fault_family": "revoke_auth_mongodb", "kind": "fault", "start_minute": 1262},
+    {"duration_minutes": 20, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "fault", "start_minute": 1326},
+    {"duration_minutes": 34, "fault_family": "misconfig_app_hotel_res", "kind": "fault", "start_minute": 1376}
+  ],
+  "seed": 1052,
+  "window_hours": 24.0
+}

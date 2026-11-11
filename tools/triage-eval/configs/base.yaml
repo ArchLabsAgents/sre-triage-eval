@@ -1,0 +1,85 @@
+# Fixed base for all three configurations. Do not edit mid-experiment: the whole point of the
+# pre-flight is that only the harness varies across A/B/C, never the model.
+
+model:
+  # Fixed on 2026-08-25. Name and parameter count both matter: a weak result with an
+  # undeclared base is ambiguous between "the harness doesn't work" and "this model is weak".
+  # Invariant across envs: same family, same parameter count, same decoding params. What
+  # varies per execution environment (backend, quantization, weights, accelerator) lives in
+  # `envs:` below, one block per column of the matrix.
+  name: Qwen2.5-7B-Instruct
+  params_billion: 7
+  max_output_tokens: 2048
+  temperature: 0.2
+  # Constrained decoding (config B/C) uses Outlines on every backend so schema semantics do
+  # not change when only the inference engine changes.
+  constrained_decoding_library: outlines
+
+# One block per execution environment. Everything invariant about an env is declared here,
+# including quantization, which is the confound this whole design exists to keep visible: a
+# 4-bit quant degrades model quality on its own, independent of the harness under test. A run
+# refuses to start when the selected env declares no quantization. `run_matrix.py --env` is
+# required while more than one env is declared. Results land in scenarios/results/<env>/ and
+# the env block is copied verbatim to <env>/env-descriptor.json on each run.
+envs:
+  mlx-local:
+    backend: mlx
+    # 8-bit tried first as the least aggressive quant that fits this Mac's memory; falls back
+    # to 4-bit only if 8-bit proves unstable, and that fallback must be re-declared here if
+    # taken, never silent.
+    quantization: 8bit
+    weights_ref: mlx-community/Qwen2.5-7B-Instruct-8bit
+    accelerator: apple-m1-metal
+    vram_gb: null              # unified memory, no separate VRAM figure
+    provider: local
+    region: null
+    harness_location: on-instance
+    network: local
+  hyperstack-a6000:
+    backend: vllm
+    quantization: fp16
+    weights_ref: Qwen/Qwen2.5-7B-Instruct
+    # The name vLLM serves the model under (--served-model-name, terraform var
+    # served_model_name), distinct from weights_ref (the HF repo it loads from): the two must
+    # agree with the vLLM host's --served-model-name, since this is what cloud_adapter.py sends
+    # as "model" in the chat/completions body.
+    served_model_name: Qwen2.5-7B-Instruct
+    accelerator: nvidia-rtx-a6000-48gb
+    vram_gb: 48
+    provider: hyperstack
+    region: CANADA-1
+    harness_location: on-instance
+    network: local
+    # Must match the vLLM host's --max-model-len. Was 8192: observed requests during the matrix
+    # run land 7129-9177 tokens, so 8192 clipped a class of episodes with an HTTP 400 instead of
+    # measuring them.
+    max_model_len: 16384
+    notes: flavor n3-RTX-A6000x1
+  hyperstack-a6000-continuous:
+    # The 24/7 continuous-triage round. Same VM/GPU as hyperstack-a6000 (one A6000 VM, vLLM
+    # systemd unit on the host, kind cluster with the agent's dedicated node); only the mode
+    # of operation changes, from one-episode-at-a-time (episodic matrix, config A/B/C) to a fault
+    # scheduler running continuously against a live agent Deployment. Kept as
+    # a SEPARATE env, never folded into hyperstack-a6000: the two write to different
+    # scenarios/results/<env>/ directories with different record schemas (RunRecord vs.
+    # EpisodeFootprint/ContinuousCostSummary, harness/metrics.py) and mixing them in one column
+    # would be the exact env-mixing hazard the one-env-per-column rule exists to prevent.
+    backend: vllm
+    quantization: fp16
+    weights_ref: Qwen/Qwen2.5-7B-Instruct
+    served_model_name: Qwen2.5-7B-Instruct
+    accelerator: nvidia-rtx-a6000-48gb
+    vram_gb: 48
+    provider: hyperstack
+    region: CANADA-1
+    harness_location: on-instance
+    network: local
+    max_model_len: 16384
+    # notes is copied verbatim into env-descriptor.json and compared on resume, so the value
+    # keeps its original wording: "same VM as hyperstack-a6000, continuous round, not the episodic matrix".
+    notes: "flavor n3-RTX-A6000x1; mesma VM de hyperstack-a6000, rodada continua (item 6, nao matriz episodica)"
+
+benchmark:
+  # itbench | aiopslab
+  target: aiopslab
+  scenarios: []

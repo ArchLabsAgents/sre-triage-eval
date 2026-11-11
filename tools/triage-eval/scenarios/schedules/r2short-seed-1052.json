@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "duration_minutes": 5,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "false_alarm",
+      "start_minute": 0
+    },
+    {
+      "duration_minutes": 30,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "start_minute": 5
+    },
+    {
+      "duration_minutes": 25,
+      "fault_family": "user_unregistered_mongodb_rate",
+      "kind": "fault",
+      "start_minute": 65
+    },
+    {
+      "duration_minutes": 20,
+      "fault_family": "revoke_auth_mongodb_rate",
+      "kind": "fault",
+      "start_minute": 120
+    },
+    {
+      "duration_minutes": 24,
+      "fault_family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "start_minute": 170
+    },
+    {
+      "duration_minutes": 26,
+      "fault_family": "assign_to_non_existent_node_hotel_res",
+      "kind": "fault",
+      "start_minute": 224
+    },
+    {
+      "duration_minutes": 32,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "start_minute": 280
+    }
+  ],
+  "seed": 1052,
+  "window_hours": 5.7
+}

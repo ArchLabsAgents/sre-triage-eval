@@ -1,0 +1,16 @@
+# Binds the cluster-wide C0 read-only role to the agent's ServiceAccount. Cluster-wide on
+# purpose: triage needs to read any namespace's symptom
+# signal, only mutation (Role, scoped to the app namespace, see role-app-mutate.yaml) is
+# confined.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: sslm-agent-read-only
+subjects:
+  - kind: ServiceAccount
+    name: sslm-agent
+    namespace: sslm-agent
+roleRef:
+  kind: ClusterRole
+  name: sslm-agent-read-only
+  apiGroup: rbac.authorization.k8s.io

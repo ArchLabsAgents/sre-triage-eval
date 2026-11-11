@@ -1,0 +1,23 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  triage-eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        working-directory: tools/triage-eval
+        run: |
+          # mlx-lm is Apple Silicon only; tests/triage_eval/conftest.py stubs it when missing.
+          grep -v '^mlx-lm' requirements.txt > /tmp/requirements-ci.txt
+          pip install -r /tmp/requirements-ci.txt
+      - name: Run tests
+        run: python -m pytest tests/triage_eval -q

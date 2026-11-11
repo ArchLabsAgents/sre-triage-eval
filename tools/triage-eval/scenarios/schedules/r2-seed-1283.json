@@ -1,0 +1,25 @@
+{
+  "entries": [
+    {"duration_minutes": 20, "fault_family": "user_unregistered_mongodb", "kind": "fault", "start_minute": 0},
+    {"duration_minutes": 20, "fault_family": "user_unregistered_mongodb_rate", "kind": "fault", "start_minute": 50},
+    {"duration_minutes": 27, "fault_family": "revoke_auth_mongodb_rate", "kind": "fault", "start_minute": 100},
+    {"duration_minutes": 32, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "fault", "start_minute": 157},
+    {"duration_minutes": 20, "fault_family": "misconfig_app_hotel_res", "kind": "fault", "start_minute": 219},
+    {"duration_minutes": 5, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "false_alarm", "start_minute": 269},
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb", "kind": "fault", "start_minute": 274},
+    {"duration_minutes": 43, "fault_family": "redeploy_without_PV", "kind": "fault", "start_minute": 324},
+    {"duration_minutes": 34, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "fault", "start_minute": 397},
+    {"duration_minutes": 20, "fault_family": "user_unregistered_mongodb", "kind": "fault", "start_minute": 461},
+    {"duration_minutes": 21, "fault_family": "redeploy_without_PV", "kind": "fault", "start_minute": 511},
+    {"duration_minutes": 203, "fault_family": null, "kind": "quiet", "start_minute": 562},
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb", "kind": "fault", "start_minute": 765},
+    {"duration_minutes": 20, "fault_family": "misconfig_app_hotel_res", "kind": "fault", "start_minute": 815},
+    {"duration_minutes": 20, "fault_family": "wrong_bin_usage", "kind": "fault", "start_minute": 865},
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb_rate", "kind": "fault", "start_minute": 915},
+    {"duration_minutes": 360, "fault_family": null, "kind": "quiet", "start_minute": 965},
+    {"duration_minutes": 32, "fault_family": "user_unregistered_mongodb_rate", "kind": "fault", "start_minute": 1325},
+    {"duration_minutes": 23, "fault_family": "wrong_bin_usage", "kind": "fault", "start_minute": 1387}
+  ],
+  "seed": 1283,
+  "window_hours": 24.0
+}

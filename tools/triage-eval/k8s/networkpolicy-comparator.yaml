@@ -1,0 +1,81 @@
+# Comparator-arm variant of networkpolicy.yaml (Anthropic API arm). Identical to the base
+# policy (same name, so applying it replaces the base, never stacks; same ingress; same DNS,
+# apiserver, Prometheus and Alertmanager egress) except the vLLM egress rule is replaced by one
+# rule to the Anthropic API. tests/triage_eval/test_k8s_manifests.py fails if the two files
+# drift apart in any other way, so "egress is the difference between arms" stays true by
+# construction. Applied by setup_cluster.sh when COMPARATOR_ARM=1. Read networkpolicy.yaml for why
+# each shared rule looks the way it does (placeholders, apiserver backend address, split
+# Prometheus/Alertmanager rules).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: sslm-agent-zero-egress-externo
+  namespace: sslm-agent
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: sslm-agent
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ${KPS_NAMESPACE}
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: alertmanager
+      ports:
+        - protocol: TCP
+          port: 8080
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    - to:
+        - ipBlock:
+            cidr: ${APISERVER_EGRESS_CIDR}
+      ports:
+        - protocol: TCP
+          port: ${APISERVER_EGRESS_PORT}
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ${KPS_NAMESPACE}
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+      ports:
+        - protocol: TCP
+          port: 9090
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ${KPS_NAMESPACE}
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: alertmanager
+      ports:
+        - protocol: TCP
+          port: 9093
+    # Comparator arm: the Anthropic API instead of vLLM, nothing else added. This is the ONLY
+    # egress difference between arms (as pre-registered). NetworkPolicy matches IPs, not
+    # names, so `${ANTHROPIC_EGRESS_CIDR}` is a placeholder: setup_cluster.sh defaults it to the
+    # range Anthropic documents for api.anthropic.com and takes an override. Port is fixed 443
+    # (the API is HTTPS-only), unlike the vLLM port, which is a per-round tfvars value.
+    - to:
+        - ipBlock:
+            cidr: ${ANTHROPIC_EGRESS_CIDR}
+      ports:
+        - protocol: TCP
+          port: 443

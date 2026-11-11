@@ -1,0 +1,27 @@
+# C0 (read/observe, free -- harness/envelope.py's _classify_c0) as an actual RBAC object:
+# get/list/watch cluster-wide on the resources triage reads, plus pods/log for `kubectl logs`. Nothing here writes: this ClusterRole
+# grants zero verbs outside {get, list, watch}, checked by
+# tests/triage_eval/test_k8s_manifests.py so an edit here can't silently widen C0 into a
+# mutation.
+#
+# `describe` is client-side get+list (events) against what's already granted below, no separate
+# verb. `kubectl top` (C1's other admitted verb per harness/envelope.py's _classify_c1) DOES need
+# its own RBAC entry (an earlier version of this comment wrongly assumed the Metrics API sits
+# outside apiserver RBAC -- it's served through the aggregation layer, which
+# is RBAC-gated like any other API), but it's granted in role-app-mutate.yaml instead of here:
+# `top` is a C1 action, and C1 is namespace-scoped to the app by design (a Role in the app
+# namespace), not cluster-wide like this ClusterRole.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: sslm-agent-read-only
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "events", "services", "persistentvolumeclaims"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "replicasets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get"]

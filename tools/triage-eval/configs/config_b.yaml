@@ -1,0 +1,7 @@
+# Config B: base model + prompt + schema-constrained decoding.
+# Same prompt as config_a. Tests how much of the gap is just eliminating format errors.
+name: config_b
+extends: base.yaml
+schema_constrained_decoding: true
+memory:
+  enabled: false

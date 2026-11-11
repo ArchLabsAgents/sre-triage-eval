@@ -1,0 +1,14 @@
+# Dependencies for the CONTAINER image (Dockerfile), not the Mac dev environment.
+#
+# Deliberately a separate file from requirements.txt: that file carries mlx-lm and outlines,
+# which are MLX/Apple-Silicon-only (no Linux wheel, see tests/triage_eval/conftest.py's
+# stubbing comment) and pytest, which is dev-only. Installing requirements.txt inside the
+# container would fail the build outright on mlx-lm, or bloat the image with a decoding library
+# the container never imports (adapters/vllm_model_client.py sends `guided_json` +
+# `guided_decoding_backend: "outlines"` to the remote vLLM server over plain urllib -- the
+# server does the constrained decoding, this process never imports the outlines package).
+#
+# tests/triage_eval/test_agent_requirements_hygiene.py fails the suite if this file ever
+# gains mlx-lm, outlines or pytest back.
+pyyaml>=6.0
+jsonschema>=4.21

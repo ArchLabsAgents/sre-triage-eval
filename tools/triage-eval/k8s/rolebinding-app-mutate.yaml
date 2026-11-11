@@ -1,0 +1,21 @@
+# Binds the C1/C2 Role (role-app-mutate.yaml) to the agent's ServiceAccount. Lives in the APP's
+# namespace like the Role it references (RoleBinding.roleRef.kind: Role must be same-namespace
+# per K8s RBAC rules), while the subject ServiceAccount is cross-namespace: it lives in
+# sslm-agent, not in ${APP_NAMESPACE} -- a RoleBinding's subjects list is explicitly allowed to
+# name a ServiceAccount from a different namespace, this is not a typo.
+#
+# Same placeholder rule as role-app-mutate.yaml: ${APP_NAMESPACE} is substituted at apply time,
+# never hardcoded here.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sslm-agent-mutate
+  namespace: ${APP_NAMESPACE}
+subjects:
+  - kind: ServiceAccount
+    name: sslm-agent
+    namespace: sslm-agent
+roleRef:
+  kind: Role
+  name: sslm-agent-mutate
+  apiGroup: rbac.authorization.k8s.io

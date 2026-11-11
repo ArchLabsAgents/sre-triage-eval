@@ -1,0 +1,7 @@
+# Config A: base model + prompt only. No decoding constraint, no memory.
+# The floor: what a generic open model gets to without any harness engineering.
+name: config_a
+extends: base.yaml
+schema_constrained_decoding: false
+memory:
+  enabled: false

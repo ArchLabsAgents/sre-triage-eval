@@ -1,0 +1,8 @@
+# The agent's own namespace. Fixed name, never parametrized: this is OUR
+# namespace, not the app's. The app's namespace (where the Role/RoleBinding in
+# role-app-mutate.yaml and rolebinding-app-mutate.yaml grant C1/C2 verbs) is the one that is
+# lab-specific and parametrized -- see those two files' own comments.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sslm-agent

@@ -1,0 +1,48 @@
+{
+  "rule_version": "e9-corpus-2026-10-30",
+  "table_version": "e6r-2026-09-28",
+  "s0_families": [
+    "misconfig_app_hotel_res",
+    "revoke_auth_mongodb",
+    "user_unregistered_mongodb"
+  ],
+  "holdout_families": [
+    "revoke_auth_mongodb_rate",
+    "user_unregistered_mongodb_rate",
+    "assign_to_non_existent_node_hotel_res"
+  ],
+  "eval_seeds": [
+    1052,
+    1140,
+    1283,
+    1627,
+    1695,
+    2425
+  ],
+  "evidence_tokens": {
+    "app_image_misconfig": [
+      "yinfangchen/geo:app3"
+    ],
+    "mongo_role_revoked": [
+      "not authorized on"
+    ],
+    "mongo_user_dropped": [
+      "sasl",
+      "authentication failed"
+    ]
+  },
+  "schedules": {
+    "corpus-seed-30000.json": {
+      "sha256": "98b26a6a0136147c8d4246ca2946a23bfe01f913d0d6340570e4fb02d0defb1e",
+      "split": "train"
+    },
+    "corpus-seed-30004.json": {
+      "sha256": "df730331a6f816933f6528fead975cabe914b060225df4f30b065abf9f3e34ab",
+      "split": "validation"
+    },
+    "corpus-seed-30009.json": {
+      "sha256": "aa6fcf815f9afa281f15792b9414f7f7210d45b852846c0fdb3e958b4e8ee11b",
+      "split": "validation"
+    }
+  }
+}

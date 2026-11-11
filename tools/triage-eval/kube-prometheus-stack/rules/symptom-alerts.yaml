@@ -1,0 +1,33 @@
+# Generic, symptom-only PrometheusRule additions on top of the kube-prometheus-stack defaults
+# (see ../values.yaml's defaultRules section for the two default-rule `for` overrides).
+#
+# Hard rule: a rule here may describe a generic K8s/RED/SLO symptom (pod not ready, resource not
+# bound, error rate, latency) but MUST NEVER name a fault mechanism (no "MongoAuthRevoked", no
+# image tag, no command name). See FROZEN_RULES.md for the per-rule justification required
+# before round 1, and tests/triage_eval/test_symptom_alert_rules.py for the automated check that
+# no expr in this file (or in the values.yaml customRules) mentions one.
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: sslm-symptom-alerts
+  labels:
+    release: sslm-kube-prometheus
+spec:
+  groups:
+    - name: sslm-symptom-alerts
+      rules:
+        # kube-prometheus-stack ships KubePersistentVolumeFillingUp/InodesFillingUp/Errors, but
+        # nothing for "PVC never became Bound" -- the exact symptom redeploy_without_PV produces
+        # (adapters/mitigation_probes.py's probe_redeploy_without_pv: PV left Released, new PVC
+        # never binds, pod stuck Pending). Generic over any PVC/namespace, not specific to this
+        # fault's mechanism (a stuck-binding PVC is a real symptom regardless of why).
+        - alert: SslmPersistentVolumeClaimNotBound
+          expr: kube_persistentvolumeclaim_status_phase{phase!="Bound"} == 1
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: PersistentVolumeClaim has not reached Bound phase.
+            description: >-
+              PVC {{ $labels.namespace }}/{{ $labels.persistentvolumeclaim }} has been in phase
+              {{ $labels.phase }} for more than 2 minutes.

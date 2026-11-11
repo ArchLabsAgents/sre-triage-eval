@@ -1,0 +1,89 @@
+# ValidatingAdmissionPolicy: native CEL-based
+# second layer for the DB-pod exclusion that role-app-mutate.yaml's own HONEST LIMIT comment says
+# vanilla RBAC cannot express -- `resourceNames` is an exact-name allowlist, not a
+# pattern-matching denylist, and pod names here are controller-generated (unstable), so RBAC
+# cannot grant `pods/exec create` or `pods delete` while excluding pods whose name matches
+# mongo/memcached.
+#
+# This is the second, independent enforcement layer that comment asked for: even if
+# harness/envelope.py's `_mentions_db_pod` parser has a bug, is bypassed, or is never consulted at
+# all (a different caller hitting the apiserver directly with the same ServiceAccount token), the
+# apiserver itself refuses the request before it ever reaches a database pod -- the same shape of
+# independence the C3 exclusions already have via RBAC (see role-app-mutate.yaml's own comment:
+# "this Role's absence of the verb"), just implemented differently because RBAC cannot express a
+# pattern-based denylist.
+#
+# Pattern mirrors harness/envelope.py's `_DB_POD_MARKERS = ("mongo", "memcached")` and
+# `_is_db_pod`'s substring-on-lowercased-name check exactly (back-reference, not a re-derivation
+# -- keep the two lists in sync by hand if the harness's markers ever change; CEL has no way to
+# import a Python constant). `_mentions_db_pod` scans every token of the shelled-out command
+# (`kubectl exec ... -- ...` / `kubectl delete pod ...`) for a marker substring, which in practice
+# is always the pod's own name -- `request.name` in the admission request is that same name for
+# both the `pods/exec` CONNECT subresource request and the plain `pods` DELETE request, so matching
+# on `request.name` is the exact structural equivalent of what the parser already checks.
+#
+# Why native ValidatingAdmissionPolicy, not Kyverno/OPA Gatekeeper: confirmed live against a fresh
+# kind cluster (kind v0.32.0's default node image at the time, kindest/node:v1.36.1,
+# server v1.36.1) that `admissionregistration.k8s.io/v1` ValidatingAdmissionPolicy is GA with no
+# feature gate needed -- `kubectl api-resources` lists it at v1, and a live create+bind+enforce
+# test confirmed the apiserver evaluates it. VAP has been GA since
+# Kubernetes 1.30 (alpha since 1.26); kind's current default node image is well past that floor.
+# This repo does not control, and did not verify, the exact node image AIOpsLab's own kind-config
+# ($AIOPSLAB_HOME, external, unversioned here) pins, if it pins one at all -- setup_cluster.sh's
+# own comment explains why this repo never forks that file to go read it. If a real lab run turns
+# out to sit on a kind-config pinned older than 1.28 (VAP's earliest alpha, which would also need
+# a feature gate this repo doesn't control), this manifest's `kubectl apply` would fail loudly
+# (unrecognized API) rather than silently no-op, and the fallback path would be Kyverno -- not
+# expected, not verified either way, tracked here rather than assumed.
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: sslm-agent-deny-db-pod-mutation
+spec:
+  failurePolicy: Fail
+  # Scope: only identities in the agent's own namespace (today the single ServiceAccount
+  # sslm-agent/sslm-agent, see serviceaccount.yaml). The admission round's live run of
+  # 2026-09-23 showed the unscoped version also denying AIOpsLab's own fault injector, which runs with the lab's admin
+  # kubeconfig and must exec into mongodb-* to inject and recover user_unregistered_mongodb and
+  # revoke_auth_mongodb: the fault was never injected and the round was invalid. The exclusion
+  # this policy exists for is "the agent never touches a DB pod", not "nobody does", so the
+  # match is on the requester, and the prefix (not the exact SA name) keeps any future SA added
+  # to the agent namespace inside the denylist by default. Positive and negative cases are
+  # checked live by verify_db_pod_policy_scope.sh, not only by the unit test.
+  matchConditions:
+    - name: requester-is-sslm-agent-namespace
+      expression: >-
+        request.userInfo.username.startsWith('system:serviceaccount:sslm-agent:')
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CONNECT"]
+        resources: ["pods/exec"]
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["DELETE"]
+        resources: ["pods"]
+  validations:
+    - expression: >-
+        !(request.name.lowerAscii().contains('mongo') ||
+          request.name.lowerAscii().contains('memcached'))
+      message: >-
+        exec into, or delete of, a database pod (name matches mongo/memcached) is excluded in
+        any case (mirrors harness/envelope.py's _mentions_db_pod / _DB_POD_MARKERS; section 3.1
+        of docs/strategy/sslm-cenario-validacao-2026-09-18-pt.md)
+---
+# Binding: no matchResources narrowing beyond the policy's own matchConstraints above, so for the
+# agent identities selected by matchConditions this is enforced in every namespace, deliberately
+# broader than role-app-mutate.yaml's own namespace scoping (that Role only grants the verbs in the
+# app's namespace to begin with; this covers any other namespace a future agent Role might touch).
+# It is NOT a cluster-wide safety net for other identities: since 2026-09-23 a mistaken grant of
+# exec/delete on a DB pod to a ServiceAccount outside the sslm-agent namespace is not denied here.
+# That is the price of letting AIOpsLab's injector (admin kubeconfig) reach the Mongo pods.
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: sslm-agent-deny-db-pod-mutation-binding
+spec:
+  policyName: sslm-agent-deny-db-pod-mutation
+  validationActions: ["Deny"]

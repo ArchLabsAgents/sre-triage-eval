@@ -1,0 +1,18 @@
+# Internal ClusterIP in front of the Deployment. The Alertmanager receiver config
+# (kube-prometheus-stack/values.yaml) points its webhook at this Service's DNS name
+# (sslm-agent.sslm-agent.svc.cluster.local:8080/alerts), not at a pod IP, so the receiver has a
+# stable name across pod restarts.
+apiVersion: v1
+kind: Service
+metadata:
+  name: sslm-agent
+  namespace: sslm-agent
+  labels:
+    app.kubernetes.io/name: sslm-agent
+spec:
+  selector:
+    app.kubernetes.io/name: sslm-agent
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http

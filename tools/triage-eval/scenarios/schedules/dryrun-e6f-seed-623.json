@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {"duration_minutes": 20, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "fault", "start_minute": 0},
+    {"duration_minutes": 21, "fault_family": "misconfig_app_hotel_res", "kind": "fault", "start_minute": 50},
+    {"duration_minutes": 131, "fault_family": null, "kind": "quiet", "start_minute": 101},
+    {"duration_minutes": 5, "fault_family": "revoke_auth_mongodb_rate", "kind": "false_alarm", "start_minute": 232}
+  ],
+  "seed": 623,
+  "window_hours": 4.0
+}

@@ -1,0 +1,7 @@
+{
+  "entries": [
+    {"duration_minutes": 25, "fault_family": "revoke_auth_mongodb", "kind": "fault", "start_minute": 0}
+  ],
+  "seed": 1052,
+  "window_hours": 1.0
+}

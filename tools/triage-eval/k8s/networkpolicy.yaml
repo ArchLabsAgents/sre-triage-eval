@@ -1,0 +1,137 @@
+# Zero external egress: egress is allowed ONLY to the kube-apiserver, Prometheus, Alertmanager
+# and the vLLM endpoint (the object name keeps the original "zero-egress-externo" spelling).
+# `policyTypes: [Egress, Ingress]` with no catch-all rule in either direction makes this
+# default-deny except for the entries listed below (K8s NetworkPolicy semantics: any policy
+# selecting a pod for a policyType, with only specific `to`/`from` entries, denies everything
+# else for that direction).
+#
+# Resolved: kind's default CNI (kindnet) does not enforce NetworkPolicy at
+# all, so on a stock kind cluster this object was a correct, auditable DECLARATION of the intended
+# envelope (the thing the "zero egress by NetworkPolicy, measurable in bytes" claim rests on)
+# without yet being an enforced one. Closed, not accepted:
+# setup_cluster.sh's opt-in CALICO_INSTALL=1 (see README.md and the script's own comment on that
+# section) installs a pinned Calico version on a kind cluster whose default CNI was disabled at
+# creation time (kind/patch_kind_config_disable_default_cni.py), which does enforce NetworkPolicy.
+# Verified end-to-end against a real kind+Calico cluster (test pods against this exact policy,
+# placeholders substituted with test values): egress this policy denies actually fails, egress
+# this policy allows actually succeeds -- not just "the manifest applied cleanly". See README.md's
+# own section on this for the command transcript.
+#
+# That same live verification found a real bug, fixed here, not just an honest limit to
+# note: the kube-apiserver rule below used to target the `kubernetes` Service's ClusterIP
+# directly (10.96.0.1/32:443). That is correct as a DECLARATION, but under Calico's standard
+# iptables dataplane it never actually matched -- kube-proxy's Service DNAT (nat table
+# PREROUTING) rewrites the destination to the apiserver's real backend address BEFORE Calico's
+# per-workload egress policy evaluates the packet (filter table FORWARD), so by the time the
+# policy runs, the packet's destination is no longer the ClusterIP the rule named. Confirmed with
+# an isolated test policy against a real pod-backed Service ClusterIP too (not apiserver-specific:
+# any ipBlock rule naming a Service ClusterIP has this problem under this dataplane) and against
+# the Endpoints-derived real address (which DID match). Left as originally written, this rule
+# would have shipped a Calico-enforced cluster on which the agent's own C1/C2 kubectl mutations
+# silently could not reach the apiserver -- a "looks resolved, isn't" failure. See README.md's own section on this for the full transcript.
+#
+# vLLM egress: `${VLLM_EGRESS_CIDR}` is a placeholder, substituted at apply time (never
+# hardcoded -- the address depends on the kind Docker network's gateway, which is
+# environment-specific). See setup_cluster.sh's AGENT_INSTALL=1 block and the README for how to
+# derive it (`docker network inspect kind` on the VM running the cluster).
+#
+# `${KPS_NAMESPACE}` is also a placeholder, not hardcoded "monitoring":
+# setup_cluster.sh's KPS_INSTALL=1 block already lets the kube-prometheus-stack namespace be
+# overridden via KPS_NAMESPACE, defaulting to "monitoring". A hardcoded "monitoring" here would
+# silently desync from that override and block the Prometheus/Alertmanager egress/ingress this
+# policy exists to allow. AGENT_INSTALL=1 substitutes it with the same default.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: sslm-agent-zero-egress-externo
+  namespace: sslm-agent
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: sslm-agent
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Only the Alertmanager webhook may reach the agent's HTTP port. Namespace/label match the
+    # kube-prometheus-stack chart's own defaults, release name
+    # "sslm-kube-prometheus" per setup_cluster.sh's KPS_INSTALL=1 block.
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ${KPS_NAMESPACE}
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: alertmanager
+      ports:
+        - protocol: TCP
+          port: 8080
+  egress:
+    # DNS: needed to resolve the kube-apiserver/Prometheus/Alertmanager Service names below.
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # kube-apiserver: control-plane static pods run with hostNetwork, so they are not
+    # selectable by podSelector (a real K8s NetworkPolicy limitation, not an oversight here).
+    # `${APISERVER_EGRESS_CIDR}`/`${APISERVER_EGRESS_PORT}` are placeholders, substituted at apply
+    # time from the live cluster's own `kubernetes` Endpoints object (setup_cluster.sh derives
+    # them with `kubectl get endpoints kubernetes`, no manual export needed in the common case --
+    # see the script's own comment). NOT the Service's ClusterIP (an earlier version of this rule
+    # used `10.96.0.1/32:443`, the ClusterIP `kubectl get svc kubernetes` shows): under Calico's
+    # standard iptables dataplane, kube-proxy's Service DNAT rewrites the destination to this real
+    # backend address BEFORE Calico's per-workload egress policy evaluates the packet, so an
+    # ipBlock rule naming the ClusterIP never actually matches -- verified live, see this file's
+    # top comment and README.md. Not the whole service CIDR either (an earlier version used the full 10.96.0.0/12, which permits egress to ANY ClusterIP service on
+    # that port, not just the apiserver) -- a single real backend address is exactly as narrow as
+    # the ClusterIP form was meant to be, just pointed at what the packet actually carries.
+    - to:
+        - ipBlock:
+            cidr: ${APISERVER_EGRESS_CIDR}
+      ports:
+        - protocol: TCP
+          port: ${APISERVER_EGRESS_PORT}
+    # Prometheus + Alertmanager (kube-prometheus-stack): the agent pulls them as context. Two
+    # separate rules, not one shared `to`/`ports` pair (K8s NetworkPolicy allows every peer in a rule's `to` list on every port in
+    # that same rule's `ports` list, so a combined rule would also let the agent reach Prometheus
+    # on Alertmanager's port and vice versa -- looser than intended, even if low-risk since both
+    # live in the same trusted namespace).
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ${KPS_NAMESPACE}
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+      ports:
+        - protocol: TCP
+          port: 9090
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ${KPS_NAMESPACE}
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: alertmanager
+      ports:
+        - protocol: TCP
+          port: 9093
+    # vLLM: reached through the kind host gateway (VLLM_BASE_URL, same contract as
+    # adapters/vllm_model_client.py). Not a cluster Service, hence ipBlock rather than a
+    # selector. Port is also a placeholder: the cloud GPU VM's provisioning sets `vllm_port` per
+    # round as a tfvars value, not a fixed constant, so hardcoding 8000 here would be a guessed
+    # default.
+    - to:
+        - ipBlock:
+            cidr: ${VLLM_EGRESS_CIDR}
+      ports:
+        - protocol: TCP
+          port: ${VLLM_EGRESS_PORT}

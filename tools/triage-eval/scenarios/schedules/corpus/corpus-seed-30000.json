@@ -1,0 +1,156 @@
+{
+  "entries": [
+    {
+      "duration_minutes": 18,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "start_minute": 0
+    },
+    {
+      "duration_minutes": 15,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "start_minute": 48
+    },
+    {
+      "duration_minutes": 12,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "start_minute": 93
+    },
+    {
+      "duration_minutes": 5,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "false_alarm",
+      "start_minute": 135
+    },
+    {
+      "duration_minutes": 14,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "start_minute": 140
+    },
+    {
+      "duration_minutes": 17,
+      "fault_family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "start_minute": 184
+    },
+    {
+      "duration_minutes": 12,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "start_minute": 231
+    },
+    {
+      "duration_minutes": 15,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "start_minute": 273
+    },
+    {
+      "duration_minutes": 13,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "start_minute": 318
+    },
+    {
+      "duration_minutes": 18,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "start_minute": 361
+    },
+    {
+      "duration_minutes": 14,
+      "fault_family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "start_minute": 409
+    },
+    {
+      "duration_minutes": 12,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "start_minute": 453
+    },
+    {
+      "duration_minutes": 12,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "start_minute": 495
+    },
+    {
+      "duration_minutes": 15,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "start_minute": 537
+    },
+    {
+      "duration_minutes": 18,
+      "fault_family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "start_minute": 582
+    },
+    {
+      "duration_minutes": 12,
+      "fault_family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "start_minute": 630
+    },
+    {
+      "duration_minutes": 15,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "start_minute": 672
+    },
+    {
+      "duration_minutes": 14,
+      "fault_family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "start_minute": 717
+    },
+    {
+      "duration_minutes": 12,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "start_minute": 761
+    },
+    {
+      "duration_minutes": 12,
+      "fault_family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "start_minute": 803
+    },
+    {
+      "duration_minutes": 18,
+      "fault_family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "start_minute": 845
+    },
+    {
+      "duration_minutes": 18,
+      "fault_family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "start_minute": 893
+    },
+    {
+      "duration_minutes": 13,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "start_minute": 941
+    },
+    {
+      "duration_minutes": 13,
+      "fault_family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "start_minute": 984
+    },
+    {
+      "duration_minutes": 17,
+      "fault_family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "start_minute": 1027
+    }
+  ],
+  "seed": 30000,
+  "window_hours": 18.0
+}

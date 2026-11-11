@@ -1,0 +1,10 @@
+# Config C: base model + prompt + schema-constrained decoding + training-free episodic memory.
+# Same prompt and schema as config_b, plus a store of past (task, action, outcome) episodes
+# retrieved before the agent acts. Tests how much of the gap is "remembering" without retraining.
+name: config_c
+extends: base.yaml
+schema_constrained_decoding: true
+memory:
+  enabled: true
+  store_path: scenarios/results/episodic_memory.jsonl
+  top_k: 3

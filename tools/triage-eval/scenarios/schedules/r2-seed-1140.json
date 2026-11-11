@@ -1,0 +1,25 @@
+{
+  "entries": [
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb", "kind": "fault", "start_minute": 0},
+    {"duration_minutes": 29, "fault_family": "misconfig_app_hotel_res", "kind": "fault", "start_minute": 50},
+    {"duration_minutes": 20, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "fault", "start_minute": 109},
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb_rate", "kind": "fault", "start_minute": 159},
+    {"duration_minutes": 31, "fault_family": "user_unregistered_mongodb", "kind": "fault", "start_minute": 209},
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb", "kind": "fault", "start_minute": 270},
+    {"duration_minutes": 29, "fault_family": "user_unregistered_mongodb_rate", "kind": "fault", "start_minute": 320},
+    {"duration_minutes": 5, "fault_family": "revoke_auth_mongodb", "kind": "false_alarm", "start_minute": 379},
+    {"duration_minutes": 20, "fault_family": "assign_to_non_existent_node_hotel_res", "kind": "fault", "start_minute": 384},
+    {"duration_minutes": 36, "fault_family": "wrong_bin_usage", "kind": "fault", "start_minute": 434},
+    {"duration_minutes": 36, "fault_family": "user_unregistered_mongodb", "kind": "fault", "start_minute": 500},
+    {"duration_minutes": 21, "fault_family": "user_unregistered_mongodb_rate", "kind": "fault", "start_minute": 566},
+    {"duration_minutes": 20, "fault_family": "misconfig_app_hotel_res", "kind": "fault", "start_minute": 617},
+    {"duration_minutes": 360, "fault_family": null, "kind": "quiet", "start_minute": 667},
+    {"duration_minutes": 20, "fault_family": "revoke_auth_mongodb_rate", "kind": "fault", "start_minute": 1027},
+    {"duration_minutes": 20, "fault_family": "redeploy_without_PV", "kind": "fault", "start_minute": 1077},
+    {"duration_minutes": 212, "fault_family": null, "kind": "quiet", "start_minute": 1127},
+    {"duration_minutes": 21, "fault_family": "wrong_bin_usage", "kind": "fault", "start_minute": 1339},
+    {"duration_minutes": 20, "fault_family": "redeploy_without_PV", "kind": "fault", "start_minute": 1390}
+  ],
+  "seed": 1140,
+  "window_hours": 24.0
+}

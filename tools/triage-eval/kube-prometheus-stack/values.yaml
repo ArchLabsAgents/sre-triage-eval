@@ -1,0 +1,181 @@
+# kube-prometheus-stack config for the triage-eval kind cluster.
+#
+# Chart: prometheus-community/kube-prometheus-stack, pinned 91.4.1 (app v0.94.0), see
+# setup_cluster.sh for the `helm upgrade --install` invocation. Pinned, not `--version latest`,
+# so a chart upgrade never silently changes what the admission round measures against.
+#
+# Design contract: alert rules here are symptom-only, defaults from this chart plus generic RED/SLO rules -- never a rule that names a
+# fault mechanism. See rules/symptom-alerts.yaml and FROZEN_RULES.md for the per-rule
+# justification required before round 1.
+
+fullnameOverride: sslm-kube-prometheus
+
+# Grafana is off: it is a human UI and the agent never reads a dashboard, and running it costs
+# memory on a kind node that is already tight (the Docker Desktop VM this stack shares with
+# vLLM/MLX on a dev laptop is 8GB).
+grafana:
+  enabled: false
+
+alertmanager:
+  enabled: true
+  alertmanagerSpec:
+    resources:
+      requests:
+        cpu: 25m
+        memory: 64Mi
+      limits:
+        memory: 128Mi
+    # Short retention: Alertmanager history is never needed beyond the round that generated it,
+    # and every round runs on a fresh VM/cluster (destroyed afterwards, never persisted).
+    retention: 48h
+  # Alertmanager -> agent receiver wiring. Replaces the chart's own default
+  # `alertmanager.config` entirely (its default route sends every group to a 'null' receiver,
+  # i.e. discards it -- confirmed by pulling the pinned chart (91.4.1) and reading its own
+  # values.yaml default), not layered on top of it.
+  config:
+    global:
+      resolve_timeout: 5m
+    route:
+      # group_by: alertname+namespace, not just the chart default (namespace alone). This repo
+      # has exactly one receiver today (no other route needs disambiguating), but group_by still
+      # matters for episode shape: it decides Alertmanager's groupKey, and harness/webhook.py's
+      # EpisodeDeduper opens one episode per distinct groupKey. namespace-only would fold two
+      # unrelated symptoms firing in the same namespace (e.g. SslmPersistentVolumeClaimNotBound
+      # and KubePodCrashLooping on different pods) into one webhook group and one episode that
+      # names both; alertname+namespace keeps them as two groups, two episodes.
+      group_by: ["alertname", "namespace"]
+      # group_wait: first webhook for a brand-new group. Short on purpose -- there is no other
+      # receiver's alerts to batch against (single route, single receiver), so every second spent
+      # waiting here is pure added latency before the episode's MTTA clock (median of
+      # t_record - t_webhook_received) even starts.
+      group_wait: 10s
+      # group_interval: re-notify cadence for a group that is still open (new alerts folding in,
+      # or a status change). Set to exactly the agent's own dedup window
+      # (harness/webhook.py:GROUP_WINDOW_SECONDS = 120.0, the "calls for the same group within
+      # 120s of the group's first sighting are still one episode" contract that module's docstring
+      # states) so Alertmanager's own re-notify and the deduper's window-close land close
+      # together: an update to an in-progress episode reaches the agent right as its window would
+      # otherwise expire, instead of much sooner (a webhook the deduper just folds and drops) or
+      # much later (a stale window closes first and the update wrongly opens a second episode).
+      group_interval: 2m
+      # repeat_interval: resend cadence for a group with NO new alerts/changes. Deliberately long
+      # relative to group_interval -- an unresolved episode is the agent's own escalation timeout
+      # to handle (15-minute episode timeout), not something
+      # Alertmanager should relitigate by re-sending the same webhook every few minutes. 4h is
+      # long enough that repeats stay rare (a genuinely stuck, long-lived symptom), short enough
+      # that a group is never forgotten for a full day if the episode path itself crashed before
+      # recording anything.
+      repeat_interval: 4h
+      receiver: sslm-agent
+      # Kept from the chart's own default route (Helm deep-merges the `route` map, so this
+      # survives even unstated -- written out explicitly anyway, never left as an implicit
+      # inheritance someone reading only this file would miss). Watchdog is `defaultRules`'
+      # always-firing dead-man's-switch alert (templates/prometheus/rules-1.14/general.rules.yaml,
+      # enabled here since values.yaml's own `defaultRules.disabled` never names it) -- routing it
+      # to sslm-agent would open a permanent, meaningless episode every group_interval forever.
+      # Must stay pointed at a receiver that exists in `receivers` below (see that key's comment
+      # for why a bare 'null' string there is not a no-op by itself).
+      routes:
+        - receiver: "null"
+          matchers:
+            - alertname = "Watchdog"
+    receivers:
+      - name: sslm-agent
+        webhook_configs:
+          # Service DNS name from k8s/service.yaml's own comment: the ClusterIP Service build
+          # plan item 3 created specifically so this route has a stable address across pod
+          # restarts (never a pod IP).
+          - url: http://sslm-agent.sslm-agent.svc.cluster.local:8080/alerts
+            # Alertmanager already tracks a group's firing/resolved lifecycle; forwarding
+            # resolved notifications lets harness/webhook.py fold a symptom clearing mid-episode
+            # into the SAME open window (EpisodeDeduper.ingest's own docstring: a resolved
+            # notification with no open window is dropped as bookkeeping, one with an open window
+            # folds in) instead of the agent only ever seeing "firing".
+            send_resolved: true
+      # 'null' is not a magic no-op keyword to Alertmanager -- it is just this receiver's NAME
+      # (the chart's own default config names it exactly this way). It has no `*_configs` list,
+      # so a group routed here is accepted and silently dropped. Required to exist: `config` here
+      # REPLACES the chart's default `alertmanager.config` wholesale (Helm does not merge list
+      # values, only maps), so leaving this out would delete the receiver the `routes` entry above
+      # still references, and Alertmanager would refuse to start on an undefined-receiver config.
+      - name: "null"
+
+prometheus:
+  enabled: true
+  prometheusSpec:
+    # Retention matched to the longest single round (26h continuous-scenario window per
+    # ttl_hours) plus slack for sync-out; this Prometheus never outlives one VM.
+    retention: 48h
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 512Mi
+    # The dedicated agent node (taint role=sslm-agent) must never host Prometheus itself:
+    # Prometheus is test apparatus, and the injector, fault scheduler, collector and load
+    # generator all run OFF the node whose footprint is being measured.
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: role
+                  operator: NotIn
+                  values: ["sslm-agent"]
+    additionalScrapeConfigs: []
+
+kubeStateMetrics:
+  enabled: true
+
+nodeExporter:
+  enabled: true
+
+# AIOpsLab's own observer (namespace `observe`, deployed by the benchmark) runs a second
+# node-exporter DaemonSet on hostNetwork port 9100. Two host-network exporters cannot share a
+# port: on 2026-09-23 all three of AIOpsLab's stayed Pending ("didn't have free ports") and its
+# bootstrap wait ran out. Ours moves to 9101; the ServiceMonitor follows the service port.
+prometheus-node-exporter:
+  service:
+    port: 9101
+    targetPort: 9101
+
+prometheusOperator:
+  enabled: true
+  resources:
+    requests:
+      cpu: 25m
+      memory: 64Mi
+    limits:
+      memory: 128Mi
+
+# Per-rule overrides on the chart's own default alerting rules (never a new mechanism-specific
+# rule here -- that lives in rules/symptom-alerts.yaml as a separate PrometheusRule). Frozen
+# with justification in FROZEN_RULES.md.
+#
+# `customRules` is a TOP-LEVEL values key in this chart (not nested under `defaultRules`) --
+# the templates read it as `.Values.customRules`, confirmed against the chart's own rendered
+# `for:` output (a first version of this file nested it under defaultRules, which the chart
+# silently ignores rather than erroring on: helm template rendered the chart's 15m default
+# instead of the intended 2m, caught by test_symptom_alert_rules.py's rendered-output check).
+customRules:
+  # Chart default is 15m. At 15m, KubePodNotReady/KubePodCrashLooping would fire only after
+  # most of a fault's scheduled active window (20-45min, scenarios/fault_schedule.py) has
+  # already elapsed, eating directly into the 15-minute episode timeout before the webhook that starts the episode has even fired. Tightened to 2m:
+  # still well above Prometheus's own scrape-interval noise floor (default 30s), but fast
+  # enough that MTTA is dominated by the harness's own collection/decision time, not by this
+  # threshold. Reviewed alongside the round-1 admission.
+  KubePodCrashLooping:
+    for: 2m
+  KubePodNotReady:
+    for: 2m
+
+defaultRules:
+  create: true
+  # kube-scheduler/kube-controller-manager component alerts assume metrics endpoints kind's
+  # control plane does not expose the way a managed cluster does; disabled to avoid permanent
+  # noise from a target that was never real (not a symptom-suppression call, a target-existence
+  # one -- see setup_cluster.sh's own kube-scheduler/kube-controller-manager caveats).
+  disabled:
+    KubeSchedulerDown: true
+    KubeControllerManagerDown: true
