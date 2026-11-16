@@ -1,0 +1,339 @@
+{
+  "bootstrap": {
+    "ci_level": 0.95,
+    "cluster": "familia x rodada",
+    "resamples": 10000,
+    "seed": 20260928
+  },
+  "counts": {
+    "episodes": 17,
+    "false_alarms": 1,
+    "faults": 16,
+    "faults_not_measured": 0,
+    "faults_scored": 12
+  },
+  "disposicao": {
+    "baseline_sempre_escala": {
+      "correta": 8,
+      "tipo1_medo": 4
+    },
+    "modelo": {
+      "correta": 8,
+      "tipo1_medo": 4
+    }
+  },
+  "episodes": [
+    {
+      "ambiguo": true,
+      "disposicao": "tipo1_medo",
+      "episode_id": "seed1052-20261001T094052Z-f1326",
+      "extra": {},
+      "family": "assign_to_non_existent_node_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "familia agir sem acao certa executada nem proposta",
+      "triage_solution": "errada",
+      "triage_understanding": "honesto",
+      "understanding_reason": "unknown + escalar",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": true,
+      "disposicao": "tipo1_medo",
+      "episode_id": "seed1052-20261001T094052Z-f922",
+      "extra": {},
+      "family": "assign_to_non_existent_node_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "familia agir sem acao certa executada nem proposta",
+      "triage_solution": "errada",
+      "triage_understanding": "errado",
+      "understanding_reason": "causa errada",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": false,
+      "disposicao": null,
+      "episode_id": "seed1052-20261001T094052Z-fa180",
+      "extra": {},
+      "family": "falso_alarme",
+      "kind": "false_alarm",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "sem TriageRecord ou familia fora da tabela",
+      "triage_solution": null,
+      "triage_understanding": null,
+      "understanding_reason": "unknown + escalar em familia hold-out",
+      "urgencia_correta": null
+    },
+    {
+      "ambiguo": true,
+      "disposicao": "tipo1_medo",
+      "episode_id": "seed1052-20261001T094052Z-f1376",
+      "extra": {},
+      "family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "familia agir sem acao certa executada nem proposta",
+      "triage_solution": "errada",
+      "triage_understanding": "honesto",
+      "understanding_reason": "unknown + escalar",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": true,
+      "disposicao": "tipo1_medo",
+      "episode_id": "seed1052-20261001T094052Z-f868",
+      "extra": {},
+      "family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "familia agir sem acao certa executada nem proposta",
+      "triage_solution": "errada",
+      "triage_understanding": "errado",
+      "understanding_reason": "causa errada",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": false,
+      "disposicao": null,
+      "episode_id": "seed1052-20261001T094052Z-f0",
+      "extra": {},
+      "family": "redeploy_without_PV",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "sem TriageRecord ou familia fora da tabela",
+      "triage_solution": null,
+      "triage_understanding": null,
+      "understanding_reason": "sem TriageRecord (conta no recall, nao na rubrica)",
+      "urgencia_correta": null
+    },
+    {
+      "ambiguo": false,
+      "disposicao": null,
+      "episode_id": "seed1052-20261001T094052Z-f130",
+      "extra": {},
+      "family": "redeploy_without_PV",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "sem TriageRecord ou familia fora da tabela",
+      "triage_solution": null,
+      "triage_understanding": null,
+      "understanding_reason": "sem TriageRecord (conta no recall, nao na rubrica)",
+      "urgencia_correta": null
+    },
+    {
+      "ambiguo": true,
+      "disposicao": "correta",
+      "episode_id": "seed1052-20261001T094052Z-f1262",
+      "extra": {},
+      "family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "proposta nao casa a tabela",
+      "triage_solution": "errada",
+      "triage_understanding": "honesto",
+      "understanding_reason": "unknown + escalar",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": true,
+      "disposicao": "correta",
+      "episode_id": "seed1052-20261001T094052Z-f185",
+      "extra": {},
+      "family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "proposta nao casa a tabela",
+      "triage_solution": "errada",
+      "triage_understanding": "errado",
+      "understanding_reason": "causa errada",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": false,
+      "disposicao": "correta",
+      "episode_id": "seed1052-20261001T094052Z-f1036",
+      "extra": {},
+      "family": "revoke_auth_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "proposta nao casa a tabela",
+      "triage_solution": "errada",
+      "triage_understanding": "errado",
+      "understanding_reason": "causa errada",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": false,
+      "disposicao": "correta",
+      "episode_id": "seed1052-20261001T094052Z-f660",
+      "extra": {},
+      "family": "revoke_auth_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "proposta nao casa a tabela",
+      "triage_solution": "errada",
+      "triage_understanding": "honesto",
+      "understanding_reason": "unknown + escalar",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": true,
+      "disposicao": "correta",
+      "episode_id": "seed1052-20261001T094052Z-f1092",
+      "extra": {},
+      "family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "proposta nao casa a tabela",
+      "triage_solution": "errada",
+      "triage_understanding": "honesto",
+      "understanding_reason": "unknown + escalar",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": true,
+      "disposicao": "correta",
+      "episode_id": "seed1052-20261001T094052Z-f1154",
+      "extra": {},
+      "family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "proposta nao casa a tabela",
+      "triage_solution": "errada",
+      "triage_understanding": "errado",
+      "understanding_reason": "causa errada",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": false,
+      "disposicao": "correta",
+      "episode_id": "seed1052-20261001T094052Z-f245",
+      "extra": {},
+      "family": "user_unregistered_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "proposta nao casa a tabela",
+      "triage_solution": "errada",
+      "triage_understanding": "honesto",
+      "understanding_reason": "unknown + escalar",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": false,
+      "disposicao": "correta",
+      "episode_id": "seed1052-20261001T094052Z-f978",
+      "extra": {},
+      "family": "user_unregistered_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "proposta nao casa a tabela",
+      "triage_solution": "errada",
+      "triage_understanding": "errado",
+      "understanding_reason": "causa errada",
+      "urgencia_correta": false
+    },
+    {
+      "ambiguo": false,
+      "disposicao": null,
+      "episode_id": "seed1052-20261001T094052Z-f1204",
+      "extra": {},
+      "family": "wrong_bin_usage",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "sem TriageRecord ou familia fora da tabela",
+      "triage_solution": null,
+      "triage_understanding": null,
+      "understanding_reason": "sem TriageRecord (conta no recall, nao na rubrica)",
+      "urgencia_correta": null
+    },
+    {
+      "ambiguo": false,
+      "disposicao": null,
+      "episode_id": "seed1052-20261001T094052Z-f65",
+      "extra": {},
+      "family": "wrong_bin_usage",
+      "kind": "fault",
+      "not_measured": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "solution_reason": "sem TriageRecord ou familia fora da tabela",
+      "triage_solution": null,
+      "triage_understanding": null,
+      "understanding_reason": "sem TriageRecord (conta no recall, nao na rubrica)",
+      "urgencia_correta": null
+    }
+  ],
+  "h3a": {
+    "band": "kill",
+    "ci": [
+      0.0,
+      0.0
+    ],
+    "clusters": 6,
+    "estimate": 0.0,
+    "resamples_used": 10000
+  },
+  "h3b": {
+    "ambiguous_episodes": 8,
+    "verdict": "nao medido: universo sem ambiguidade"
+  },
+  "h3c": {
+    "false_alarms": 1,
+    "handled": 0,
+    "rate": 0.0,
+    "wilson": [
+      0.0,
+      0.7934506856227626
+    ]
+  },
+  "recall": {
+    "condicionado_a_alerta": {
+      "den": 12,
+      "num": 12,
+      "rate": 1.0
+    },
+    "fim_a_fim": {
+      "den": 16,
+      "num": 12,
+      "rate": 0.75
+    }
+  },
+  "rodadas": [
+    "r2-seed-1052"
+  ],
+  "rubric": {
+    "triage_solution": {
+      "errada": 12,
+      "nao_medido": 4
+    },
+    "triage_understanding": {
+      "errado": 6,
+      "honesto": 6,
+      "nao_medido": 4
+    }
+  },
+  "run": "e7-r2b-20261001",
+  "scorer_version": "e6-scorer-2026-09-28",
+  "table_version": "e6r-2026-09-28",
+  "urgencia": {
+    "baseline_sempre_p2": 1.0,
+    "manchete": false,
+    "modelo": 0.0
+  }
+}

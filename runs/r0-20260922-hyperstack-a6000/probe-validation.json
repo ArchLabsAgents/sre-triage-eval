@@ -1,0 +1,93 @@
+[
+  {
+    "scenario_id": "misconfig_app_hotel_res-mitigation-1",
+    "after_inject": {
+      "root_cause_fixed": false,
+      "probe_detail": "imagem buggy ainda no deployment 'geo': ['yinfangchen/geo:app3']"
+    },
+    "after_recover": {
+      "root_cause_fixed": false,
+      "probe_detail": "imagem corrigida (['yinfangchen/hotelreservation:latest']) mas 0 replicas prontas"
+    },
+    "benchmark_success_after_recover": true,
+    "admitted": false
+  },
+  {
+    "scenario_id": "redeploy_without_PV-mitigation-1",
+    "after_inject": {
+      "root_cause_fixed": true,
+      "probe_detail": "6 PVC(s) Bound, nenhum pod Pending"
+    },
+    "after_recover": {
+      "root_cause_fixed": null,
+      "probe_detail": "nenhum PVC em test-hotel-reservation, probe nao se aplica"
+    },
+    "benchmark_success_after_recover": true,
+    "admitted": false
+  },
+  {
+    "scenario_id": "revoke_auth_mongodb-mitigation-1",
+    "after_inject": {
+      "root_cause_fixed": false,
+      "probe_detail": "'admin' sem readWrite em geo-db: roles=[('userAdminAnyDatabase', 'admin')]"
+    },
+    "after_recover": {
+      "root_cause_fixed": true,
+      "probe_detail": "'admin' com readWrite em geo-db"
+    },
+    "benchmark_success_after_recover": true,
+    "admitted": true
+  },
+  {
+    "scenario_id": "revoke_auth_mongodb-mitigation-2",
+    "after_inject": {
+      "root_cause_fixed": false,
+      "probe_detail": "'admin' sem readWrite em rate-db: roles=[('userAdminAnyDatabase', 'admin')]"
+    },
+    "after_recover": {
+      "root_cause_fixed": true,
+      "probe_detail": "'admin' com readWrite em rate-db"
+    },
+    "benchmark_success_after_recover": true,
+    "admitted": true
+  },
+  {
+    "scenario_id": "user_unregistered_mongodb-mitigation-1",
+    "after_inject": {
+      "root_cause_fixed": false,
+      "probe_detail": "usuario 'admin' nao existe em mongodb-geo-5ff578bcb8-267kh"
+    },
+    "after_recover": {
+      "root_cause_fixed": true,
+      "probe_detail": "'admin' com readWrite em geo-db"
+    },
+    "benchmark_success_after_recover": true,
+    "admitted": true
+  },
+  {
+    "scenario_id": "user_unregistered_mongodb-mitigation-2",
+    "after_inject": {
+      "root_cause_fixed": false,
+      "probe_detail": "usuario 'admin' nao existe em mongodb-rate-56cc8659c9-mw7rn"
+    },
+    "after_recover": {
+      "root_cause_fixed": true,
+      "probe_detail": "'admin' com readWrite em rate-db"
+    },
+    "benchmark_success_after_recover": true,
+    "admitted": true
+  },
+  {
+    "scenario_id": "wrong_bin_usage-mitigation-1",
+    "after_inject": {
+      "root_cause_fixed": false,
+      "probe_detail": "deployment 'profile' ainda com binario errado: [['geo']]"
+    },
+    "after_recover": {
+      "root_cause_fixed": true,
+      "probe_detail": "deployment 'profile' com binario profile: [['profile']]"
+    },
+    "benchmark_success_after_recover": null,
+    "admitted": true
+  }
+]

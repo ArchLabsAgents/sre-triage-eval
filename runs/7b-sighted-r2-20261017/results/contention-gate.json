@@ -1,0 +1,34 @@
+{
+  "accepted_unproven_steal": false,
+  "mtta_episodes": 13,
+  "mtta_median_seconds": 13.760107278823853,
+  "passed": false,
+  "reasons": [],
+  "signals": [
+    {
+      "limit": 5.0,
+      "name": "cpu_steal_pct",
+      "reason": null,
+      "status": "pass",
+      "value": 0.027616851677044387
+    },
+    {
+      "limit": 1.3760107278823854,
+      "name": "queue_p95_ceiling_seconds",
+      "reason": null,
+      "status": "over",
+      "value": 2.5
+    },
+    {
+      "limit": 70.0,
+      "name": "vm_memory_peak_pct",
+      "reason": null,
+      "status": "pass",
+      "value": 30.393628986904474
+    }
+  ],
+  "window": {
+    "end": 1792357180.9090855,
+    "start": 1792272486.6499653
+  }
+}

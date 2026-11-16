@@ -1,0 +1,11 @@
+{
+  "episodes": "scenarios/results/hyperstack-a6000/r2/s3-r2.episodes.json",
+  "journal": "scenarios/results/hyperstack-a6000/r2/s3-r2.events.jsonl",
+  "not_measured": [],
+  "pod": {
+    "created": "2026-10-01T08:43:23Z",
+    "name": "sslm-agent-7644bbd746-ccxmb"
+  },
+  "records": "scenarios/results/hyperstack-a6000/r2/s3-r2.triage.jsonl",
+  "usage": "scenarios/results/hyperstack-a6000/r2/s3-r2.usage.jsonl"
+}

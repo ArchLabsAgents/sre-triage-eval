@@ -1,0 +1,1073 @@
+{
+  "episodes": [
+    {
+      "alert_fired": false,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261001T094052Z-f0",
+      "family": "redeploy_without_PV",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": true
+    },
+    {
+      "alert_fired": false,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261001T094052Z-f65",
+      "family": "wrong_bin_usage",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": false,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261001T094052Z-f130",
+      "family": "redeploy_without_PV",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": true
+    },
+    {
+      "alert_fired": null,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261001T094052Z-fa180",
+      "family": "falso_alarme",
+      "kind": "false_alarm",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": null
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-84fbc958c7-t5bzx",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f185",
+      "family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-84fbc958c7-t5bzx -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-01T12:49:01.678798+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-84fbc958c7-t5bzx -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-01T12:49:01.678798+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get nodes -o jsonpath='{.items[?(@.metadata.name==\"geo-84fbc958c7-t5bzx\")].status.conditions[?(@.type==\"Ready\")].status}'",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-01T12:49:01.678798+00:00"
+          }
+        ],
+        "alert_fingerprint": "348335693a028020",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "node_not_ready",
+          "detalhe": "Pod has been in a non-ready state for more than 15 minutes."
+        },
+        "confianca": 0.9,
+        "decisao": "escalar",
+        "episode_id": "ep-0b4a9ec8e3324e10",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-01T12:49:01.678798+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod has been in a non-ready state for more than 15 minutes.",
+        "t_alarme": "2026-10-01T12:48:19.058Z",
+        "t_record": "2026-10-01T12:49:01.678798+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodCrashLooping",
+        "container": "hotel-reserv-rate",
+        "endpoint": "http",
+        "instance": "192.168.72.130:8080",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "rate-7bdc978679-jj49p",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "reason": "CrashLoopBackOff",
+        "service": "sslm-kube-prometheus-kube-state-metrics",
+        "severity": "warning",
+        "uid": "28c2a575-3e13-4ec2-a9d8-e9f779441950"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f245",
+      "family": "user_unregistered_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -o json",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-01T13:48:51.475748+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -o json",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-01T13:48:51.475748+00:00"
+          }
+        ],
+        "alert_fingerprint": "baafdb80ab252cac",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "unknown",
+          "detalhe": "Pod is in CrashLoopBackOff state"
+        },
+        "confianca": 0.7,
+        "decisao": "escalar",
+        "episode_id": "ep-cae87342c1fb4cd6",
+        "evidencia": [
+          {
+            "consulta": "max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-01T13:48:51.475748+00:00",
+            "trecho": "query: max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1\n[\n  {\n    \"metric\": {\n      \"container\": \"hotel-reserv-geo\",\n      \"endpoint\": \"http\",\n      \"instance\": \"192.168.72.130:8080\",\n      \"job\": \"kube-state-metrics\",\n      \"namespace\": \"test-hotel-reservation\",\n      \"pod\": \"geo-84fbc958c7-t5bzx\",\n      \"reason\": \"CrashLoopBackOff\",\n      \"service\": \"sslm-kube-prometheus-kube-state-metrics\",\n      \"uid\": \"db442"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod is in CrashLoopBackOff state",
+        "t_alarme": "2026-10-01T13:48:19.058Z",
+        "t_record": "2026-10-01T13:48:51.475748+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodCrashLooping",
+        "container": "hotel-reserv-rate",
+        "endpoint": "http",
+        "instance": "192.168.72.130:8080",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "rate-7bdc978679-6krb6",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "reason": "CrashLoopBackOff",
+        "service": "sslm-kube-prometheus-kube-state-metrics",
+        "severity": "warning",
+        "uid": "548901c0-ed16-43f7-bf03-a553bdcf0022"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f660",
+      "family": "revoke_auth_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get nodes -o wide",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-01T20:45:01.468611+00:00"
+          }
+        ],
+        "alert_fingerprint": "d05a232ed20cfeef",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "unknown",
+          "detalhe": "kubectl command not found"
+        },
+        "confianca": 0.9,
+        "decisao": "escalar",
+        "episode_id": "ep-6ddcae5523f14c39",
+        "evidencia": [
+          {
+            "consulta": "max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-01T20:45:01.468611+00:00",
+            "trecho": "query: max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1\n[\n  {\n    \"metric\": {\n      \"container\": \"hotel-reserv-rate\",\n      \"endpoint\": \"http\",\n      \"instance\": \"192.168.72.130:8080\",\n      \"job\": \"kube-state-metrics\",\n      \"namespace\": \"test-hotel-reservation\",\n      \"pod\": \"rate-7bdc978679-6krb6\",\n      \"reason\": \"CrashLoopBackOff\",\n      \"service\": \"sslm-kube-prometheus-kube-state-metrics\",\n      \"uid\": \"548"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "kubectl command not found",
+        "t_alarme": "2026-10-01T20:44:19.058Z",
+        "t_record": "2026-10-01T20:45:01.468611+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodCrashLooping",
+        "container": "hotel-reserv-geo",
+        "endpoint": "http",
+        "instance": "192.168.72.130:8080",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-c47ff745-hhp4f",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "reason": "CrashLoopBackOff",
+        "service": "sslm-kube-prometheus-kube-state-metrics",
+        "severity": "warning",
+        "uid": "f97527c9-c4eb-4fb2-84ff-4060f006e9db"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f868",
+      "family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -o json",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T00:12:51.014503+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get pod geo-c47ff745-hhp4f -n test-hotel-reservation -o yaml",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T00:12:51.014503+00:00"
+          }
+        ],
+        "alert_fingerprint": "2579ce9455e5b8cc",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "wrong_binary_command",
+          "detalhe": "kubectl command not found, indicating the kubectl binary might be missing or not accessible in the environment."
+        },
+        "confianca": 0.9,
+        "decisao": "escalar",
+        "episode_id": "ep-3e443305d56a4aa7",
+        "evidencia": [
+          {
+            "consulta": "max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-02T00:12:51.014503+00:00",
+            "trecho": "query: max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1\n[\n  {\n    \"metric\": {\n      \"container\": \"hotel-reserv-geo\",\n      \"endpoint\": \"http\",\n      \"instance\": \"192.168.72.130:8080\",\n      \"job\": \"kube-state-metrics\",\n      \"namespace\": \"test-hotel-reservation\",\n      \"pod\": \"geo-c47ff745-hhp4f\",\n      \"reason\": \"CrashLoopBackOff\",\n      \"service\": \"sslm-kube-prometheus-kube-state-metrics\",\n      \"uid\": \"f97527c"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "kubectl command not found, indicating the kubectl binary might be missing or not accessible in the environment.",
+        "t_alarme": "2026-10-02T00:12:19.058Z",
+        "t_record": "2026-10-02T00:12:51.014503+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-c5d8d5f75-b6l5k",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f922",
+      "family": "assign_to_non_existent_node_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-c5d8d5f75-b6l5k -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T01:05:50.507842+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get pod geo-c5d8d5f75-b6l5k -n test-hotel-reservation -o json",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T01:05:50.507842+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-c5d8d5f75-b6l5k -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T01:05:50.507842+00:00"
+          }
+        ],
+        "alert_fingerprint": "c28c94cee219428f",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "node_not_ready",
+          "detalhe": "Pod has been in a non-ready state for more than 15 minutes."
+        },
+        "confianca": 0.8,
+        "decisao": "escalar",
+        "episode_id": "ep-e0cd8e4c23ca4872",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-02T01:05:50.507842+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E5",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod has been in a non-ready state for more than 15 minutes.",
+        "t_alarme": "2026-10-02T01:05:19.058Z",
+        "t_record": "2026-10-02T01:05:50.507842+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "rate-7bdc978679-sccwv",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f978",
+      "family": "user_unregistered_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod rate-7bdc978679-sccwv -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T02:01:48.765510+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod rate-7bdc978679-sccwv -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T02:01:48.765510+00:00"
+          }
+        ],
+        "alert_fingerprint": "21a52d1a0b4dfa51",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "node_not_ready",
+          "detalhe": "Pod has been in a non-ready state for more than 15 minutes."
+        },
+        "confianca": 0.9,
+        "decisao": "escalar",
+        "episode_id": "ep-41013db7ba324874",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-02T02:01:48.765510+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E4",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod has been in a non-ready state for more than 15 minutes.",
+        "t_alarme": "2026-10-02T02:01:19.058Z",
+        "t_record": "2026-10-02T02:01:48.765510+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "rate-7bdc978679-h598f",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f1036",
+      "family": "revoke_auth_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod rate-7bdc978679-h598f -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T02:59:57.958550+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod rate-7bdc978679-h598f -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T02:59:57.958550+00:00"
+          }
+        ],
+        "alert_fingerprint": "35584aecb696c69f",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "node_not_ready",
+          "detalhe": "Pod has been in a non-ready state for more than 15 minutes."
+        },
+        "confianca": 0.9,
+        "decisao": "escalar",
+        "episode_id": "ep-7db4d597f15643fe",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-02T02:59:57.958550+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E4",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod has been in a non-ready state for more than 15 minutes.",
+        "t_alarme": "2026-10-02T02:59:19.058Z",
+        "t_record": "2026-10-02T02:59:57.958550+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodCrashLooping",
+        "container": "hotel-reserv-geo",
+        "endpoint": "http",
+        "instance": "192.168.72.130:8080",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-84fbc958c7-4hbh8",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "reason": "CrashLoopBackOff",
+        "service": "sslm-kube-prometheus-kube-state-metrics",
+        "severity": "warning",
+        "uid": "5cb7d0bb-93ae-4103-b967-38e6a91f1b82"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f1092",
+      "family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [],
+        "alert_fingerprint": "c023c915439efabe",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "unknown",
+          "detalhe": "Pod is in CrashLoopBackOff state"
+        },
+        "confianca": 0.8,
+        "decisao": "escalar",
+        "episode_id": "ep-e3e8cdc1336f4195",
+        "evidencia": [
+          {
+            "consulta": "max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-02T03:56:02.635230+00:00",
+            "trecho": "query: max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1\n[\n  {\n    \"metric\": {\n      \"container\": \"hotel-reserv-geo\",\n      \"endpoint\": \"http\",\n      \"instance\": \"192.168.72.130:8080\",\n      \"job\": \"kube-state-metrics\",\n      \"namespace\": \"test-hotel-reservation\",\n      \"pod\": \"geo-84fbc958c7-4hbh8\",\n      \"reason\": \"CrashLoopBackOff\",\n      \"service\": \"sslm-kube-prometheus-kube-state-metrics\",\n      \"uid\": \"5cb7d"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod is in CrashLoopBackOff state",
+        "t_alarme": "2026-10-02T03:55:19.058Z",
+        "t_record": "2026-10-02T03:56:02.635230+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-84fbc958c7-sf5b4",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f1154",
+      "family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-84fbc958c7-sf5b4 -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T04:58:02.256029+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-84fbc958c7-sf5b4 -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T04:58:02.256029+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get nodes -o jsonpath='{.items[?(@.metadata.name==\"geo-84fbc958c7-sf5b4\")].status.conditions[?(@.type==\"Ready\")].status}'",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T04:58:02.256029+00:00"
+          }
+        ],
+        "alert_fingerprint": "04dfd1d7c7f5fd6f",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "node_not_ready",
+          "detalhe": "Pod has been in a non-ready state for more than 15 minutes."
+        },
+        "confianca": 0.9,
+        "decisao": "escalar",
+        "episode_id": "ep-3856d776ed3f45af",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-02T04:58:02.256029+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod has been in a non-ready state for more than 15 minutes.",
+        "t_alarme": "2026-10-02T04:57:19.058Z",
+        "t_record": "2026-10-02T04:58:02.256029+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": false,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261001T094052Z-f1204",
+      "family": "wrong_bin_usage",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-84fbc958c7-tqc8x",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f1262",
+      "family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-84fbc958c7-tqc8x -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T06:46:00.355439+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-84fbc958c7-tqc8x -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T06:46:00.355439+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get pod geo-84fbc958c7-tqc8x -n test-hotel-reservation -o json",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T06:46:00.355439+00:00"
+          }
+        ],
+        "alert_fingerprint": "383e7a094bd27e9d",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "unknown",
+          "detalhe": "Pod has been in a non-ready state for more than 15 minutes."
+        },
+        "confianca": 0.6,
+        "decisao": "escalar",
+        "episode_id": "ep-c93be3bce9244294",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-02T06:46:00.355439+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          }
+        ],
+        "motivo_escalacao": [
+          "E1",
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod has been in a non-ready state for more than 15 minutes.",
+        "t_alarme": "2026-10-02T06:45:19.058Z",
+        "t_record": "2026-10-02T06:46:00.355439+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-c5d8d5f75-9jrck",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f1326",
+      "family": "assign_to_non_existent_node_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-c5d8d5f75-9jrck -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T07:50:01.461122+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-c5d8d5f75-9jrck -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T07:50:01.461122+00:00"
+          }
+        ],
+        "alert_fingerprint": "10885c7fcb9e3b2a",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "unknown",
+          "detalhe": "Pod has been in a non-ready state for more than 15 minutes."
+        },
+        "confianca": 0.6,
+        "decisao": "escalar",
+        "episode_id": "ep-22fa559377cc478b",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-02T07:50:01.461122+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          }
+        ],
+        "motivo_escalacao": [
+          "E1",
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod has been in a non-ready state for more than 15 minutes.",
+        "t_alarme": "2026-10-02T07:49:19.058Z",
+        "t_record": "2026-10-02T07:50:01.461122+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodCrashLooping",
+        "container": "hotel-reserv-geo",
+        "endpoint": "http",
+        "instance": "192.168.72.130:8080",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-c47ff745-bkvzg",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "reason": "CrashLoopBackOff",
+        "service": "sslm-kube-prometheus-kube-state-metrics",
+        "severity": "warning",
+        "uid": "01addce3-aaf6-453f-aafd-c4339134ca0a"
+      },
+      "episode_id": "seed1052-20261001T094052Z-f1376",
+      "family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -o json",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T08:41:11.778141+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -o json",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=-1",
+            "t": "2026-10-02T08:41:11.778141+00:00"
+          }
+        ],
+        "alert_fingerprint": "f4af6cea3c53b0fc",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "unknown",
+          "detalhe": "kubectl command not found, indicating kubectl might not be installed or available in the PATH."
+        },
+        "confianca": 0.8,
+        "decisao": "escalar",
+        "episode_id": "ep-53ead9def9a448f0",
+        "evidencia": [
+          {
+            "consulta": "max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-02T08:41:11.778141+00:00",
+            "trecho": "query: max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1\n[\n  {\n    \"metric\": {\n      \"container\": \"hotel-reserv-geo\",\n      \"endpoint\": \"http\",\n      \"instance\": \"192.168.72.130:8080\",\n      \"job\": \"kube-state-metrics\",\n      \"namespace\": \"test-hotel-reservation\",\n      \"pod\": \"geo-c47ff745-bkvzg\",\n      \"reason\": \"CrashLoopBackOff\",\n      \"service\": \"sslm-kube-prometheus-kube-state-metrics\",\n      \"uid\": \"01addce"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E4",
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "kubectl command not found, indicating kubectl might not be installed or available in the PATH.",
+        "t_alarme": "2026-10-02T08:40:49.058Z",
+        "t_record": "2026-10-02T08:41:11.778141+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261001T094052Z",
+      "root_cause_fixed_post_action": false
+    }
+  ],
+  "extra_records": [
+    "ep-175937e097b54e8b",
+    "ep-ae384c9a8b3240c5",
+    "ep-f98a367508ed4c7d",
+    "ep-aefb2fba85f34e3b",
+    "ep-8005fe2826434b2a",
+    "ep-3ffe33955df14ae5",
+    "ep-86b70fd9987f4ad4",
+    "ep-b3ad53e3b6654b05",
+    "ep-d7e03ec09284408c",
+    "ep-97bfc376473a42ae",
+    "ep-d2d9c66a69454fb9",
+    "ep-4625792382044692",
+    "ep-e372ba11d316410b",
+    "ep-6e862aee407b4328",
+    "ep-16cbe55ae7fd413c",
+    "ep-1274a23de3a24ad2",
+    "ep-68be6f30c96b402f",
+    "ep-fa98429f3a164c2f",
+    "ep-b024d7409c994352",
+    "ep-5fbc1dcd6f9a4a0a",
+    "ep-6891499872b2453c"
+  ],
+  "late_records": [
+    "ep-8448bc64be104670",
+    "ep-07fa6fd8632c46ee",
+    "ep-9c690626904a44bc",
+    "ep-7db812b4f0dc4954"
+  ],
+  "malformed_records": [
+    "ep-ea16dddf6f5f4f86"
+  ],
+  "orphan_records": [
+    "ep-771b7c20cff34ef3",
+    "ep-d1df2f19bbc64227",
+    "ep-ecda9df1cac24272",
+    "ep-b8017f2ab1dc4673",
+    "ep-5eafd3bf1371460e",
+    "ep-078f9a9c4ab0458a",
+    "ep-c186f6388bf94fa2",
+    "ep-6cd9483c81eb4e92",
+    "ep-15cc5e054ce4489f",
+    "ep-41e331ed59c44103",
+    "ep-809979ad005640a2",
+    "ep-20e59e29a7d74896",
+    "ep-e0d747255974415e",
+    "ep-17d91458a11b4dcc",
+    "ep-97d3379948fa4655",
+    "ep-fc08901e11004723",
+    "ep-97a318e6f18f46d8",
+    "ep-ff631913a55047dc",
+    "ep-2c96c5fb4e4a4879",
+    "ep-0fd963b4fb92475f",
+    "ep-aa50e1bbf22148d4",
+    "ep-8b53419f0b3046dd",
+    "ep-dc890d34935c4b0d",
+    "ep-dafbae5d61f84597",
+    "ep-4d5f087285d04384",
+    "ep-5e4eec8b2844488b",
+    "ep-0253005bba744ffd",
+    "ep-665daf5ccceb4dc7",
+    "ep-b8e159717f1d42a7",
+    "ep-a973aa9059734659",
+    "ep-cdc4fa8d60c54613",
+    "ep-3f2d283e4a4b4676",
+    "ep-1dd0ebe5b4744fab"
+  ],
+  "rodada_id": "seed1052-20261001T094052Z"
+}

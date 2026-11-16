@@ -1,0 +1,1167 @@
+{
+  "aborted": null,
+  "cleanup": {
+    "cleanup": "app namespace deleted"
+  },
+  "complete": true,
+  "dry_run": false,
+  "families": [
+    {
+      "actual_at": 1790847755.8234298,
+      "alert_at": 1790847896.7581115,
+      "error": null,
+      "family": "revoke_auth_mongodb",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "9328bffaa70aeb27",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-xbqp2",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "1abbd689-75e0-40b6-a5c0-7712b450001e"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "c6421860d88307c7",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "c81eadcebe0fd98e",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-xbqp2",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790847650.7272773,
+      "probe": {
+        "probe_detail": "'admin' sem readWrite em geo-db: roles=[('userAdminAnyDatabase', 'admin')]",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 60.021931171417236,
+        "decided_at": 1790847755.8135557,
+        "last_dirty": [
+          "alert SslmPersistentVolumeClaimNotBound pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+          "alert SslmPersistentVolumeClaimNotBound pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr"
+        ],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790847650.7287965
+      },
+      "start_minute": 0,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 3
+    },
+    {
+      "actual_at": 1790850650.7607555,
+      "alert_at": 1790850887.2632477,
+      "error": null,
+      "family": "misconfig_app_hotel_res",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "d6a3c01471fba39c",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-c47ff745-bdhsr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "fe18fdc3-5ba7-4ece-a604-d00559b23b71"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "da9724a02b078ceb",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-c47ff745-bdhsr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790850650.7272773,
+      "probe": {
+        "probe_detail": "imagem buggy ainda no deployment 'geo': ['yinfangchen/geo:app3']",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9264585971832,
+        "decided_at": 1790850650.751034,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790850050.824574
+      },
+      "start_minute": 50,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 11
+    },
+    {
+      "actual_at": 1790854190.7527988,
+      "alert_at": 1790854336.4039154,
+      "error": null,
+      "family": "assign_to_non_existent_node_hotel_res",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "79e76124cbac7078",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-c5d8d5f75-cjp2f",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "c6421860d88307c7",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790854190.7272773,
+      "probe": {
+        "probe_detail": "deployment 'geo' fixado em node inexistente (['nodeSelector kubernetes.io/hostname=extra-node']); pods: ['geo-c5d8d5f75-cjp2f(Pending, nao Ready, restarts=0)']",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false,
+        "revision_recovery": {
+          "strategy_restored": "RollingUpdate",
+          "to_revision": "3",
+          "undo_ran": true
+        }
+      },
+      "settle": {
+        "clean_for_seconds": 599.9341859817505,
+        "decided_at": 1790854190.7435656,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790853590.8093789
+      },
+      "start_minute": 109,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 14
+    },
+    {
+      "actual_at": 1790857190.7504883,
+      "alert_at": 1790857348.4135902,
+      "error": null,
+      "family": "revoke_auth_mongodb_rate",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "2a7a7e6f62bac09e",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-2hk7s",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "982d9e536f0c4f3c",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "rate",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "efbb57d1b2439ae2",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-rate",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-2hk7s",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "b54de67c-2822-41eb-b263-f712b2087ee7"
+          }
+        }
+      ],
+      "planned_at": 1790857190.7272773,
+      "probe": {
+        "probe_detail": "'admin' sem readWrite em rate-db: roles=[('userAdminAnyDatabase', 'admin')]",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9177079200745,
+        "decided_at": 1790857190.741364,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790856590.8236551
+      },
+      "start_minute": 159,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 19
+    },
+    {
+      "actual_at": 1790860190.7586205,
+      "alert_at": 1790860343.5453596,
+      "error": null,
+      "family": "user_unregistered_mongodb",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "4c0a22255a5bae48",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-j975b",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "9456bdbd4e41bed9",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-j975b",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "9b0f24ae-7b2f-40b8-a614-0d42cf160a37"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "c6421860d88307c7",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790860190.7272773,
+      "probe": {
+        "probe_detail": "usuario 'admin' nao existe em mongodb-geo-5ff578bcb8-s4jlg",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9859113693237,
+        "decided_at": 1790860190.748547,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790859590.7626348
+      },
+      "start_minute": 209,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 29
+    },
+    {
+      "actual_at": 1790863850.7552686,
+      "alert_at": 1790864006.7529843,
+      "error": null,
+      "family": "revoke_auth_mongodb",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "a38dd6fd386daaa9",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-5xjd6",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "88924703-3515-4090-9e2d-41528fc49bc8"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "bf50949e5e82fcba",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-5xjd6",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "c6421860d88307c7",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790863850.7272773,
+      "probe": {
+        "probe_detail": "'admin' sem readWrite em geo-db: roles=[('userAdminAnyDatabase', 'admin')]",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9189677238464,
+        "decided_at": 1790863850.7454247,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790863250.8264558
+      },
+      "start_minute": 270,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 38
+    },
+    {
+      "actual_at": 1790866850.7597723,
+      "alert_at": 1790867003.126531,
+      "error": null,
+      "family": "user_unregistered_mongodb_rate",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "260fb0bda6a9a313",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-rate",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-vq7ds",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "69c2d2a9-7234-4009-8929-a289bc779b52"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "535c98b5cad63a18",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-vq7ds",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "982d9e536f0c4f3c",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "rate",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790866850.7272773,
+      "probe": {
+        "probe_detail": "usuario 'admin' nao existe em mongodb-rate-56cc8659c9-wsspn",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9228501319885,
+        "decided_at": 1790866850.7499025,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790866250.8270504
+      },
+      "start_minute": 320,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 43
+    },
+    {
+      "actual_at": 1790870690.7523432,
+      "alert_at": 1790870836.4047298,
+      "error": null,
+      "family": "assign_to_non_existent_node_hotel_res",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "6fa3b1b6b5a7db69",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-c5d8d5f75-msj4t",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "c6421860d88307c7",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790870690.7272773,
+      "probe": {
+        "probe_detail": "deployment 'geo' fixado em node inexistente (['nodeSelector kubernetes.io/hostname=extra-node']); pods: ['geo-c5d8d5f75-msj4t(Pending, nao Ready, restarts=0)']",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false,
+        "revision_recovery": {
+          "strategy_restored": "RollingUpdate",
+          "to_revision": "5",
+          "undo_ran": true
+        }
+      },
+      "settle": {
+        "clean_for_seconds": 299.9169828891754,
+        "decided_at": 1790870690.7427442,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790870390.825761
+      },
+      "start_minute": 384,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 50
+    },
+    {
+      "actual_at": 1790873690.7595644,
+      "alert_at": null,
+      "error": null,
+      "family": "wrong_bin_usage",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [],
+      "planned_at": 1790873690.7272773,
+      "probe": {
+        "probe_detail": "deployment 'profile' ainda com binario errado: [['geo']]",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false,
+        "revision_recovery": {
+          "strategy_restored": "RollingUpdate",
+          "to_revision": "1",
+          "undo_ran": true
+        }
+      },
+      "settle": {
+        "clean_for_seconds": 599.923038482666,
+        "decided_at": 1790873690.7503755,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790873090.8273356
+      },
+      "start_minute": 434,
+      "symptom_alert_admitted": false,
+      "webhook_received_so_far": 56
+    },
+    {
+      "actual_at": 1790877650.7609034,
+      "alert_at": 1790877802.9832,
+      "error": null,
+      "family": "user_unregistered_mongodb",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "6bc14cedec31cb03",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-z56rs",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "91b43d04c58edda3",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-z56rs",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "65fec7ff-b393-4b63-ad67-ec731061ee99"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "c6421860d88307c7",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790877650.7272773,
+      "probe": {
+        "probe_detail": "usuario 'admin' nao existe em mongodb-geo-5ff578bcb8-npz2m",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9303996562958,
+        "decided_at": 1790877650.751302,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790877050.8209014
+      },
+      "start_minute": 500,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 59
+    },
+    {
+      "actual_at": 1790881610.7540743,
+      "alert_at": 1790881763.1591861,
+      "error": null,
+      "family": "user_unregistered_mongodb_rate",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "01071ce820dc59e1",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-f7dmn",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "22f6058125dd2da5",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-rate",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-f7dmn",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "e74d5df0-5191-42b8-ad81-5397ce99a49f"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "982d9e536f0c4f3c",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "rate",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790881610.7272773,
+      "probe": {
+        "probe_detail": "usuario 'admin' nao existe em mongodb-rate-56cc8659c9-wsspn",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9187676906586,
+        "decided_at": 1790881610.745587,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790881010.8268173
+      },
+      "start_minute": 566,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 65
+    },
+    {
+      "actual_at": 1790884670.7601364,
+      "alert_at": 1790884907.2605314,
+      "error": null,
+      "family": "misconfig_app_hotel_res",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "0f40e860c4ee5c64",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-c47ff745-nnf2j",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "3fa304c6-a57a-44d1-bfd7-9b940fa96620"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "56b49cbf85b54b42",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-c47ff745-nnf2j",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1790884670.7272773,
+      "probe": {
+        "probe_detail": "imagem buggy ainda no deployment 'geo': ['yinfangchen/geo:app3']",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9277076721191,
+        "decided_at": 1790884670.750933,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790884070.823224
+      },
+      "start_minute": 617,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 73
+    },
+    {
+      "actual_at": 1790909330.7702558,
+      "alert_at": 1790909488.4357224,
+      "error": null,
+      "family": "revoke_auth_mongodb_rate",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "982d9e536f0c4f3c",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "rate",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-5qqzr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "baac082ed56d8741",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-l4mrm",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "f092746c2ff1500f",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-rate",
+            "endpoint": "http",
+            "instance": "192.168.189.3:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-l4mrm",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "58d32692-75eb-4519-9470-7f675a234e24"
+          }
+        }
+      ],
+      "planned_at": 1790909270.7272773,
+      "probe": {
+        "probe_detail": "'admin' sem readWrite em rate-db: roles=[('userAdminAnyDatabase', 'admin')]",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 60.02417230606079,
+        "decided_at": 1790909330.7602448,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790909270.7360723
+      },
+      "start_minute": 1027,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 87
+    },
+    {
+      "actual_at": 1790912270.75439,
+      "alert_at": null,
+      "error": null,
+      "family": "redeploy_without_PV",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [],
+      "planned_at": 1790912270.7272773,
+      "probe": {
+        "probe_detail": "6 PVC(s) Bound, nenhum pod Pending",
+        "root_cause_fixed": true
+      },
+      "recovered": true,
+      "recovery": {
+        "agent_rbac_reapplied": true,
+        "baseline_restored": true
+      },
+      "settle": {
+        "clean_for_seconds": 599.9200875759125,
+        "decided_at": 1790912270.7453268,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790911670.825238
+      },
+      "start_minute": 1077,
+      "symptom_alert_admitted": false,
+      "webhook_received_so_far": 90
+    },
+    {
+      "actual_at": 1790927990.761446,
+      "alert_at": null,
+      "error": null,
+      "family": "wrong_bin_usage",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [],
+      "planned_at": 1790927990.7272773,
+      "probe": {
+        "probe_detail": "deployment 'profile' ainda com binario errado: [['geo']]",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false,
+        "revision_recovery": {
+          "strategy_restored": "RollingUpdate",
+          "to_revision": "1",
+          "undo_ran": true
+        }
+      },
+      "settle": {
+        "clean_for_seconds": 599.9495165348053,
+        "decided_at": 1790927990.751805,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790927390.8022878
+      },
+      "start_minute": 1339,
+      "symptom_alert_admitted": false,
+      "webhook_received_so_far": 94
+    },
+    {
+      "actual_at": 1790931050.7574522,
+      "alert_at": null,
+      "error": null,
+      "family": "redeploy_without_PV",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [],
+      "planned_at": 1790931050.7272773,
+      "probe": {
+        "probe_detail": "6 PVC(s) Bound, nenhum pod Pending",
+        "root_cause_fixed": true
+      },
+      "recovered": true,
+      "recovery": {
+        "agent_rbac_reapplied": true,
+        "baseline_restored": true
+      },
+      "settle": {
+        "clean_for_seconds": 599.920713186264,
+        "decided_at": 1790931050.7480557,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1790930450.8273418
+      },
+      "start_minute": 1390,
+      "symptom_alert_admitted": false,
+      "webhook_received_so_far": 98
+    }
+  ],
+  "family_verdicts": {
+    "assign_to_non_existent_node_hotel_res": "detected",
+    "misconfig_app_hotel_res": "detected",
+    "redeploy_without_PV": "not_detected",
+    "revoke_auth_mongodb": "detected",
+    "revoke_auth_mongodb_rate": "detected",
+    "user_unregistered_mongodb": "detected",
+    "user_unregistered_mongodb_rate": "detected",
+    "wrong_bin_usage": "not_detected"
+  },
+  "passed": true,
+  "quiet_window": {
+    "actual_end": 1790909270.731565,
+    "actual_start": 1790887670.7596602,
+    "alert_free": true,
+    "duration_minutes": 360,
+    "effective_minutes": 360.0,
+    "settle": {
+      "clean_for_seconds": 599.9262826442719,
+      "decided_at": 1790887670.7500677,
+      "last_dirty": [],
+      "settled": true,
+      "signals": [],
+      "watch_started_at": 1790887070.8237839
+    },
+    "start_minute": 667,
+    "truncated": false,
+    "unexpected_fingerprints": []
+  },
+  "schedule": {
+    "entries": [
+      {
+        "duration_minutes": 20,
+        "fault_family": "revoke_auth_mongodb",
+        "kind": "fault",
+        "start_minute": 0
+      },
+      {
+        "duration_minutes": 29,
+        "fault_family": "misconfig_app_hotel_res",
+        "kind": "fault",
+        "start_minute": 50
+      },
+      {
+        "duration_minutes": 20,
+        "fault_family": "assign_to_non_existent_node_hotel_res",
+        "kind": "fault",
+        "start_minute": 109
+      },
+      {
+        "duration_minutes": 20,
+        "fault_family": "revoke_auth_mongodb_rate",
+        "kind": "fault",
+        "start_minute": 159
+      },
+      {
+        "duration_minutes": 31,
+        "fault_family": "user_unregistered_mongodb",
+        "kind": "fault",
+        "start_minute": 209
+      },
+      {
+        "duration_minutes": 20,
+        "fault_family": "revoke_auth_mongodb",
+        "kind": "fault",
+        "start_minute": 270
+      },
+      {
+        "duration_minutes": 29,
+        "fault_family": "user_unregistered_mongodb_rate",
+        "kind": "fault",
+        "start_minute": 320
+      },
+      {
+        "duration_minutes": 5,
+        "fault_family": "revoke_auth_mongodb",
+        "kind": "false_alarm",
+        "start_minute": 379
+      },
+      {
+        "duration_minutes": 20,
+        "fault_family": "assign_to_non_existent_node_hotel_res",
+        "kind": "fault",
+        "start_minute": 384
+      },
+      {
+        "duration_minutes": 36,
+        "fault_family": "wrong_bin_usage",
+        "kind": "fault",
+        "start_minute": 434
+      },
+      {
+        "duration_minutes": 36,
+        "fault_family": "user_unregistered_mongodb",
+        "kind": "fault",
+        "start_minute": 500
+      },
+      {
+        "duration_minutes": 21,
+        "fault_family": "user_unregistered_mongodb_rate",
+        "kind": "fault",
+        "start_minute": 566
+      },
+      {
+        "duration_minutes": 20,
+        "fault_family": "misconfig_app_hotel_res",
+        "kind": "fault",
+        "start_minute": 617
+      },
+      {
+        "duration_minutes": 360,
+        "fault_family": null,
+        "kind": "quiet",
+        "start_minute": 667
+      },
+      {
+        "duration_minutes": 20,
+        "fault_family": "revoke_auth_mongodb_rate",
+        "kind": "fault",
+        "start_minute": 1027
+      },
+      {
+        "duration_minutes": 20,
+        "fault_family": "redeploy_without_PV",
+        "kind": "fault",
+        "start_minute": 1077
+      },
+      {
+        "duration_minutes": 212,
+        "fault_family": null,
+        "kind": "quiet",
+        "start_minute": 1127
+      },
+      {
+        "duration_minutes": 21,
+        "fault_family": "wrong_bin_usage",
+        "kind": "fault",
+        "start_minute": 1339
+      },
+      {
+        "duration_minutes": 20,
+        "fault_family": "redeploy_without_PV",
+        "kind": "fault",
+        "start_minute": 1390
+      }
+    ],
+    "seed": 1140,
+    "window_hours": 24.0
+  },
+  "started_at": 1790847650.7272773,
+  "webhook": {
+    "alertmanager_sent": 98.03471484236627,
+    "denominator": 98.03471484236627,
+    "loss": 0.00035410764872512157,
+    "query_window_minutes": 1412,
+    "received": 98,
+    "receiver_end": 109,
+    "receiver_start": 11
+  },
+  "webhook_loss": 0.00035410764872512157,
+  "webhook_received": 98,
+  "webhook_sent": 98.03471484236627
+}

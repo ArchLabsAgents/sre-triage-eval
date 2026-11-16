@@ -76,6 +76,7 @@ fault schedule -> inject fault -> app degrades -> frozen Prometheus rules fire
 | `tools/triage-eval/kube-prometheus-stack/` | frozen symptom alert rules and the reasoning behind each (`FROZEN_RULES.md`) |
 | `tools/triage-eval/k8s/`, `kind/` | read-only RBAC, network policies, admission policy, cluster setup |
 | `tests/triage_eval/` | unit tests for all of the above, no cluster or GPU needed |
+| `runs/` | raw runs behind the v1 preprint, with a SHA-256 manifest and the scripts that recompute every score (`runs/README.md`) |
 | `PREREGISTRATION.md` | pre-registered criteria for the specialized-model study (see below) |
 
 ## Quick start
@@ -99,6 +100,10 @@ specialization, name the root cause on a service and on a failure mechanism it n
 training? The bar for that study, including the kill thresholds and the held-out split, is fixed
 in [`PREREGISTRATION.md`](PREREGISTRATION.md) before any training data exists. Results and raw run
 data will be published with the preprint, whatever they show.
+
+The first preprint measures where small models stand before any specialization: triage on a lab
+cluster against a frontier API, with cost per triage. Its raw runs are in [`runs/`](runs/README.md),
+and the tests recompute every published score from them.
 
 ## Status
 

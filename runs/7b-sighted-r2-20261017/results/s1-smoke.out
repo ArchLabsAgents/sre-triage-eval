@@ -1,0 +1,235 @@
+[r1] 2026-10-17T20:51:24.628666+00:00 smoke_prepare_start {}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' created in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' created in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' created in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' created in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+[20:51:29] Waiting for all pods in namespace 'openebs' to be      kubectl.py:118
+           ready...                                                             
+[20:51:45] All pods in namespace 'openebs' are ready.             kubectl.py:134
+WARNING:root:Prometheus release not found, will install.
+PersistentVolumeClaim prometheus-pvc not found. Skipping deletion.
+== Helm Uninstall ==
+Release prometheus does not exist. Skipping uninstall.
+Applying PersistentVolumeClaim from /home/ubuntu/AIOpsLab/aiopslab/observer/prometheus/prometheus-pvc.yml
+== Helm Install ==
+NAME: prometheus
+LAST DEPLOYED: Sat Oct 17 20:51:53 2026
+NAMESPACE: observe
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+The Prometheus server can be accessed via port 80 on the following DNS name from within your cluster:
+prometheus-server.observe.svc.cluster.local
+
+
+Get the Prometheus server URL by running these commands in the same shell:
+  export NODE_PORT=$(kubectl get --namespace observe -o jsonpath="{.spec.ports[0].nodePort}" services prometheus-server)
+  export NODE_IP=$(kubectl get nodes --namespace observe -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+
+
+#################################################################################
+######   WARNING: Pod Security Policy has been disabled by default since    #####
+######            it deprecated after k8s 1.25+. use                        #####
+######            (index .Values "prometheus-node-exporter" "rbac"          #####
+###### .          "pspEnabled") with (index .Values                         #####
+######            "prometheus-node-exporter" "rbac" "pspAnnotations")       #####
+######            in case you still need it.                                #####
+#################################################################################
+
+
+The Prometheus PushGateway can be accessed via port 9091 on the following DNS name from within your cluster:
+prometheus-prometheus-pushgateway.observe.svc.cluster.local
+
+
+Get the PushGateway URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace observe -l "app=prometheus-pushgateway,component=pushgateway" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace observe port-forward $POD_NAME 9091
+
+For more information on running Prometheus, visit:
+https://prometheus.io/
+
+[20:51:53] Waiting for all pods in namespace 'observe' to be      kubectl.py:118
+           ready...                                                             
+[20:52:52] All pods in namespace 'observe' are ready.             kubectl.py:134
+No resources found in: test-hotel-reservation. Skipping deletion.
+Deploying Kubernetes configurations in namespace: test-hotel-reservation
+[20:52:54] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+[20:53:18] All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-17T20:53:19.069947+00:00 smoke_policy_scope {"exit_code": 0}
+[r1] 2026-10-17T20:54:19.159082+00:00 smoke_settle {"clean_for_seconds": 60.02542018890381, "decided_at": 1792270459.1502192, "last_dirty": [], "settled": true, "signals": [], "watch_started_at": 1792270399.1247988}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+== Fault Injection ==
+Target MongoDB Pods: ['mongodb-geo-5ff578bcb8-t5tv8']
+Injection result for mongodb-geo: Removing admin user...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("471f3ccf-57cd-4e6f-9e59-46504c51856c") }
+MongoDB server version: 4.4.6
+true
+Admin user removed successfully
+
+Deleted service pod geo-84fbc958c7-qkq2w to enforce the fault: pod "geo-84fbc958c7-qkq2w" deleted
+
+Service: mongodb-geo | Namespace: test-hotel-reservation
+
+== Start Workload ==
+Checking for existing ConfigMap 'wrk2-payload-script'...
+Creating ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' created successfully.
+Job created: wrk2-job
+Job completed successfully.
+== Fault Recovery ==
+Target MongoDB Pods: ['mongodb-geo-5ff578bcb8-t5tv8']
+Recovery result for mongodb-geo: Recreating admin user...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0b235f18-0eab-401b-9776-75e0a0cb3a82") }
+MongoDB server version: 4.4.6
+Successfully added user: {
+	"user" : "admin",
+	"roles" : [
+		{
+			"role" : "userAdminAnyDatabase",
+			"db" : "admin"
+		}
+	]
+}
+Admin user recreated
+Granting readWrite role to admin on geo-db database...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e2b9660f-df5e-4d9f-882c-86ce4ad5adc8") }
+MongoDB server version: 4.4.6
+Privileges restored successfully
+
+Deleted service pod geo-84fbc958c7-twgh4 to enforce the fault: pod "geo-84fbc958c7-twgh4" deleted
+
+Service: mongodb-geo | Namespace: test-hotel-reservation
+
+[20:57:18] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+           All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-17T20:57:18.718495+00:00 smoke_family {"alerts": [{"alertname": "KubePodNotReady", "fingerprint": "1c63c5abb40d636f", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-twgh4", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}], "baseline_restored": false, "family": "user_unregistered_mongodb"}
+[r1] 2026-10-17T20:57:33.750483+00:00 smoke_receiver {"after": 3, "before": 2}
+[r1] 2026-10-17T20:57:33.757618+00:00 smoke_model {"prompt_tokens_after": 106164.0, "prompt_tokens_before": 0.0}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+[20:57:33] Waiting for namespace 'test-hotel-reservation' to be   kubectl.py:149
+           deleted...                                                           
+[20:57:47] Namespace 'test-hotel-reservation' has been deleted.   kubectl.py:158
+[r1] 2026-10-17T20:58:03.006194+00:00 cleanup_done {"cleanup": "app namespace deleted"}
+[r1] 2026-10-17T20:58:03.007514+00:00 smoke_finished {"failure": null, "passed": true}
+Namespace 'test-hotel-reservation' deleted successfully.
+{
+  "failure": null,
+  "passed": true,
+  "smoke": true,
+  "steps": {
+    "cleanup": {
+      "cleanup": "app namespace deleted"
+    },
+    "inject": {
+      "alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "1c63c5abb40d636f",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-twgh4",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        }
+      ],
+      "family": "user_unregistered_mongodb"
+    },
+    "model": {
+      "prompt_tokens_after": 106164.0,
+      "prompt_tokens_before": 0.0
+    },
+    "policy_scope": {
+      "exit_code": 0,
+      "output": "ok (a): agent identity denied on memcached-profile-679775b4d4-g47v5 by the DB-pod policy\nok (b): injector identity admitted on memcached-profile-679775b4d4-g47v5 (dry-run)\n"
+    },
+    "prepare": {
+      "agent_rbac_reapplied": true,
+      "app_namespace": "test-hotel-reservation",
+      "families": [
+        "assign_to_non_existent_node_hotel_res",
+        "misconfig_app_hotel_res",
+        "redeploy_without_PV",
+        "revoke_auth_mongodb",
+        "revoke_auth_mongodb_rate",
+        "user_unregistered_mongodb",
+        "user_unregistered_mongodb_rate",
+        "wrong_bin_usage"
+      ]
+    },
+    "receiver": {
+      "after": 3,
+      "before": 2
+    },
+    "recover": {
+      "baseline_restored": false
+    },
+    "settle": {
+      "clean_for_seconds": 60.02542018890381,
+      "decided_at": 1792270459.1502192,
+      "last_dirty": [],
+      "settled": true,
+      "signals": [],
+      "watch_started_at": 1792270399.1247988
+    }
+  }
+}
+driver rc=0

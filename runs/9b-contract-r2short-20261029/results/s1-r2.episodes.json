@@ -1,0 +1,172 @@
+{
+  "episodes": [
+    {
+      "alert_fired": null,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261030T040738Z-fa0",
+      "family": "falso_alarme",
+      "kind": "false_alarm",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [],
+        "alert_fingerprint": "857c95a33346e6d8",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "falso_positivo",
+          "detalhe": "Synthetic alert triggered by scheduled control, not actual system degradation"
+        },
+        "confianca": 1.0,
+        "decisao": "escalar",
+        "episode_id": "ep-f878202275654881",
+        "evidencia": [
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-30T04:07:51.422866+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"483ea5957e2308d5cfce9ef983e5fc9ebe1854fdf19abd2904eb6ac043b72653\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.181/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.181/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-30T04:07:51.422866+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-10-30T04:07:25.973057Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"consul-78c8d79bb-wm2gg\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"7533\",\n        \"uid\": \"91aa4b4c-6b1e-4744-b9b5-bc920eb70785\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null,\n      \"m"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-30T04:07:51.422866+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          }
+        ],
+        "motivo_escalacao": [
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Synthetic alert triggered by scheduled control, not actual system degradation",
+        "t_alarme": "2026-10-30T04:07:38.719864Z",
+        "t_record": "2026-10-30T04:07:51.422866+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261030T040738Z",
+      "root_cause_fixed_post_action": null
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261030T040738Z-f5",
+      "family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261030T040738Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261030T040738Z-f65",
+      "family": "user_unregistered_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261030T040738Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261030T040738Z-f120",
+      "family": "revoke_auth_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261030T040738Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261030T040738Z-f170",
+      "family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261030T040738Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261030T040738Z-f224",
+      "family": "assign_to_non_existent_node_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261030T040738Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": null,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261030T040738Z-f280",
+      "family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "not_measured": "app nao assentou antes da injecao (I2)",
+      "record": null,
+      "rodada": "seed1052-20261030T040738Z",
+      "root_cause_fixed_post_action": null
+    }
+  ],
+  "extra_records": [],
+  "late_records": [],
+  "malformed_records": [
+    "ep-fc195d6eb8bc4067",
+    "ep-771ff49cd86a4824",
+    "ep-7006a32395294198",
+    "ep-15d124b39a894e40",
+    "ep-b5e40d0567284c99",
+    "ep-1ac004ae9f5b40ad",
+    "ep-50333950de9c4610",
+    "ep-79b46d28affa4d6c",
+    "ep-cc70c020d6174582",
+    "ep-df32ab3729304f31",
+    "ep-09eef1a4d86c4b79",
+    "ep-31067955141041d9",
+    "ep-841c70320ff843ee",
+    "ep-e34ffa776f1f4300",
+    "ep-7ff731b48f9345c5",
+    "ep-f4789cfe4666459d",
+    "ep-ca5207e759574383",
+    "ep-2cfa44dad15f484d",
+    "ep-49387681be2e425e"
+  ],
+  "orphan_records": [
+    "ep-0eeb15f1675c45bf",
+    "ep-c2c64efec48c48ae",
+    "ep-fd4772fa3dd54891",
+    "ep-a2c28d1ffbb749e3",
+    "ep-97079eb0660544aa",
+    "ep-3665c8aeb74c4ea5",
+    "ep-63cb7751c7af47cb",
+    "ep-11370b36a3f04d9c",
+    "ep-02217b2812b44cb9",
+    "ep-409e3520027b41ac",
+    "ep-1382f446281a4682"
+  ],
+  "rodada_id": "seed1052-20261030T040738Z"
+}

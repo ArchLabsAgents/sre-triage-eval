@@ -1,0 +1,71 @@
+{
+  "complete": true,
+  "failure": null,
+  "passed": true,
+  "smoke": true,
+  "steps": {
+    "cleanup": {
+      "cleanup": "app namespace deleted"
+    },
+    "inject": {
+      "alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "4dfa04974868432e",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-zdgxh",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        }
+      ],
+      "family": "user_unregistered_mongodb"
+    },
+    "model": {
+      "prompt_tokens_after": 147626.0,
+      "prompt_tokens_before": 37971.0
+    },
+    "policy_scope": {
+      "exit_code": 0,
+      "output": "ok (a): agent identity denied on memcached-profile-679775b4d4-r6npx by the DB-pod policy\nok (b): injector identity admitted on memcached-profile-679775b4d4-r6npx (dry-run)\n"
+    },
+    "prepare": {
+      "agent_rbac_reapplied": true,
+      "app_namespace": "test-hotel-reservation",
+      "families": [
+        "assign_to_non_existent_node_hotel_res",
+        "misconfig_app_hotel_res",
+        "redeploy_without_PV",
+        "revoke_auth_mongodb",
+        "revoke_auth_mongodb_rate",
+        "user_unregistered_mongodb",
+        "user_unregistered_mongodb_rate",
+        "wrong_bin_usage"
+      ]
+    },
+    "receiver": {
+      "after": 4,
+      "before": 3
+    },
+    "recover": {
+      "baseline_restored": false
+    },
+    "settle": {
+      "clean_for_seconds": 60.0168182849884,
+      "decided_at": 1791226535.2001462,
+      "last_dirty": [
+        "alert SslmPersistentVolumeClaimNotBound pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-7jnsx",
+        "alert SslmPersistentVolumeClaimNotBound pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-7jnsx",
+        "alert SslmPersistentVolumeClaimNotBound pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-7jnsx",
+        "alert SslmPersistentVolumeClaimNotBound pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-7jnsx",
+        "alert SslmPersistentVolumeClaimNotBound pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-7jnsx"
+      ],
+      "settled": true,
+      "signals": [],
+      "watch_started_at": 1791226430.1063747
+    }
+  }
+}

@@ -1,0 +1,901 @@
+[r1] 2026-10-20T01:24:00.638380+00:00 prepare_start {}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' created in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' created in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' created in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' created in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+[01:24:05] Waiting for all pods in namespace 'openebs' to be      kubectl.py:118
+           ready...                                                             
+           All pods in namespace 'openebs' are ready.             kubectl.py:134
+Prometheus is already running. Skipping redeployment.
+No resources found in: test-hotel-reservation. Skipping deletion.
+Deploying Kubernetes configurations in namespace: test-hotel-reservation
+[01:24:07] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+[01:24:21] All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-20T01:24:22.037167+00:00 clock_started {"agent_rbac_reapplied": true, "app_namespace": "test-hotel-reservation", "families": ["assign_to_non_existent_node_hotel_res", "misconfig_app_hotel_res", "redeploy_without_PV", "revoke_auth_mongodb", "revoke_auth_mongodb_rate", "user_unregistered_mongodb", "user_unregistered_mongodb_rate", "wrong_bin_usage"], "journal_version": 3, "receiver_start": 12, "rodada_id": "seed1052-20261020T012422Z", "seconds_per_minute": 60.0, "seed": 1052}
+[r1] 2026-10-20T01:24:22.043853+00:00 false_alarm_sent {"alertname": "SslmSyntheticControl", "duration_minutes": 5, "end_minute": 5, "start_minute": 0}
+[r1] 2026-10-20T01:29:22.075213+00:00 inject_start {"end_minute": 35, "family": "revoke_auth_mongodb", "start_minute": 5}
+[r1] 2026-10-20T01:29:42.176531+00:00 inject_done {"family": "revoke_auth_mongodb"}
+[r1] 2026-10-20T01:59:22.050744+00:00 alert_observed {"alerts": [{"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "2c7588020be71e06", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "ac38741a9f670f92", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-f46fj", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "8d591b08-d0bb-4623-b564-ac42c013749b"}}, {"alertname": "KubePodNotReady", "fingerprint": "b8a87ff7d6ceff45", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-f46fj", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}], "family": "revoke_auth_mongodb"}
+[r1] 2026-10-20T01:59:22.273338+00:00 probe_post_action {"family": "revoke_auth_mongodb", "probe_detail": "'admin' sem readWrite em geo-db: roles=[('userAdminAnyDatabase', 'admin')]", "root_cause_fixed": false}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+== Fault Injection ==
+Microservices to inject: ['mongodb-geo']
+Target MongoDB Pods: ['mongodb-geo-5ff578bcb8-696cn']
+Target Service Pods: ['geo-84fbc958c7-894kb']
+Injection result for mongodb-geo: Downgrading admin user privileges...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("f3c2b140-06c2-4595-ad05-5725339e5cfb") }
+MongoDB server version: 4.4.6
+Privileges downgraded
+
+Deleted service pod geo-84fbc958c7-894kb to enforce the fault: pod "geo-84fbc958c7-894kb" deleted
+
+Service: mongodb-geo | Namespace: test-hotel-reservation
+
+== Start Workload ==
+Checking for existing ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' deleted.
+Creating ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' created successfully.
+Job 'wrk2-job' already exists. Deleting it...
+Job created: wrk2-job
+Job completed successfully.
+== Fault Recovery ==
+Microservices to recover: ['mongodb-geo']
+Microservices to recover: ['mongodb-geo']
+Target MongoDB Pods for recovery: ['mongodb-geo-5ff578bcb8-696cn']
+Recovery result for mongodb-geo: Restoring readWrite privilege to the admin user for the geo-db database...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("061a43a1-2d70-4daf-bb80-136cfef4063d") }
+MongoDB server version: 4.4.6
+Privilege restored successfully
+
+Deleted service pod geo-84fbc958c7-f46fj to enforce the fault: pod "geo-84fbc958c7-f46fj" deleted
+
+Deleted service pod mongodb-geo-5ff578bcb8-696cn to enforce the fault: pod "mongodb-geo-5ff578bcb8-696cn" deleted
+
+Service: mongodb-geo | Namespace: test-hotel-reservation
+
+[01:59:24] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+           All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-20T01:59:24.311478+00:00 recover_done {"baseline_restored": false, "family": "revoke_auth_mongodb"}
+[r1] 2026-10-20T01:59:24.317553+00:00 family_done {"actual_at": 1792459762.07102, "alert_at": 1792459932.3711529, "error": null, "family": "revoke_auth_mongodb", "injected": true, "measured": true, "observed_alerts": [{"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "2c7588020be71e06", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "ac38741a9f670f92", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-f46fj", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "8d591b08-d0bb-4623-b564-ac42c013749b"}}, {"alertname": "KubePodNotReady", "fingerprint": "b8a87ff7d6ceff45", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-f46fj", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}], "planned_at": 1792459762.0371227, "probe": {"probe_detail": "'admin' sem readWrite em geo-db: roles=[('userAdminAnyDatabase', 'admin')]", "root_cause_fixed": false}, "recovered": true, "recovery": {"baseline_restored": false}, "settle": {"clean_for_seconds": 300.01762557029724, "decided_at": 1792459762.0623043, "last_dirty": [], "settled": true, "signals": [], "watch_started_at": 1792459462.0446782}, "start_minute": 5, "symptom_alert_admitted": true, "webhook_received_so_far": 5}
+[r1] 2026-10-20T02:29:22.073175+00:00 inject_start {"end_minute": 90, "family": "user_unregistered_mongodb_rate", "start_minute": 65}
+[r1] 2026-10-20T02:29:39.564961+00:00 inject_done {"family": "user_unregistered_mongodb_rate"}
+[r1] 2026-10-20T02:54:22.046895+00:00 alert_observed {"alerts": [{"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "0a669053c255daeb", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "rate", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubePodNotReady", "fingerprint": "8a5c0f61673dd4fe", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "rate-7bdc978679-snprt", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "f1dab6a5929aaaa6", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-rate", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "rate-7bdc978679-snprt", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "248a5733-41f4-477a-8719-6b9225c7eeb8"}}], "family": "user_unregistered_mongodb_rate"}
+[r1] 2026-10-20T02:54:22.262163+00:00 probe_post_action {"family": "user_unregistered_mongodb_rate", "probe_detail": "usuario 'admin' nao existe em mongodb-rate-56cc8659c9-vqqwh", "root_cause_fixed": false}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+== Fault Injection ==
+Target MongoDB Pods: ['mongodb-rate-56cc8659c9-vqqwh']
+Injection result for mongodb-rate: Removing admin user...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ba6135d6-171b-447f-a1ec-eae6846daaee") }
+MongoDB server version: 4.4.6
+true
+Admin user removed successfully
+
+Deleted service pod rate-7bdc978679-xc5rw to enforce the fault: pod "rate-7bdc978679-xc5rw" deleted
+
+Service: mongodb-rate | Namespace: test-hotel-reservation
+
+== Start Workload ==
+Checking for existing ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' deleted.
+Creating ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' created successfully.
+Job 'wrk2-job' already exists. Deleting it...
+Job created: wrk2-job
+Job completed successfully.
+== Fault Recovery ==
+Target MongoDB Pods: ['mongodb-rate-56cc8659c9-vqqwh']
+Recovery result for mongodb-rate: Recreating admin user...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d5a7c8c4-84e5-4c6e-a503-869527ecb56d") }
+MongoDB server version: 4.4.6
+Successfully added user: {
+	"user" : "admin",
+	"roles" : [
+		{
+			"role" : "userAdminAnyDatabase",
+			"db" : "admin"
+		}
+	]
+}
+Admin user recreated
+Granting readWrite role to admin on rate-db database...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c4556d97-62a6-45fc-917e-bea6f4ba34b6") }
+MongoDB server version: 4.4.6
+Privileges restored successfully
+
+Deleted service pod rate-7bdc978679-snprt to enforce the fault: pod "rate-7bdc978679-snprt" deleted
+
+Service: mongodb-rate | Namespace: test-hotel-reservation
+
+[02:54:23] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+           All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-20T02:54:23.919699+00:00 recover_done {"baseline_restored": false, "family": "user_unregistered_mongodb_rate"}
+[r1] 2026-10-20T02:54:23.925486+00:00 family_done {"actual_at": 1792463362.068414, "alert_at": 1792463529.7259643, "error": null, "family": "user_unregistered_mongodb_rate", "injected": true, "measured": true, "observed_alerts": [{"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "0a669053c255daeb", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "rate", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubePodNotReady", "fingerprint": "8a5c0f61673dd4fe", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "rate-7bdc978679-snprt", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "f1dab6a5929aaaa6", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-rate", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "rate-7bdc978679-snprt", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "248a5733-41f4-477a-8719-6b9225c7eeb8"}}], "planned_at": 1792463362.0371227, "probe": {"probe_detail": "usuario 'admin' nao existe em mongodb-rate-56cc8659c9-vqqwh", "root_cause_fixed": false}, "recovered": true, "recovery": {"baseline_restored": false}, "settle": {"clean_for_seconds": 599.937037229538, "decided_at": 1792463362.0598426, "last_dirty": [], "settled": true, "signals": [], "watch_started_at": 1792462762.1228037}, "start_minute": 65, "symptom_alert_admitted": true, "webhook_received_so_far": 11}
+[r1] 2026-10-20T03:24:22.071522+00:00 inject_start {"end_minute": 140, "family": "revoke_auth_mongodb_rate", "start_minute": 120}
+[r1] 2026-10-20T03:24:44.197137+00:00 inject_done {"family": "revoke_auth_mongodb_rate"}
+[r1] 2026-10-20T03:44:22.043512+00:00 alert_observed {"alerts": [{"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "0a669053c255daeb", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "rate", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubePodNotReady", "fingerprint": "1ccec01c0c95201b", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "rate-7bdc978679-dzfb6", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "dc25e43ad5bae910", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-rate", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "rate-7bdc978679-dzfb6", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "9270f6c6-fedc-45a5-8211-3504374e4d11"}}], "family": "revoke_auth_mongodb_rate"}
+[r1] 2026-10-20T03:44:22.268755+00:00 probe_post_action {"family": "revoke_auth_mongodb_rate", "probe_detail": "'admin' sem readWrite em rate-db: roles=[('userAdminAnyDatabase', 'admin')]", "root_cause_fixed": false}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+== Fault Injection ==
+Microservices to inject: ['mongodb-rate']
+Target MongoDB Pods: ['mongodb-rate-56cc8659c9-vqqwh']
+Target Service Pods: ['memcached-rate-5b59cb5d9d-m2bqm', 'rate-7bdc978679-jbl7j']
+Injection result for mongodb-rate: Downgrading admin user privileges...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b044a459-b346-416d-8ea5-45a67a99661d") }
+MongoDB server version: 4.4.6
+Privileges downgraded
+
+Deleted service pod memcached-rate-5b59cb5d9d-m2bqm to enforce the fault: pod "memcached-rate-5b59cb5d9d-m2bqm" deleted
+
+Deleted service pod rate-7bdc978679-jbl7j to enforce the fault: pod "rate-7bdc978679-jbl7j" deleted
+
+Service: mongodb-rate | Namespace: test-hotel-reservation
+
+== Start Workload ==
+Checking for existing ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' deleted.
+Creating ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' created successfully.
+Job 'wrk2-job' already exists. Deleting it...
+Job created: wrk2-job
+Job completed successfully.
+== Fault Recovery ==
+Microservices to recover: ['mongodb-rate']
+Target MongoDB Pods for recovery: ['mongodb-rate-56cc8659c9-vqqwh']
+Recovery result for mongodb-rate: Restoring readWrite privilege to the admin user for the rate-db database...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b8441889-e657-4214-9dff-6cbea6ed7ae9") }
+MongoDB server version: 4.4.6
+Privilege restored successfully
+
+Deleted service pod memcached-rate-5b59cb5d9d-sqkh4 to enforce the fault: pod "memcached-rate-5b59cb5d9d-sqkh4" deleted
+
+Deleted service pod mongodb-rate-56cc8659c9-vqqwh to enforce the fault: pod "mongodb-rate-56cc8659c9-vqqwh" deleted
+
+Deleted service pod rate-7bdc978679-dzfb6 to enforce the fault: pod "rate-7bdc978679-dzfb6" deleted
+
+Microservices to recover: ['mongodb-rate']
+Service: mongodb-rate | Namespace: test-hotel-reservation
+
+[03:44:26] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+           All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-20T03:44:26.628708+00:00 recover_done {"baseline_restored": false, "family": "revoke_auth_mongodb_rate"}
+[r1] 2026-10-20T03:44:26.635428+00:00 family_done {"actual_at": 1792466662.0669482, "alert_at": 1792466834.366948, "error": null, "family": "revoke_auth_mongodb_rate", "injected": true, "measured": true, "observed_alerts": [{"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "0a669053c255daeb", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "rate", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubePodNotReady", "fingerprint": "1ccec01c0c95201b", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "rate-7bdc978679-dzfb6", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "dc25e43ad5bae910", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-rate", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "rate-7bdc978679-dzfb6", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "9270f6c6-fedc-45a5-8211-3504374e4d11"}}], "planned_at": 1792466662.0371227, "probe": {"probe_detail": "'admin' sem readWrite em rate-db: roles=[('userAdminAnyDatabase', 'admin')]", "root_cause_fixed": false}, "recovered": true, "recovery": {"baseline_restored": false}, "settle": {"clean_for_seconds": 599.9744029045105, "decided_at": 1792466662.057791, "last_dirty": [], "settled": true, "signals": [], "watch_started_at": 1792466062.0833867}, "start_minute": 120, "symptom_alert_admitted": true, "webhook_received_so_far": 17}
+[r1] 2026-10-20T04:14:22.065952+00:00 inject_start {"end_minute": 194, "family": "misconfig_app_hotel_res", "start_minute": 170}
+[r1] 2026-10-20T04:14:48.317167+00:00 inject_done {"family": "misconfig_app_hotel_res"}
+[r1] 2026-10-20T04:38:22.043301+00:00 alert_observed {"alerts": [{"alertname": "KubePodNotReady", "fingerprint": "5d433c79c564ccc5", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-c47ff745-9xdv8", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "fb4b124e540e7d69", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-c47ff745-9xdv8", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "9280e839-5992-45a7-8d79-4301eaf00076"}}], "family": "misconfig_app_hotel_res"}
+[r1] 2026-10-20T04:38:22.055787+00:00 probe_post_action {"family": "misconfig_app_hotel_res", "probe_detail": "imagem buggy ainda no deployment 'geo': ['yinfangchen/geo:app3']", "root_cause_fixed": false}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+== Fault Injection ==
+Service: geo | Namespace: test-hotel-reservation
+
+== Start Workload ==
+Checking for existing ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' deleted.
+Creating ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' created successfully.
+Job 'wrk2-job' already exists. Deleting it...
+Job created: wrk2-job
+Job completed successfully.
+== Fault Recovery ==
+Service: geo | Namespace: test-hotel-reservation
+
+[04:38:22] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+[04:38:26] All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-20T04:38:26.135300+00:00 recover_done {"baseline_restored": false, "family": "misconfig_app_hotel_res"}
+[r1] 2026-10-20T04:38:26.141694+00:00 family_done {"actual_at": 1792469662.0610626, "alert_at": 1792469823.460388, "error": null, "family": "misconfig_app_hotel_res", "injected": true, "measured": true, "observed_alerts": [{"alertname": "KubePodNotReady", "fingerprint": "5d433c79c564ccc5", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-c47ff745-9xdv8", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "fb4b124e540e7d69", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-c47ff745-9xdv8", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "9280e839-5992-45a7-8d79-4301eaf00076"}}], "planned_at": 1792469662.0371227, "probe": {"probe_detail": "imagem buggy ainda no deployment 'geo': ['yinfangchen/geo:app3']", "root_cause_fixed": false}, "recovered": true, "recovery": {"baseline_restored": false}, "settle": {"clean_for_seconds": 599.9292402267456, "decided_at": 1792469662.052201, "last_dirty": [], "settled": true, "signals": [], "watch_started_at": 1792469062.122959}, "start_minute": 170, "symptom_alert_admitted": true, "webhook_received_so_far": 24}
+[r1] 2026-10-20T05:08:22.072389+00:00 inject_start {"end_minute": 250, "family": "assign_to_non_existent_node_hotel_res", "start_minute": 224}
+[r1] 2026-10-20T05:08:32.526038+00:00 inject_done {"family": "assign_to_non_existent_node_hotel_res"}
+[r1] 2026-10-20T05:34:22.045529+00:00 alert_observed {"alerts": [{"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "2c7588020be71e06", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubeDeploymentRolloutStuck", "fingerprint": "7282dceea1ee4187", "labels": {"alertname": "KubeDeploymentRolloutStuck", "condition": "Progressing", "container": "kube-state-metrics", "deployment": "geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "ProgressDeadlineExceeded", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "status": "false"}}, {"alertname": "KubePodNotReady", "fingerprint": "e178fed010211468", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-c5d8d5f75-bw47c", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}], "family": "assign_to_non_existent_node_hotel_res"}
+[r1] 2026-10-20T05:34:22.075905+00:00 probe_post_action {"family": "assign_to_non_existent_node_hotel_res", "probe_detail": "deployment 'geo' fixado em node inexistente (['nodeSelector kubernetes.io/hostname=extra-node']); pods: ['geo-c5d8d5f75-bw47c(Pending, nao Ready, restarts=0)']", "root_cause_fixed": false}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+== Fault Injection (revision-preserving, emenda E6-R) ==
+Service: geo | Namespace: test-hotel-reservation
+
+== Start Workload ==
+Checking for existing ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' deleted.
+Creating ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' created successfully.
+Job 'wrk2-job' already exists. Deleting it...
+Job created: wrk2-job
+Job completed successfully.
+== Fault Recovery (revision-preserving, emenda E6-R) ==
+Recovered: {'undo_ran': True, 'to_revision': '3', 'strategy_restored': 'RollingUpdate'}
+[05:34:22] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+[05:34:24] All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-20T05:34:24.398171+00:00 recover_done {"baseline_restored": false, "family": "assign_to_non_existent_node_hotel_res", "revision_recovery": {"strategy_restored": "RollingUpdate", "to_revision": "3", "undo_ran": true}}
+[r1] 2026-10-20T05:34:24.404670+00:00 family_done {"actual_at": 1792472902.0674546, "alert_at": 1792473062.6727643, "error": null, "family": "assign_to_non_existent_node_hotel_res", "injected": true, "measured": true, "observed_alerts": [{"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "2c7588020be71e06", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubeDeploymentRolloutStuck", "fingerprint": "7282dceea1ee4187", "labels": {"alertname": "KubeDeploymentRolloutStuck", "condition": "Progressing", "container": "kube-state-metrics", "deployment": "geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "ProgressDeadlineExceeded", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "status": "false"}}, {"alertname": "KubePodNotReady", "fingerprint": "e178fed010211468", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-c5d8d5f75-bw47c", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}], "planned_at": 1792472902.0371227, "probe": {"probe_detail": "deployment 'geo' fixado em node inexistente (['nodeSelector kubernetes.io/hostname=extra-node']); pods: ['geo-c5d8d5f75-bw47c(Pending, nao Ready, restarts=0)']", "root_cause_fixed": false}, "recovered": true, "recovery": {"baseline_restored": false, "revision_recovery": {"strategy_restored": "RollingUpdate", "to_revision": "3", "undo_ran": true}}, "settle": {"clean_for_seconds": 599.9272546768188, "decided_at": 1792472902.0592563, "last_dirty": [], "settled": true, "signals": [], "watch_started_at": 1792472302.132}, "start_minute": 224, "symptom_alert_admitted": true, "webhook_received_so_far": 33}
+[r1] 2026-10-20T06:04:22.075176+00:00 inject_start {"end_minute": 312, "family": "user_unregistered_mongodb", "start_minute": 280}
+[r1] 2026-10-20T06:04:39.671490+00:00 inject_done {"family": "user_unregistered_mongodb"}
+[r1] 2026-10-20T06:36:22.048623+00:00 alert_observed {"alerts": [{"alertname": "KubePodNotReady", "fingerprint": "0e0ae0dc5131feca", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-jgljd", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}, {"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "2c7588020be71e06", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "3610c515e573bcdf", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-jgljd", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "bea8a5d8-fc1d-46f7-95ac-4e2949b2a3f0"}}], "family": "user_unregistered_mongodb"}
+[r1] 2026-10-20T06:36:22.264343+00:00 probe_post_action {"family": "user_unregistered_mongodb", "probe_detail": "usuario 'admin' nao existe em mongodb-geo-5ff578bcb8-rcwfw", "root_cause_fixed": false}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+== Fault Injection ==
+Target MongoDB Pods: ['mongodb-geo-5ff578bcb8-rcwfw']
+Injection result for mongodb-geo: Removing admin user...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c291ad86-bd8c-4bda-96f1-35be4d1598b3") }
+MongoDB server version: 4.4.6
+true
+Admin user removed successfully
+
+Deleted service pod geo-84fbc958c7-k4sjk to enforce the fault: pod "geo-84fbc958c7-k4sjk" deleted
+
+Service: mongodb-geo | Namespace: test-hotel-reservation
+
+== Start Workload ==
+Checking for existing ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' deleted.
+Creating ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' created successfully.
+Job 'wrk2-job' already exists. Deleting it...
+Job created: wrk2-job
+Job completed successfully.
+== Fault Recovery ==
+Target MongoDB Pods: ['mongodb-geo-5ff578bcb8-rcwfw']
+Recovery result for mongodb-geo: Recreating admin user...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("514422db-b488-49e9-90d6-eb130a6078e7") }
+MongoDB server version: 4.4.6
+Successfully added user: {
+	"user" : "admin",
+	"roles" : [
+		{
+			"role" : "userAdminAnyDatabase",
+			"db" : "admin"
+		}
+	]
+}
+Admin user recreated
+Granting readWrite role to admin on geo-db database...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7030fa6e-c74c-472b-a860-f2386df6dd58") }
+MongoDB server version: 4.4.6
+Privileges restored successfully
+
+Deleted service pod geo-84fbc958c7-jgljd to enforce the fault: pod "geo-84fbc958c7-jgljd" deleted
+
+Service: mongodb-geo | Namespace: test-hotel-reservation
+
+[06:36:23] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+[06:36:25] All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-20T06:36:25.266647+00:00 recover_done {"baseline_restored": false, "family": "user_unregistered_mongodb"}
+[r1] 2026-10-20T06:36:25.272748+00:00 family_done {"actual_at": 1792476262.0697663, "alert_at": 1792476429.8431382, "error": null, "family": "user_unregistered_mongodb", "injected": true, "measured": true, "observed_alerts": [{"alertname": "KubePodNotReady", "fingerprint": "0e0ae0dc5131feca", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-jgljd", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}, {"alertname": "KubeDeploymentReplicasMismatch", "fingerprint": "2c7588020be71e06", "labels": {"alertname": "KubeDeploymentReplicasMismatch", "container": "kube-state-metrics", "deployment": "geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "3610c515e573bcdf", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-jgljd", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "bea8a5d8-fc1d-46f7-95ac-4e2949b2a3f0"}}], "planned_at": 1792476262.0371227, "probe": {"probe_detail": "usuario 'admin' nao existe em mongodb-geo-5ff578bcb8-rcwfw", "root_cause_fixed": false}, "recovered": true, "recovery": {"baseline_restored": false}, "settle": {"clean_for_seconds": 599.9356145858765, "decided_at": 1792476262.0603263, "last_dirty": [], "settled": true, "signals": [], "watch_started_at": 1792475662.1247103}, "start_minute": 280, "symptom_alert_admitted": true, "webhook_received_so_far": 39}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+[06:36:25] Waiting for namespace 'test-hotel-reservation' to be   kubectl.py:149
+           deleted...                                                           
+[06:36:37] Namespace 'test-hotel-reservation' has been deleted.   kubectl.py:158
+[r1] 2026-10-20T06:36:52.627981+00:00 cleanup_done {"cleanup": "app namespace deleted"}
+[r1] 2026-10-20T06:36:52.640182+00:00 webhook_accounted {"alertmanager_sent": 39.062400000000004, "denominator": 39.062400000000004, "loss": 0.0015974440894569453, "query_window_minutes": 313, "received": 39, "receiver_end": 51, "receiver_start": 12}
+[r1] 2026-10-20T06:36:52.641157+00:00 family_verdicts {"assign_to_non_existent_node_hotel_res": "detected", "misconfig_app_hotel_res": "detected", "revoke_auth_mongodb": "detected", "revoke_auth_mongodb_rate": "detected", "user_unregistered_mongodb": "detected", "user_unregistered_mongodb_rate": "detected"}
+[r1] 2026-10-20T06:36:52.641995+00:00 finished {"aborted": null, "dry_run": true, "passed": false}
+Namespace 'test-hotel-reservation' deleted successfully.
+{
+  "aborted": null,
+  "cleanup": {
+    "cleanup": "app namespace deleted"
+  },
+  "dry_run": true,
+  "families": [
+    {
+      "actual_at": 1792459762.07102,
+      "alert_at": 1792459932.3711529,
+      "error": null,
+      "family": "revoke_auth_mongodb",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "2c7588020be71e06",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "ac38741a9f670f92",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-f46fj",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "8d591b08-d0bb-4623-b564-ac42c013749b"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "b8a87ff7d6ceff45",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-f46fj",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1792459762.0371227,
+      "probe": {
+        "probe_detail": "'admin' sem readWrite em geo-db: roles=[('userAdminAnyDatabase', 'admin')]",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 300.01762557029724,
+        "decided_at": 1792459762.0623043,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1792459462.0446782
+      },
+      "start_minute": 5,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 5
+    },
+    {
+      "actual_at": 1792463362.068414,
+      "alert_at": 1792463529.7259643,
+      "error": null,
+      "family": "user_unregistered_mongodb_rate",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "0a669053c255daeb",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "rate",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "8a5c0f61673dd4fe",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-snprt",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "f1dab6a5929aaaa6",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-rate",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-snprt",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "248a5733-41f4-477a-8719-6b9225c7eeb8"
+          }
+        }
+      ],
+      "planned_at": 1792463362.0371227,
+      "probe": {
+        "probe_detail": "usuario 'admin' nao existe em mongodb-rate-56cc8659c9-vqqwh",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.937037229538,
+        "decided_at": 1792463362.0598426,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1792462762.1228037
+      },
+      "start_minute": 65,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 11
+    },
+    {
+      "actual_at": 1792466662.0669482,
+      "alert_at": 1792466834.366948,
+      "error": null,
+      "family": "revoke_auth_mongodb_rate",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "0a669053c255daeb",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "rate",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "1ccec01c0c95201b",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-dzfb6",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "dc25e43ad5bae910",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-rate",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "rate-7bdc978679-dzfb6",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "9270f6c6-fedc-45a5-8211-3504374e4d11"
+          }
+        }
+      ],
+      "planned_at": 1792466662.0371227,
+      "probe": {
+        "probe_detail": "'admin' sem readWrite em rate-db: roles=[('userAdminAnyDatabase', 'admin')]",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9744029045105,
+        "decided_at": 1792466662.057791,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1792466062.0833867
+      },
+      "start_minute": 120,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 17
+    },
+    {
+      "actual_at": 1792469662.0610626,
+      "alert_at": 1792469823.460388,
+      "error": null,
+      "family": "misconfig_app_hotel_res",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "5d433c79c564ccc5",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-c47ff745-9xdv8",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "fb4b124e540e7d69",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-c47ff745-9xdv8",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "9280e839-5992-45a7-8d79-4301eaf00076"
+          }
+        }
+      ],
+      "planned_at": 1792469662.0371227,
+      "probe": {
+        "probe_detail": "imagem buggy ainda no deployment 'geo': ['yinfangchen/geo:app3']",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9292402267456,
+        "decided_at": 1792469662.052201,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1792469062.122959
+      },
+      "start_minute": 170,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 24
+    },
+    {
+      "actual_at": 1792472902.0674546,
+      "alert_at": 1792473062.6727643,
+      "error": null,
+      "family": "assign_to_non_existent_node_hotel_res",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "2c7588020be71e06",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentRolloutStuck",
+          "fingerprint": "7282dceea1ee4187",
+          "labels": {
+            "alertname": "KubeDeploymentRolloutStuck",
+            "condition": "Progressing",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "ProgressDeadlineExceeded",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "status": "false"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "e178fed010211468",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-c5d8d5f75-bw47c",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        }
+      ],
+      "planned_at": 1792472902.0371227,
+      "probe": {
+        "probe_detail": "deployment 'geo' fixado em node inexistente (['nodeSelector kubernetes.io/hostname=extra-node']); pods: ['geo-c5d8d5f75-bw47c(Pending, nao Ready, restarts=0)']",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false,
+        "revision_recovery": {
+          "strategy_restored": "RollingUpdate",
+          "to_revision": "3",
+          "undo_ran": true
+        }
+      },
+      "settle": {
+        "clean_for_seconds": 599.9272546768188,
+        "decided_at": 1792472902.0592563,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1792472302.132
+      },
+      "start_minute": 224,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 33
+    },
+    {
+      "actual_at": 1792476262.0697663,
+      "alert_at": 1792476429.8431382,
+      "error": null,
+      "family": "user_unregistered_mongodb",
+      "injected": true,
+      "measured": true,
+      "observed_alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "0e0ae0dc5131feca",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-jgljd",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubeDeploymentReplicasMismatch",
+          "fingerprint": "2c7588020be71e06",
+          "labels": {
+            "alertname": "KubeDeploymentReplicasMismatch",
+            "container": "kube-state-metrics",
+            "deployment": "geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "sslm-kube-prometheus-kube-state-metrics-79964bb7fc-g7t9b",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "3610c515e573bcdf",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-jgljd",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "bea8a5d8-fc1d-46f7-95ac-4e2949b2a3f0"
+          }
+        }
+      ],
+      "planned_at": 1792476262.0371227,
+      "probe": {
+        "probe_detail": "usuario 'admin' nao existe em mongodb-geo-5ff578bcb8-rcwfw",
+        "root_cause_fixed": false
+      },
+      "recovered": true,
+      "recovery": {
+        "baseline_restored": false
+      },
+      "settle": {
+        "clean_for_seconds": 599.9356145858765,
+        "decided_at": 1792476262.0603263,
+        "last_dirty": [],
+        "settled": true,
+        "signals": [],
+        "watch_started_at": 1792475662.1247103
+      },
+      "start_minute": 280,
+      "symptom_alert_admitted": true,
+      "webhook_received_so_far": 39
+    }
+  ],
+  "family_verdicts": {
+    "assign_to_non_existent_node_hotel_res": "detected",
+    "misconfig_app_hotel_res": "detected",
+    "revoke_auth_mongodb": "detected",
+    "revoke_auth_mongodb_rate": "detected",
+    "user_unregistered_mongodb": "detected",
+    "user_unregistered_mongodb_rate": "detected"
+  },
+  "passed": false,
+  "quiet_window": null,
+  "schedule": {
+    "entries": [
+      {
+        "duration_minutes": 5,
+        "fault_family": "user_unregistered_mongodb",
+        "kind": "false_alarm",
+        "start_minute": 0
+      },
+      {
+        "duration_minutes": 30,
+        "fault_family": "revoke_auth_mongodb",
+        "kind": "fault",
+        "start_minute": 5
+      },
+      {
+        "duration_minutes": 25,
+        "fault_family": "user_unregistered_mongodb_rate",
+        "kind": "fault",
+        "start_minute": 65
+      },
+      {
+        "duration_minutes": 20,
+        "fault_family": "revoke_auth_mongodb_rate",
+        "kind": "fault",
+        "start_minute": 120
+      },
+      {
+        "duration_minutes": 24,
+        "fault_family": "misconfig_app_hotel_res",
+        "kind": "fault",
+        "start_minute": 170
+      },
+      {
+        "duration_minutes": 26,
+        "fault_family": "assign_to_non_existent_node_hotel_res",
+        "kind": "fault",
+        "start_minute": 224
+      },
+      {
+        "duration_minutes": 32,
+        "fault_family": "user_unregistered_mongodb",
+        "kind": "fault",
+        "start_minute": 280
+      }
+    ],
+    "seed": 1052,
+    "window_hours": 5.7
+  },
+  "started_at": 1792459462.0371227,
+  "webhook": {
+    "alertmanager_sent": 39.062400000000004,
+    "denominator": 39.062400000000004,
+    "loss": 0.0015974440894569453,
+    "query_window_minutes": 313,
+    "received": 39,
+    "receiver_end": 51,
+    "receiver_start": 12
+  },
+  "webhook_loss": 0.0015974440894569453,
+  "webhook_received": 39,
+  "webhook_sent": 39.062400000000004
+}
+seed1052-20261020T012422Z: 7 episodes, 13 orphan, 11 extra, 1 late, 0 malformed records
+driver rc=1

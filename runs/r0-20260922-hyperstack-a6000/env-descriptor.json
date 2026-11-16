@@ -1,0 +1,14 @@
+{
+  "accelerator": "nvidia-rtx-a6000-48gb",
+  "backend": "vllm",
+  "harness_location": "on-instance",
+  "max_model_len": 16384,
+  "network": "local",
+  "notes": "flavor n3-RTX-A6000x1",
+  "provider": "hyperstack",
+  "quantization": "fp16",
+  "region": "CANADA-1",
+  "served_model_name": "Qwen2.5-7B-Instruct",
+  "vram_gb": 48,
+  "weights_ref": "Qwen/Qwen2.5-7B-Instruct"
+}

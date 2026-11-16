@@ -1,0 +1,207 @@
+{
+  "api": {
+    "sonnet-blind-w1": {
+      "cache_read_tokens": 322171,
+      "cache_write_tokens": 511819,
+      "hours": 23.51,
+      "input_tokens_uncached": 43187,
+      "mtta_median_s": 10.18,
+      "output_tokens": 45344,
+      "requests": 193,
+      "triages": 61,
+      "triages_per_day": 62.3,
+      "usd_api": 1.88,
+      "usd_api_per_triage": 0.0309,
+      "usd_api_per_triage_cache_read_repriced": 0.0304,
+      "usd_api_per_triage_no_cache_at_list": 0.0362
+    },
+    "sonnet-sighted-w2": {
+      "cache_read_tokens": 2943706,
+      "cache_write_tokens": 2089926,
+      "hours": 23.51,
+      "input_tokens_uncached": 424284,
+      "mtta_median_s": 16.2,
+      "output_tokens": 65848,
+      "requests": 256,
+      "triages": 58,
+      "triages_per_day": 59.2,
+      "usd_api": 7.32,
+      "usd_api_per_triage": 0.1262,
+      "usd_api_per_triage_cache_read_repriced": 0.1211,
+      "usd_api_per_triage_no_cache_at_list": 0.1996
+    }
+  },
+  "local": {
+    "7b-blind-e7": {
+      "completion_tokens": 99258,
+      "hours": 23.53,
+      "mtta_median_s": 18.83,
+      "projection_same_tokens_at_sonnet_list_uncached_usd_per_triage": 0.0394,
+      "prompt_tokens": 3190876,
+      "seeds": 3,
+      "slice_reason": null,
+      "tokens_per_triage": 17594,
+      "triages": 187,
+      "triages_per_day_per_seed": 63.6,
+      "triages_with_tokens": 169,
+      "usd_per_triage_all_in": 0.0637,
+      "usd_per_triage_token_slice_mean": 0.0637,
+      "usd_per_triage_with_tokens": 0.0705,
+      "usd_unattributed": 0.0,
+      "usd_window": 11.92
+    },
+    "7b-blind-e8": {
+      "completion_tokens": 106540,
+      "hours": 23.93,
+      "mtta_median_s": 18.68,
+      "projection_same_tokens_at_sonnet_list_uncached_usd_per_triage": 0.0442,
+      "prompt_tokens": 3619876,
+      "seeds": 3,
+      "slice_reason": null,
+      "tokens_per_triage": 19821,
+      "triages": 188,
+      "triages_per_day_per_seed": 62.8,
+      "triages_with_tokens": 173,
+      "usd_per_triage_all_in": 0.0645,
+      "usd_per_triage_token_slice_mean": 0.0638,
+      "usd_per_triage_with_tokens": 0.0701,
+      "usd_unattributed": 0.13,
+      "usd_window": 12.13
+    },
+    "7b-budget-short": {
+      "completion_tokens": 16618,
+      "hours": 5.21,
+      "mtta_median_s": 28.32,
+      "projection_same_tokens_at_sonnet_list_uncached_usd_per_triage": 0.0645,
+      "prompt_tokens": 658349,
+      "seeds": 1,
+      "slice_reason": null,
+      "tokens_per_triage": 29346,
+      "triages": 23,
+      "triages_per_day_per_seed": 105.9,
+      "triages_with_tokens": 23,
+      "usd_per_triage_all_in": 0.1149,
+      "usd_per_triage_token_slice_mean": 0.1149,
+      "usd_per_triage_with_tokens": 0.1149,
+      "usd_unattributed": 0.0,
+      "usd_window": 2.64
+    },
+    "7b-sighted": {
+      "completion_tokens": 26857,
+      "hours": 23.53,
+      "mtta_median_s": 11.44,
+      "projection_same_tokens_at_sonnet_list_uncached_usd_per_triage": 0.0708,
+      "prompt_tokens": 1954506,
+      "seeds": 1,
+      "slice_reason": null,
+      "tokens_per_triage": 33582,
+      "triages": 59,
+      "triages_per_day_per_seed": 60.2,
+      "triages_with_tokens": 49,
+      "usd_per_triage_all_in": 0.202,
+      "usd_per_triage_token_slice_mean": 0.202,
+      "usd_per_triage_with_tokens": 0.2433,
+      "usd_unattributed": 0.0,
+      "usd_window": 11.92
+    },
+    "9b-budget-short": {
+      "completion_tokens": 21173,
+      "hours": 4.85,
+      "mtta_median_s": 30.38,
+      "projection_same_tokens_at_sonnet_list_uncached_usd_per_triage": 0.0615,
+      "prompt_tokens": 539737,
+      "seeds": 1,
+      "slice_reason": null,
+      "tokens_per_triage": 26710,
+      "triages": 21,
+      "triages_per_day_per_seed": 104.0,
+      "triages_with_tokens": 21,
+      "usd_per_triage_all_in": 0.1169,
+      "usd_per_triage_token_slice_mean": 0.1169,
+      "usd_per_triage_with_tokens": 0.1169,
+      "usd_unattributed": 0.0,
+      "usd_window": 2.46
+    },
+    "9b-contract-short": {
+      "completion_tokens": 21536,
+      "hours": 4.85,
+      "mtta_median_s": 36.33,
+      "projection_same_tokens_at_sonnet_list_uncached_usd_per_triage": 0.0678,
+      "prompt_tokens": 638195,
+      "seeds": 1,
+      "slice_reason": null,
+      "tokens_per_triage": 29988,
+      "triages": 22,
+      "triages_per_day_per_seed": 109.0,
+      "triages_with_tokens": 22,
+      "usd_per_triage_all_in": 0.1116,
+      "usd_per_triage_token_slice_mean": 0.1116,
+      "usd_per_triage_with_tokens": 0.1116,
+      "usd_unattributed": 0.0,
+      "usd_window": 2.46
+    }
+  },
+  "price_basis": "list price, not invoice",
+  "projection": {
+    "breakeven_triages_per_day_vs_api_blind": 393.6,
+    "breakeven_triages_per_day_vs_api_sighted": 96.4,
+    "breakeven_triages_per_day_vs_api_sighted_cache_read_repriced": 100.4,
+    "breakeven_triages_per_day_vs_budget_tokens_at_sonnet_list_uncached": 188.5,
+    "curve": {
+      "10": {
+        "api_sighted_usd_per_day": 1.26,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 1.2161
+      },
+      "25": {
+        "api_sighted_usd_per_day": 3.16,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 0.4864
+      },
+      "50": {
+        "api_sighted_usd_per_day": 6.31,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 0.2432
+      },
+      "60": {
+        "api_sighted_usd_per_day": 7.57,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 0.2027
+      },
+      "96": {
+        "api_sighted_usd_per_day": 12.12,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 0.1267
+      },
+      "100": {
+        "api_sighted_usd_per_day": 12.62,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 0.1216
+      },
+      "150": {
+        "api_sighted_usd_per_day": 18.93,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 0.0811
+      },
+      "200": {
+        "api_sighted_usd_per_day": 25.24,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 0.0608
+      },
+      "500": {
+        "api_sighted_usd_per_day": 63.1,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 0.0243
+      },
+      "1000": {
+        "api_sighted_usd_per_day": 126.2,
+        "api_sighted_usd_per_triage": 0.1262,
+        "local_gpu_usd_per_triage": 0.0122
+      }
+    },
+    "label": "arithmetic projection on measured unit costs, not a measurement",
+    "local_usd_per_day": 12.16,
+    "vm_share_not_model_at_tie_vs_api_sighted": 0.375
+  },
+  "usd_per_hour": 0.5067
+}

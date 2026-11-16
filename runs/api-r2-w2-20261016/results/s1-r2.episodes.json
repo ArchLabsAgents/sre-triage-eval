@@ -1,0 +1,1409 @@
+{
+  "episodes": [
+    {
+      "alert_fired": false,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261016T175005Z-f0",
+      "family": "redeploy_without_PV",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": true
+    },
+    {
+      "alert_fired": false,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261016T175005Z-f65",
+      "family": "wrong_bin_usage",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": false,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261016T175005Z-f130",
+      "family": "redeploy_without_PV",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": true
+    },
+    {
+      "alert_fired": null,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261016T175005Z-fa180",
+      "family": "falso_alarme",
+      "kind": "false_alarm",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [],
+        "alert_fingerprint": "857c95a33346e6d8",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "falso_positivo",
+          "detalhe": "The only firing alert is the scheduled synthetic false-alarm control (SslmSyntheticControl, source r1). All pods shown (consul, frontend, user) are Running and Ready with 0 restarts, deployments report minimum availability, and events show normal scheduling, image pulls and PVC provisioning. No evidence of any real fault."
+        },
+        "confianca": 0.96,
+        "decisao": "escalar",
+        "episode_id": "ep-0e7265966155450f",
+        "evidencia": [
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T20:50:20.264559+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T20:50:20.264559+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-10-16T20:20:34.536974Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"consul-78c8d79bb-vq2gg\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"16933\",\n        \"uid\": \"4876bafa-f321-49c9-aed8-40daaf126938\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null,\n      \""
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T20:50:20.264559+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          }
+        ],
+        "motivo_escalacao": [
+          "E6"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The only firing alert is the scheduled synthetic false-alarm control (SslmSyntheticControl, source r1). All pods shown (consul, frontend, user) are Running and Ready with 0 restarts, deployments report minimum availability, and events show normal scheduling, image pulls and PVC p",
+        "t_alarme": "2026-10-16T20:50:05.702193Z",
+        "t_record": "2026-10-16T20:50:20.264559+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": null
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-84fbc958c7-gqh2c",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f185",
+      "family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -l io.kompose.service=mongodb-geo",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-16T20:58:16.247501+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl logs -n test-hotel-reservation mongodb-geo-5ff578bcb8-6zb96 --tail=100",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-16T20:58:16.247501+00:00"
+          }
+        ],
+        "alert_fingerprint": "44f723c2cf2471de",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "mongo_role_revoked",
+          "detalhe": "The geo pod crashes at startup: the app connects to mongodb-geo:27017 and authenticates, but the MongoDB logs show 'Checking authorization failed' (Unauthorized, code 13) on geo-db for the count command. The admin user authenticates successfully but lacks permissions on geo-db, so its role was revoked. Direct exec into the DB pod is blocked by policy, so the remaining option is to escalate to a human operator to re-grant the role on geo-db."
+        },
+        "confianca": 0.85,
+        "decisao": "escalar",
+        "episode_id": "ep-ec3d9c7e999847b9",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T20:58:16.247501+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T20:58:16.247501+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T20:58:16.247501+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-10-16T20:20:34.536974Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"consul-78c8d79bb-vq2gg\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"16933\",\n        \"uid\": \"4876bafa-f321-49c9-aed8-40daaf126938\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null,\n      \""
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T20:58:16.247501+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[geo-84fbc958c7-gqh2c]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T20:58:16.247501+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-16T20:56:41Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-10-16T20:56:41Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-16T20:56:41Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-16T20:56:41Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:23\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-10-16T20:56:41Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:36\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-geo:27017\u001b[0m\n\u001b[90m2026-10-16T20:56:4"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The geo pod crashes at startup: the app connects to mongodb-geo:27017 and authenticates, but the MongoDB logs show 'Checking authorization failed' (Unauthorized, code 13) on geo-db for the count command. The admin user authenticates successfully but lacks permissions on geo-db, s",
+        "t_alarme": "2026-10-16T20:57:48.735Z",
+        "t_record": "2026-10-16T20:58:16.247501+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "rate-7bdc978679-z5mvx",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f245",
+      "family": "user_unregistered_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl logs deploy/mongodb-rate -n test-hotel-reservation --tail=100",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-16T21:58:18.008074+00:00"
+          }
+        ],
+        "alert_fingerprint": "403c82a903f36a85",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "mongo_user_dropped",
+          "detalhe": "The rate pod crash-loops with 'SASL authentication step: Authentication failed' against mongodb-rate:27017. The mongodb-rate server logs show repeated SCRAM-SHA-1 failures from the rate pod IP with 'UserNotFound: Could not find user \"admin\" for db \"admin\"'. The MongoDB admin user was dropped, so the credentials rate presents are invalid. Network and DNS are fine. Previous remediation was denied by the allowlist, so escalating with the findings so an operator can recreate the admin user with the required roles on mongodb-rate."
+        },
+        "confianca": 0.9,
+        "decisao": "escalar",
+        "episode_id": "ep-04cfab5905b14e1b",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T21:58:18.008074+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T21:58:18.008074+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T21:58:18.008074+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"count\": 11,\n      \"eventTime\": null,\n      \"firstTimestamp\": \"2026-10-16T20:55:06Z\",\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"fieldPath\": \"spec.containers{hotel-reserv-geo}\",\n        \"kind\": \"Pod\",\n        \"name\": \"geo-84fbc958c7-gqh2c\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"19096\",\n        \"uid\": \"2bfc2921-2d3f-4767-8cbe-99d1238bdd26\"\n      },\n      \"kind\": \"Eve"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T21:58:18.008074+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[rate-7bdc978679-z5mvx]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-16T21:58:18.008074+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-16T21:56:28Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-10-16T21:56:28Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-16T21:56:28Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-16T21:56:28Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/rate/main.go:24\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-10-16T21:56:28Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/rate/main.go:37\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-rate:27017\u001b[0m\n\u001b[90m2026-10-16T21:5"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The rate pod crash-loops with 'SASL authentication step: Authentication failed' against mongodb-rate:27017. The mongodb-rate server logs show repeated SCRAM-SHA-1 failures from the rate pod IP with 'UserNotFound: Could not find user \"admin\" for db \"admin\"'. The MongoDB admin user",
+        "t_alarme": "2026-10-16T21:57:48.735Z",
+        "t_record": "2026-10-16T21:58:18.008074+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "rate-7bdc978679-b88t4",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f660",
+      "family": "revoke_auth_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [],
+        "alert_fingerprint": "6ac9fe61627c8955",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "mongo_role_revoked",
+          "detalhe": "The rate pod crash-loops (BackOff) because on startup it fails with 'not authorized on rate-db to execute command count' against mongodb-rate. Connection succeeds but the DB user lacks permissions on rate-db, indicating its role was revoked. All other services are healthy, so the fault is isolated to rate's Mongo authorization."
+        },
+        "confianca": 0.8,
+        "decisao": "escalar",
+        "episode_id": "ep-301c9ccc61c64226",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T04:54:07.654865+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T04:54:07.654865+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T04:54:07.654865+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"count\": 1,\n      \"eventTime\": null,\n      \"firstTimestamp\": \"2026-10-17T04:51:06Z\",\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"fieldPath\": \"spec.containers{hotel-reserv-rate-mmc}\",\n        \"kind\": \"Pod\",\n        \"name\": \"memcached-rate-5b59cb5d9d-s6cdn\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"17114\",\n        \"uid\": \"3b9b81b3-dcb7-4620-8571-b253654edf25\"\n      },\n   "
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T04:54:07.654865+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[rate-7bdc978679-b88t4]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T04:54:07.654865+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-17T04:52:40Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T04:52:40Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T04:52:40Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-17T04:52:40Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/rate/main.go:24\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-10-17T04:52:40Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/rate/main.go:37\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-rate:27017\u001b[0m\n\u001b[90m2026-10-17T04:5"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The rate pod crash-loops (BackOff) because on startup it fails with 'not authorized on rate-db to execute command count' against mongodb-rate. Connection succeeds but the DB user lacks permissions on rate-db, indicating its role was revoked. All other services are healthy, so the",
+        "t_alarme": "2026-10-17T04:53:48.735Z",
+        "t_record": "2026-10-17T04:54:07.654865+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodCrashLooping",
+        "container": "hotel-reserv-geo",
+        "endpoint": "http",
+        "instance": "192.168.72.131:8080",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-c47ff745-44fvs",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "reason": "CrashLoopBackOff",
+        "service": "sslm-kube-prometheus-kube-state-metrics",
+        "severity": "warning",
+        "uid": "19bbfacc-eb52-4062-8eb6-acab395b9577"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f868",
+      "family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": {
+          "comandos": [
+            "kubectl rollout undo deployment/geo -n test-hotel-reservation --to-revision=1"
+          ],
+          "read_back": "melhora confirmada: 'kubectl rollout status deployment/geo -n test-hotel-reservation --timeout=30s': rollout complete, symptom target ready"
+        },
+        "acao_proposta": {
+          "comandos": [
+            "kubectl rollout undo deployment/geo -n test-hotel-reservation --to-revision=1"
+          ],
+          "reversivel": true,
+          "tipo": "envelope"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get svc,endpoints mongodb-geo -n test-hotel-reservation -o wide",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=1",
+            "t": "2026-10-17T08:22:53.442609+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get deployment geo -n test-hotel-reservation -o wide",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T08:22:53.442609+00:00"
+          },
+          {
+            "classe": "C2",
+            "comando": "kubectl rollout undo deployment/geo -n test-hotel-reservation --to-revision=1",
+            "read_back": "melhora confirmada: 'kubectl rollout status deployment/geo -n test-hotel-reservation --timeout=30s': rollout complete, symptom target ready",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T08:22:53.442609+00:00"
+          }
+        ],
+        "alert_fingerprint": "dd3fe6800733a71a",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "app_image_misconfig",
+          "detalhe": "geo pod crash-loops with 'no reachable servers': it dials mongodb-geo:27777 but the mongodb-geo Service exposes only 27017/TCP. The deployment runs image yinfangchen/geo:app3, a swapped image that carries the wrong DB port config; other services use the standard image and are healthy. Deployment geo has now been observed via a C0 get, so the rollback to the original revision 1 can proceed."
+        },
+        "confianca": 0.75,
+        "decisao": "agir",
+        "episode_id": "ep-1abdd5a5e1e840ac",
+        "evidencia": [
+          {
+            "consulta": "max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T08:22:53.442609+00:00",
+            "trecho": "query: max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1\n[\n  {\n    \"metric\": {\n      \"container\": \"hotel-reserv-geo\",\n      \"endpoint\": \"http\",\n      \"instance\": \"192.168.72.131:8080\",\n      \"job\": \"kube-state-metrics\",\n      \"namespace\": \"test-hotel-reservation\",\n      \"pod\": \"geo-c47ff745-44fvs\",\n      \"reason\": \"CrashLoopBackOff\",\n      \"service\": \"sslm-kube-prometheus-kube-state-metrics\",\n      \"uid\": \"19bbfac"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T08:22:53.442609+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T08:22:53.442609+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"count\": 1,\n      \"eventTime\": null,\n      \"firstTimestamp\": \"2026-10-17T08:18:11Z\",\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"fieldPath\": \"spec.containers{hotel-reserv-geo}\",\n        \"kind\": \"Pod\",\n        \"name\": \"geo-84fbc958c7-k7vsv\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"20529\",\n        \"uid\": \"6a704e81-cefe-4c58-b2d8-4ff83a3cfe4b\"\n      },\n      \"kind\": \"Even"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T08:22:53.442609+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[geo-c47ff745-44fvs]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T08:22:53.442609+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-17T08:22:05Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T08:22:05Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T08:22:05Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-17T08:22:05Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:23\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-10-17T08:22:05Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:36\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-geo:27777\u001b[0m\n\u001b[90m2026-10-17T08:22:0"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": {
+          "comando_rollback": "kubectl rollout undo deployment/geo -n test-hotel-reservation --to-revision=2",
+          "estado_pre_mutacao": "revisao vigente antes do undo: 2",
+          "motivo": "reversao e reaplicar a revisao 2, que estava vigente antes desta acao (lida via kubectl rollout history antes do undo)",
+          "tipo": "rollout_undo"
+        },
+        "sintese": "geo pod crash-loops with 'no reachable servers': it dials mongodb-geo:27777 but the mongodb-geo Service exposes only 27017/TCP. The deployment runs image yinfangchen/geo:app3, a swapped image that carries the wrong DB port config; other services use the standard image and are hea",
+        "t_alarme": "2026-10-17T08:22:18.735Z",
+        "t_record": "2026-10-17T08:22:53.442609+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": true
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-c5d8d5f75-vzzrv",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f922",
+      "family": "assign_to_non_existent_node_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-c5d8d5f75-vzzrv -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T09:15:16.009165+00:00"
+          }
+        ],
+        "alert_fingerprint": "72eb0598494ee979",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "node_selector_unschedulable",
+          "detalhe": "Pod geo-c5d8d5f75-vzzrv is Pending and was never scheduled. The new ReplicaSet's pod template has nodeSelector kubernetes.io/hostname=extra-node, which matches no node, and FailedScheduling reports 0/3 nodes available. kubectl patch is denied by policy, so the remediation cannot be executed automatically and the fix (remove or correct the nodeSelector on deployment/geo) must be handed to a human operator."
+        },
+        "confianca": 0.95,
+        "decisao": "escalar",
+        "episode_id": "ep-d58fe9b770284c31",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T09:15:16.009165+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T09:15:16.009165+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T09:15:16.009165+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"count\": 1,\n      \"eventTime\": null,\n      \"firstTimestamp\": \"2026-10-17T08:18:11Z\",\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"fieldPath\": \"spec.containers{hotel-reserv-geo}\",\n        \"kind\": \"Pod\",\n        \"name\": \"geo-84fbc958c7-k7vsv\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"20529\",\n        \"uid\": \"6a704e81-cefe-4c58-b2d8-4ff83a3cfe4b\"\n      },\n      \"kind\": \"Even"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T09:15:16.009165+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[geo-c5d8d5f75-vzzrv]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T09:15:16.009165+00:00",
+            "trecho": ""
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod geo-c5d8d5f75-vzzrv is Pending and was never scheduled. The new ReplicaSet's pod template has nodeSelector kubernetes.io/hostname=extra-node, which matches no node, and FailedScheduling reports 0/3 nodes available. kubectl patch is denied by policy, so the remediation cannot ",
+        "t_alarme": "2026-10-17T09:14:48.735Z",
+        "t_record": "2026-10-17T09:15:16.009165+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "rate-7bdc978679-5jfgt",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f978",
+      "family": "user_unregistered_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get deployment mongodb-rate -n test-hotel-reservation -o yaml",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T10:11:21.596072+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get configmap failure-admin-rate -n test-hotel-reservation -o yaml",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=1",
+            "t": "2026-10-17T10:11:21.596072+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get pod rate-7bdc978679-5jfgt -n test-hotel-reservation -o yaml",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T10:11:21.596072+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl logs deployment/mongodb-rate -n test-hotel-reservation --tail=200",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T10:11:21.596072+00:00"
+          }
+        ],
+        "alert_fingerprint": "5d0f5807c869e53f",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "mongo_user_dropped",
+          "detalhe": "The mongodb-rate logs confirm the root cause. Every rate pod connection attempt (from 192.168.72.183) fails with 'Authentication failed ... UserNotFound: Could not find user \"admin\" for db \"admin\"'. Mongo is up with --auth and reachable, and the rate pod crash-loops on the SASL auth panic, so the admin user it authenticates as was dropped from MongoDB. Network, DNS, image and scheduling are ruled out. The fix is to recreate the admin user (with its roles) in mongodb-rate, then restart the rate deployment. This needs escalation because the allowlist and RBAC block kubectl exec and configmap reads."
+        },
+        "confianca": 0.93,
+        "decisao": "escalar",
+        "episode_id": "ep-d75fafc4839c4f2c",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T10:11:21.596072+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T10:11:21.596072+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T10:11:21.596072+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"count\": 1,\n      \"eventTime\": null,\n      \"firstTimestamp\": \"2026-10-17T09:12:05Z\",\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"fieldPath\": \"spec.containers{hotel-reserv-geo}\",\n        \"kind\": \"Pod\",\n        \"name\": \"geo-84fbc958c7-lmxjb\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"49038\",\n        \"uid\": \"136d4779-b32d-44d0-bc83-5eadd4f7fd11\"\n      },\n      \"kind\": \"Even"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T10:11:21.596072+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[rate-7bdc978679-5jfgt]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T10:11:21.596072+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-17T10:09:35Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T10:09:35Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T10:09:35Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-17T10:09:35Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/rate/main.go:24\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-10-17T10:09:35Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/rate/main.go:37\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-rate:27017\u001b[0m\n\u001b[90m2026-10-17T10:0"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The mongodb-rate logs confirm the root cause. Every rate pod connection attempt (from 192.168.72.183) fails with 'Authentication failed ... UserNotFound: Could not find user \"admin\" for db \"admin\"'. Mongo is up with --auth and reachable, and the rate pod crash-loops on the SASL a",
+        "t_alarme": "2026-10-17T10:10:48.735Z",
+        "t_record": "2026-10-17T10:11:21.596072+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "rate-7bdc978679-hgz5h",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f1036",
+      "family": "revoke_auth_mongodb_rate",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -l io.kompose.service=mongodb-rate",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T11:09:15.727475+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl logs -n test-hotel-reservation mongodb-rate-56cc8659c9-pbrfp --tail=100",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T11:09:15.727475+00:00"
+          }
+        ],
+        "alert_fingerprint": "7aadb2ba40662233",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "mongo_role_revoked",
+          "detalhe": "The rate pod authenticates successfully as 'admin' against mongodb-rate (Authentication succeeded in the mongod logs) but every command on rate-db fails with 'not authorized ... count inventory' (code 13 Unauthorized). The user exists and credentials are valid, but its roles/privileges on rate-db were revoked. The earlier UserNotFound entries were from a different client IP and are not the rate pod. Exec into the DB pod is denied, so escalate for a human to restore the role (e.g. grant readWrite/root on rate-db to admin)."
+        },
+        "confianca": 0.8,
+        "decisao": "escalar",
+        "episode_id": "ep-fdd157a30a184b47",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T11:09:15.727475+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T11:09:15.727475+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T11:09:15.727475+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-10-17T11:06:06.079301Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"memcached-rate-5b59cb5d9d-7tz4p\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"56274\",\n        \"uid\": \"1d317fcd-c314-4a73-8a28-0e17948d1034\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T11:09:15.727475+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[rate-7bdc978679-hgz5h]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T11:09:15.727475+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-17T11:07:35Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T11:07:35Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T11:07:35Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-17T11:07:35Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/rate/main.go:24\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-10-17T11:07:35Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/rate/main.go:37\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-rate:27017\u001b[0m\n\u001b[90m2026-10-17T11:0"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The rate pod authenticates successfully as 'admin' against mongodb-rate (Authentication succeeded in the mongod logs) but every command on rate-db fails with 'not authorized ... count inventory' (code 13 Unauthorized). The user exists and credentials are valid, but its roles/priv",
+        "t_alarme": "2026-10-17T11:08:48.735Z",
+        "t_record": "2026-10-17T11:09:15.727475+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-84fbc958c7-nlhhq",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f1092",
+      "family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -l io.kompose.service=mongodb-geo -o wide",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T12:05:19.848940+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get deployment geo -n test-hotel-reservation -o yaml",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T12:05:19.848940+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl logs -n test-hotel-reservation mongodb-geo-5ff578bcb8-8dxfj --tail=100",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T12:05:19.848940+00:00"
+          }
+        ],
+        "alert_fingerprint": "dcc1329f0cb41548",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "mongo_user_dropped",
+          "detalhe": "The geo pod is crash-looping. It panics at DB init with 'SASL authentication step: Authentication failed'. The mongodb-geo logs confirm it: SCRAM-SHA-1 authentication fails for principalName 'admin' on db 'admin' with 'UserNotFound: Could not find user \"admin\" for db \"admin\"'. MongoDB is up and reachable, so the admin user it authenticates as no longer exists. The user was dropped, most likely when the DB was recreated or the user was removed. Remediation is to recreate the admin user in mongodb-geo, or restore the user and its credentials."
+        },
+        "confianca": 0.9,
+        "decisao": "escalar",
+        "episode_id": "ep-f3fb263d9fcf4325",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T12:05:19.848940+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T12:05:19.848940+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T12:05:19.848940+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-10-17T12:02:06.052063Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"geo-84fbc958c7-nlhhq\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"58915\",\n        \"uid\": \"0d7af61b-af7b-4f03-96f5-44dca533cedb\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null,\n      \"me"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T12:05:19.848940+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[geo-84fbc958c7-nlhhq]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T12:05:19.848940+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-17T12:03:39Z\",\"message\":\"TLS disabled.\"}\n\u001b[90m2026-10-17T12:03:39Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:23\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n{\"level\":\"info\",\"time\":\"2026-10-17T12:03:39Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T12:03:39Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-17T12:03:39Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:36\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-geo:27017\u001b[0m\n\u001b[90m2026-10-17T12:03:3"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The geo pod is crash-looping. It panics at DB init with 'SASL authentication step: Authentication failed'. The mongodb-geo logs confirm it: SCRAM-SHA-1 authentication fails for principalName 'admin' on db 'admin' with 'UserNotFound: Could not find user \"admin\" for db \"admin\"'. Mo",
+        "t_alarme": "2026-10-17T12:04:48.735Z",
+        "t_record": "2026-10-17T12:05:19.848940+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-84fbc958c7-bgp8t",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f1154",
+      "family": "user_unregistered_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -l io.kompose.service=mongodb-geo -o name",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T13:07:15.637265+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl logs mongodb-geo-5ff578bcb8-8dxfj -n test-hotel-reservation --tail=100",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T13:07:15.637265+00:00"
+          }
+        ],
+        "alert_fingerprint": "bdfab284de2a594c",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "mongo_user_dropped",
+          "detalhe": "The geo pod crash-loops (BackOff) because it panics at startup with 'server returned error on SASL authentication step: Authentication failed'. The mongodb-geo logs confirm the cause: 'UserNotFound: Could not find user \"admin\" for db \"admin\"' on every connection attempt from the geo pod IP. The credentials geo uses no longer exist in MongoDB, so the user was dropped. Remediation is to recreate the admin user in mongodb-geo, which needs escalation since exec into the DB pod is denied."
+        },
+        "confianca": 0.9,
+        "decisao": "escalar",
+        "episode_id": "ep-7839926366064267",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T13:07:15.637265+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T13:07:15.637265+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T13:07:15.637265+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-10-17T13:04:06.054354Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"geo-84fbc958c7-bgp8t\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"61731\",\n        \"uid\": \"bef0fbd2-cbb0-49e3-8988-7ecc5bfce7b5\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null,\n      \"me"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T13:07:15.637265+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[geo-84fbc958c7-bgp8t]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T13:07:15.637265+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-17T13:05:31Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T13:05:31Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T13:05:31Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-17T13:05:31Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:23\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-10-17T13:05:31Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:36\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-geo:27017\u001b[0m\n\u001b[90m2026-10-17T13:05:3"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The geo pod crash-loops (BackOff) because it panics at startup with 'server returned error on SASL authentication step: Authentication failed'. The mongodb-geo logs confirm the cause: 'UserNotFound: Could not find user \"admin\" for db \"admin\"' on every connection attempt from the ",
+        "t_alarme": "2026-10-17T13:06:48.735Z",
+        "t_record": "2026-10-17T13:07:15.637265+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": false,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261016T175005Z-f1204",
+      "family": "wrong_bin_usage",
+      "kind": "fault",
+      "not_measured": null,
+      "record": null,
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-84fbc958c7-qpnjj",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f1262",
+      "family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get pods -n test-hotel-reservation -l io.kompose.service=mongodb-geo -o name",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T14:55:19.004097+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl logs -n test-hotel-reservation mongodb-geo-5ff578bcb8-8dxfj --tail=100",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T14:55:19.004097+00:00"
+          }
+        ],
+        "alert_fingerprint": "90229d9eb26cb330",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "mongo_role_revoked",
+          "detalhe": "geo pod crash-loops: it authenticates to mongodb-geo successfully as admin, but the first count on geo-db is rejected with 'Unauthorized' (code 13). Authentication succeeds while authorization fails, so the admin user's role on geo-db was revoked. Image, scheduling and DNS are fine. Exec into the mongo pod is denied, so the evidence from geo logs and mongo logs is sufficient. The remediation is to restore the role on the admin user in mongodb-geo, which needs approved tooling or escalation."
+        },
+        "confianca": 0.85,
+        "decisao": "escalar",
+        "episode_id": "ep-1c9b103e6bdd4250",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T14:55:19.004097+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T14:55:19.004097+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T14:55:19.004097+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-10-17T14:52:06.055490Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"geo-84fbc958c7-qpnjj\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"66602\",\n        \"uid\": \"580ac3d6-dcb4-4b72-821f-e6e44178c368\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null,\n      \"me"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T14:55:19.004097+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[geo-84fbc958c7-qpnjj]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T14:55:19.004097+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-17T14:53:36Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T14:53:36Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T14:53:36Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-17T14:53:36Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:23\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-10-17T14:53:36Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:36\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-geo:27017\u001b[0m\n\u001b[90m2026-10-17T14:53:3"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "geo pod crash-loops: it authenticates to mongodb-geo successfully as admin, but the first count on geo-db is rejected with 'Unauthorized' (code 13). Authentication succeeds while authorization fails, so the admin user's role on geo-db was revoked. Image, scheduling and DNS are fi",
+        "t_alarme": "2026-10-17T14:54:48.735Z",
+        "t_record": "2026-10-17T14:55:19.004097+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodNotReady",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-c5d8d5f75-qcr7f",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "severity": "warning"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f1326",
+      "family": "assign_to_non_existent_node_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl describe pod geo-c5d8d5f75-qcr7f -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T15:59:15.463452+00:00"
+          }
+        ],
+        "alert_fingerprint": "0c1d03e921986450",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "node_selector_unschedulable",
+          "detalhe": "Pod geo-c5d8d5f75-qcr7f is Pending/unscheduled: its nodeSelector kubernetes.io/hostname=extra-node matches no node (FailedScheduling: 1 node did not match selector, 2 have untolerated taints). The geo deployment rollout introduced a bad nodeSelector. Remediation via patch was denied by policy, so escalate with the exact fix needed (remove nodeSelector from deployment/geo)."
+        },
+        "confianca": 0.95,
+        "decisao": "escalar",
+        "episode_id": "ep-6ed8e8f24dbb4ab5",
+        "evidencia": [
+          {
+            "consulta": "sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kind, cluster) (kube_pod_owner{owner_kind!=\"Job\"}))) > 0 unless on (namespace, pod, cluster) kube_pod_status_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"SchedulingGated\"} == 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T15:59:15.463452+00:00",
+            "trecho": "query: sum by (namespace, pod, job, cluster) (max by (namespace, pod, job, cluster) (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=~\"Pending|Unknown\"} or (kube_pod_status_phase{job=\"kube-state-metrics\",namespace=~\".*\",phase=\"Running\"} == 1 and on (namespace, pod, cluster) kube_pod_status_ready{condition=\"true\",job=\"kube-state-metrics\",namespace=~\".*\"} == 0)) * on (namespace, pod, cluster) group_left () topk by (namespace, pod, cluster) (1, max by (namespace, pod, owner_kin"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T15:59:15.463452+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T15:59:15.463452+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-10-17T15:26:06.126888Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"geo-84fbc958c7-hpd29\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"68187\",\n        \"uid\": \"9163b85e-d7b7-4723-8db7-201d9e07fe2e\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null,\n      \"me"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T15:59:15.463452+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[geo-c5d8d5f75-qcr7f]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T15:59:15.463452+00:00",
+            "trecho": ""
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "Pod geo-c5d8d5f75-qcr7f is Pending/unscheduled: its nodeSelector kubernetes.io/hostname=extra-node matches no node (FailedScheduling: 1 node did not match selector, 2 have untolerated taints). The geo deployment rollout introduced a bad nodeSelector. Remediation via patch was den",
+        "t_alarme": "2026-10-17T15:58:48.735Z",
+        "t_record": "2026-10-17T15:59:15.463452+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": false
+    },
+    {
+      "alert_fired": true,
+      "alert_labels": {
+        "alertname": "KubePodCrashLooping",
+        "container": "hotel-reserv-geo",
+        "endpoint": "http",
+        "instance": "192.168.72.131:8080",
+        "job": "kube-state-metrics",
+        "namespace": "test-hotel-reservation",
+        "pod": "geo-c47ff745-z6dnq",
+        "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+        "reason": "CrashLoopBackOff",
+        "service": "sslm-kube-prometheus-kube-state-metrics",
+        "severity": "warning",
+        "uid": "19fd91ed-4b95-4863-b531-9799ad5fde82"
+      },
+      "episode_id": "seed1052-20261016T175005Z-f1376",
+      "family": "misconfig_app_hotel_res",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl get svc,endpoints mongodb-geo -n test-hotel-reservation",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=1",
+            "t": "2026-10-17T16:50:52.848389+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get deployment geo -n test-hotel-reservation -o yaml",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T16:50:52.848389+00:00"
+          },
+          {
+            "classe": "C0",
+            "comando": "kubectl get replicasets -n test-hotel-reservation -l io.kompose.service=geo -o wide",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-10-17T16:50:52.848389+00:00"
+          }
+        ],
+        "alert_fingerprint": "c0b0b97ca3a23264",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "app_image_misconfig",
+          "detalhe": "The geo deployment runs image yinfangchen/geo:app3 instead of the original yinfangchen/hotelreservation:latest. This image points to mongodb-geo:27777 while the Service exposes only 27017, causing 'no reachable servers' and a crash loop. Rollout history is not allowed, so inspect ReplicaSets to find the previous good revision number for a revision-pinned undo."
+        },
+        "confianca": 0.75,
+        "decisao": "escalar",
+        "episode_id": "ep-3c4aa4a06c144949",
+        "evidencia": [
+          {
+            "consulta": "max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T16:50:52.848389+00:00",
+            "trecho": "query: max_over_time(kube_pod_container_status_waiting_reason{job=\"kube-state-metrics\",namespace=~\".*\",reason=\"CrashLoopBackOff\"}[5m]) >= 1\n[\n  {\n    \"metric\": {\n      \"container\": \"hotel-reserv-geo\",\n      \"endpoint\": \"http\",\n      \"instance\": \"192.168.72.131:8080\",\n      \"job\": \"kube-state-metrics\",\n      \"namespace\": \"test-hotel-reservation\",\n      \"pod\": \"geo-c47ff745-z6dnq\",\n      \"reason\": \"CrashLoopBackOff\",\n      \"service\": \"sslm-kube-prometheus-kube-state-metrics\",\n      \"uid\": \"19fd91e"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T16:50:52.848389+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"0ed1ffb3831ee9d43372eb265ad9fe918a05bac45fd611aa96247d922c49e61e\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.146/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.146/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T16:50:52.848389+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-10-17T16:16:05.828093Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"geo-84fbc958c7-2gwrr\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"70456\",\n        \"uid\": \"f55c49c8-f403-409d-ac0d-63f03b8bef71\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null,\n      \"me"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T16:50:52.848389+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[geo-c47ff745-z6dnq]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-10-17T16:50:52.848389+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-10-17T16:49:48Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T16:49:48Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-10-17T16:49:48Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-10-17T16:49:48Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:23\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-10-17T16:49:48Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:36\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-geo:27777\u001b[0m\n\u001b[90m2026-10-17T16:49:4"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2",
+          "E5"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The geo deployment runs image yinfangchen/geo:app3 instead of the original yinfangchen/hotelreservation:latest. This image points to mongodb-geo:27777 while the Service exposes only 27017, causing 'no reachable servers' and a crash loop. Rollout history is not allowed, so inspect",
+        "t_alarme": "2026-10-17T16:50:18.735Z",
+        "t_record": "2026-10-17T16:50:52.848389+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261016T175005Z",
+      "root_cause_fixed_post_action": true
+    }
+  ],
+  "extra_records": [
+    "ep-61a94328f1ab495e",
+    "ep-287be60069f94be8",
+    "ep-9c2dca9a100b4ffb",
+    "ep-6dfde092593741dc",
+    "ep-c476c4f4105d4912",
+    "ep-c7aa50e24ba747c8",
+    "ep-3d37710ee6ba4398",
+    "ep-b86bb92f88e44244",
+    "ep-fb36190271f04369",
+    "ep-238ccbbbc85240b2",
+    "ep-05e3c4943f8349fb",
+    "ep-7e22c48337de4210",
+    "ep-3e96dd2e607d40cb",
+    "ep-cf744f7bc6964be0",
+    "ep-bd156ddc27714cc0",
+    "ep-f2fd850bc3ab472f",
+    "ep-69f57a03353348f4",
+    "ep-97e69010c6c34f7e",
+    "ep-7affb5e474714f02",
+    "ep-65b480ee4413476c"
+  ],
+  "late_records": [
+    "ep-3ac891e880774835",
+    "ep-7f17fb46f3664777",
+    "ep-64662f0cf66448f6"
+  ],
+  "malformed_records": [
+    "ep-42a38be583774aed",
+    "ep-b974a9b5423a4b6b",
+    "ep-48067a16e8584bd7",
+    "ep-955a38f31e084a04",
+    "ep-a98418fd02434bd2",
+    "ep-7db9a9a93dcd48ae"
+  ],
+  "orphan_records": [
+    "ep-3e93eda98bb74dfe",
+    "ep-8b73229026aa4c09",
+    "ep-a031b04cfbd84305",
+    "ep-716cf6a0eec1434e",
+    "ep-506642e9b1004495",
+    "ep-8da154a5d46943a2",
+    "ep-c9df656bbb774f65",
+    "ep-3ebc1072b1f84a68",
+    "ep-dd5f0add24624f77",
+    "ep-c76ef1ee60de440d",
+    "ep-337654569ec54207",
+    "ep-6ff7fbb5195d4023",
+    "ep-a0c2426191ff4b58",
+    "ep-143c4f3c78a64a9f",
+    "ep-a918bab437124e11",
+    "ep-c13a4c71e5fc41cc",
+    "ep-c42451a284a04fe9",
+    "ep-c64066df81074823",
+    "ep-1c47cd1c0e114a0a",
+    "ep-d37147b777534537",
+    "ep-e422460539d24c3f",
+    "ep-1185ee19eafe4199",
+    "ep-32d9895c6e1a4240",
+    "ep-7b33fa8b8b2e44b7"
+  ],
+  "rodada_id": "seed1052-20261016T175005Z"
+}

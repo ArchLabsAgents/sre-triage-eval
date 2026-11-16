@@ -1,0 +1,83 @@
+{
+  "complete": true,
+  "failure": null,
+  "passed": true,
+  "smoke": true,
+  "steps": {
+    "cleanup": {
+      "cleanup": "app namespace deleted"
+    },
+    "inject": {
+      "alerts": [
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "8f0fe061d73943da",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-pgxtr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "1c99adf5-3bce-4cc0-9229-c60b3e83dd42"
+          }
+        },
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "ea087b83892285c8",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-pgxtr",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        }
+      ],
+      "family": "user_unregistered_mongodb"
+    },
+    "model": {
+      "prompt_tokens_after": 69827.0,
+      "prompt_tokens_before": 14825.0
+    },
+    "policy_scope": {
+      "exit_code": 0,
+      "output": "ok (a): agent identity denied on memcached-profile-679775b4d4-lmgdw by the DB-pod policy\nok (b): injector identity admitted on memcached-profile-679775b4d4-lmgdw (dry-run)\n"
+    },
+    "prepare": {
+      "agent_rbac_reapplied": true,
+      "app_namespace": "test-hotel-reservation",
+      "families": [
+        "assign_to_non_existent_node_hotel_res",
+        "misconfig_app_hotel_res",
+        "redeploy_without_PV",
+        "revoke_auth_mongodb",
+        "revoke_auth_mongodb_rate",
+        "user_unregistered_mongodb",
+        "user_unregistered_mongodb_rate",
+        "wrong_bin_usage"
+      ]
+    },
+    "receiver": {
+      "after": 5,
+      "before": 4
+    },
+    "recover": {
+      "baseline_restored": false
+    },
+    "settle": {
+      "clean_for_seconds": 60.016356229782104,
+      "decided_at": 1792457446.4125948,
+      "last_dirty": [],
+      "settled": true,
+      "signals": [],
+      "watch_started_at": 1792457386.396238
+    }
+  }
+}
