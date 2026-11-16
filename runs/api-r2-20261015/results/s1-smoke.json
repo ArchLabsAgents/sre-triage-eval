@@ -1,0 +1,136 @@
+{
+  "complete": true,
+  "failure": null,
+  "passed": true,
+  "smoke": true,
+  "steps": {
+    "cleanup": {
+      "cleanup": "app namespace deleted"
+    },
+    "inject": {
+      "alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "4888e68d2f3eeb92",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-vvrmx",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "cbe990e50f53cb6a",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-vvrmx",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "0a8a4350-3db6-48d0-906a-79498c17b653"
+          }
+        }
+      ],
+      "family": "user_unregistered_mongodb"
+    },
+    "model": {
+      "prompt_tokens_after": 13.0,
+      "prompt_tokens_before": 0.0,
+      "signal": "comparator usage log request lines"
+    },
+    "policy_scope": {
+      "exit_code": 0,
+      "output": "ok (a): agent identity denied on memcached-profile-679775b4d4-wcv85 by the DB-pod policy\nok (b): injector identity admitted on memcached-profile-679775b4d4-wcv85 (dry-run)\n"
+    },
+    "prepare": {
+      "agent_rbac_reapplied": true,
+      "app_namespace": "test-hotel-reservation",
+      "families": [
+        "assign_to_non_existent_node_hotel_res",
+        "misconfig_app_hotel_res",
+        "redeploy_without_PV",
+        "revoke_auth_mongodb",
+        "revoke_auth_mongodb_rate",
+        "user_unregistered_mongodb",
+        "user_unregistered_mongodb_rate",
+        "wrong_bin_usage"
+      ]
+    },
+    "receiver": {
+      "after": 4,
+      "before": 3
+    },
+    "recover": {
+      "baseline_restored": false
+    },
+    "settle": {
+      "clean_for_seconds": 60.01733589172363,
+      "decided_at": 1792078228.1019197,
+      "last_dirty": [
+        "alert KubeContainerWaiting pending pod=frontend-7fc7ddc9db-c8wht",
+        "alert KubeContainerWaiting pending pod=geo-84fbc958c7-nbx4s",
+        "alert KubeContainerWaiting pending pod=memcached-profile-679775b4d4-wcv85",
+        "alert KubeContainerWaiting pending pod=memcached-rate-5b59cb5d9d-s92dz",
+        "alert KubeContainerWaiting pending pod=memcached-reserve-6c889f84d4-jt4kq",
+        "alert KubeContainerWaiting pending pod=mongodb-geo-5ff578bcb8-tjlfj",
+        "alert KubeContainerWaiting pending pod=mongodb-profile-758cb77f9f-2lwhf",
+        "alert KubeContainerWaiting pending pod=mongodb-rate-56cc8659c9-9c6v6",
+        "alert KubeContainerWaiting pending pod=mongodb-recommendation-55699465f7-hzrnb",
+        "alert KubeContainerWaiting pending pod=mongodb-reservation-5994859869-qt4gl",
+        "alert KubeContainerWaiting pending pod=mongodb-user-969c6c449-5svzg",
+        "alert KubeContainerWaiting pending pod=profile-8b6dd7c6c-kk84c",
+        "alert KubeContainerWaiting pending pod=rate-7bdc978679-cjtvb",
+        "alert KubeContainerWaiting pending pod=recommendation-6879fb56bf-b7gkg",
+        "alert KubeContainerWaiting pending pod=reservation-78c9f7976b-vf8xg",
+        "alert KubeContainerWaiting pending pod=search-5c64c8f5bc-s79gk",
+        "alert KubeContainerWaiting pending pod=user-66d5d6f874-86rfv",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubePodNotReady pending pod=frontend-7fc7ddc9db-c8wht",
+        "alert KubePodNotReady pending pod=geo-84fbc958c7-nbx4s",
+        "alert KubePodNotReady pending pod=memcached-profile-679775b4d4-wcv85",
+        "alert KubePodNotReady pending pod=memcached-rate-5b59cb5d9d-s92dz",
+        "alert KubePodNotReady pending pod=memcached-reserve-6c889f84d4-jt4kq",
+        "alert KubePodNotReady pending pod=mongodb-geo-5ff578bcb8-tjlfj",
+        "alert KubePodNotReady pending pod=mongodb-profile-758cb77f9f-2lwhf",
+        "alert KubePodNotReady pending pod=mongodb-rate-56cc8659c9-9c6v6",
+        "alert KubePodNotReady pending pod=mongodb-recommendation-55699465f7-hzrnb",
+        "alert KubePodNotReady pending pod=mongodb-reservation-5994859869-qt4gl",
+        "alert KubePodNotReady pending pod=mongodb-user-969c6c449-5svzg",
+        "alert KubePodNotReady pending pod=profile-8b6dd7c6c-kk84c",
+        "alert KubePodNotReady pending pod=rate-7bdc978679-cjtvb",
+        "alert KubePodNotReady pending pod=recommendation-6879fb56bf-b7gkg",
+        "alert KubePodNotReady pending pod=reservation-78c9f7976b-vf8xg",
+        "alert KubePodNotReady pending pod=search-5c64c8f5bc-s79gk",
+        "alert KubePodNotReady pending pod=user-66d5d6f874-86rfv"
+      ],
+      "settled": true,
+      "signals": [],
+      "watch_started_at": 1792078107.9866421
+    }
+  }
+}

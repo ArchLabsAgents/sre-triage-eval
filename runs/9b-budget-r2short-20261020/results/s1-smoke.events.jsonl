@@ -1,0 +1,8 @@
+{"at": "2026-10-20T13:08:30.137508+00:00", "phase": "smoke_prepare_start", "t": 1792501710.137508}
+{"at": "2026-10-20T13:10:25.633739+00:00", "exit_code": 0, "phase": "smoke_policy_scope", "t": 1792501825.6337395}
+{"at": "2026-10-20T13:11:25.790821+00:00", "clean_for_seconds": 60.012643575668335, "decided_at": 1792501885.7807715, "last_dirty": [], "phase": "smoke_settle", "settled": true, "signals": [], "t": 1792501885.7908213, "watch_started_at": 1792501825.7681277}
+{"alerts": [{"alertname": "KubePodNotReady", "fingerprint": "79ce10463d31f6bd", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-vgm64", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}], "at": "2026-10-20T13:13:54.211027+00:00", "baseline_restored": false, "family": "user_unregistered_mongodb", "phase": "smoke_family", "t": 1792502034.2110274}
+{"after": 3, "at": "2026-10-20T13:14:09.244280+00:00", "before": 1, "phase": "smoke_receiver", "t": 1792502049.2442803}
+{"at": "2026-10-20T13:14:09.257083+00:00", "phase": "smoke_model", "prompt_tokens_after": 22339.0, "prompt_tokens_before": 263.0, "t": 1792502049.2570827}
+{"at": "2026-10-20T13:14:38.527014+00:00", "cleanup": "app namespace deleted", "phase": "cleanup_done", "t": 1792502078.5270145}
+{"at": "2026-10-20T13:14:38.528680+00:00", "failure": null, "passed": true, "phase": "smoke_finished", "t": 1792502078.5286798}

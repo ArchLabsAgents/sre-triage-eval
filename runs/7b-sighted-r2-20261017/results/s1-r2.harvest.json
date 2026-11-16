@@ -1,0 +1,19 @@
+{
+  "availability": {
+    "availability": 1.0,
+    "downtime_seconds": 0.0,
+    "measured": true,
+    "outages": 0,
+    "reason": null,
+    "window_seconds": 84720.0
+  },
+  "episodes": "scenarios/results/hyperstack-a6000/r2/s1-r2.episodes.json",
+  "journal": "scenarios/results/hyperstack-a6000/r2/s1-r2.events.jsonl",
+  "not_measured": [],
+  "pod": {
+    "created": "2026-10-17T20:51:06Z",
+    "name": "sslm-agent-769c6c865b-q9zzm"
+  },
+  "records": "scenarios/results/hyperstack-a6000/r2/s1-r2.triage.jsonl",
+  "usage": "scenarios/results/hyperstack-a6000/r2/s1-r2.usage.jsonl"
+}

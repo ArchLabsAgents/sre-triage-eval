@@ -1,0 +1,306 @@
+[r1] 2026-10-15T15:26:27.437664+00:00 smoke_prepare_start {}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' created in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' created in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' created in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' created in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+[15:26:32] Waiting for all pods in namespace 'openebs' to be      kubectl.py:118
+           ready...                                                             
+[15:26:50] All pods in namespace 'openebs' are ready.             kubectl.py:134
+WARNING:root:Prometheus release not found, will install.
+PersistentVolumeClaim prometheus-pvc not found. Skipping deletion.
+== Helm Uninstall ==
+Release prometheus does not exist. Skipping uninstall.
+Applying PersistentVolumeClaim from /home/ubuntu/AIOpsLab/aiopslab/observer/prometheus/prometheus-pvc.yml
+== Helm Install ==
+NAME: prometheus
+LAST DEPLOYED: Thu Oct 15 15:27:00 2026
+NAMESPACE: observe
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+The Prometheus server can be accessed via port 80 on the following DNS name from within your cluster:
+prometheus-server.observe.svc.cluster.local
+
+
+Get the Prometheus server URL by running these commands in the same shell:
+  export NODE_PORT=$(kubectl get --namespace observe -o jsonpath="{.spec.ports[0].nodePort}" services prometheus-server)
+  export NODE_IP=$(kubectl get nodes --namespace observe -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+
+
+#################################################################################
+######   WARNING: Pod Security Policy has been disabled by default since    #####
+######            it deprecated after k8s 1.25+. use                        #####
+######            (index .Values "prometheus-node-exporter" "rbac"          #####
+###### .          "pspEnabled") with (index .Values                         #####
+######            "prometheus-node-exporter" "rbac" "pspAnnotations")       #####
+######            in case you still need it.                                #####
+#################################################################################
+
+
+The Prometheus PushGateway can be accessed via port 9091 on the following DNS name from within your cluster:
+prometheus-prometheus-pushgateway.observe.svc.cluster.local
+
+
+Get the PushGateway URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace observe -l "app=prometheus-pushgateway,component=pushgateway" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace observe port-forward $POD_NAME 9091
+
+For more information on running Prometheus, visit:
+https://prometheus.io/
+
+[15:27:00] Waiting for all pods in namespace 'observe' to be      kubectl.py:118
+           ready...                                                             
+[15:28:00] All pods in namespace 'observe' are ready.             kubectl.py:134
+No resources found in: test-hotel-reservation. Skipping deletion.
+Deploying Kubernetes configurations in namespace: test-hotel-reservation
+[15:28:03] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+[15:28:27] All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-15T15:28:27.842897+00:00 smoke_policy_scope {"exit_code": 0}
+[r1] 2026-10-15T15:30:28.115970+00:00 smoke_settle {"clean_for_seconds": 60.01733589172363, "decided_at": 1792078228.1019197, "last_dirty": ["alert KubeContainerWaiting pending pod=frontend-7fc7ddc9db-c8wht", "alert KubeContainerWaiting pending pod=geo-84fbc958c7-nbx4s", "alert KubeContainerWaiting pending pod=memcached-profile-679775b4d4-wcv85", "alert KubeContainerWaiting pending pod=memcached-rate-5b59cb5d9d-s92dz", "alert KubeContainerWaiting pending pod=memcached-reserve-6c889f84d4-jt4kq", "alert KubeContainerWaiting pending pod=mongodb-geo-5ff578bcb8-tjlfj", "alert KubeContainerWaiting pending pod=mongodb-profile-758cb77f9f-2lwhf", "alert KubeContainerWaiting pending pod=mongodb-rate-56cc8659c9-9c6v6", "alert KubeContainerWaiting pending pod=mongodb-recommendation-55699465f7-hzrnb", "alert KubeContainerWaiting pending pod=mongodb-reservation-5994859869-qt4gl", "alert KubeContainerWaiting pending pod=mongodb-user-969c6c449-5svzg", "alert KubeContainerWaiting pending pod=profile-8b6dd7c6c-kk84c", "alert KubeContainerWaiting pending pod=rate-7bdc978679-cjtvb", "alert KubeContainerWaiting pending pod=recommendation-6879fb56bf-b7gkg", "alert KubeContainerWaiting pending pod=reservation-78c9f7976b-vf8xg", "alert KubeContainerWaiting pending pod=search-5c64c8f5bc-s79gk", "alert KubeContainerWaiting pending pod=user-66d5d6f874-86rfv", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb", "alert KubePodNotReady pending pod=frontend-7fc7ddc9db-c8wht", "alert KubePodNotReady pending pod=geo-84fbc958c7-nbx4s", "alert KubePodNotReady pending pod=memcached-profile-679775b4d4-wcv85", "alert KubePodNotReady pending pod=memcached-rate-5b59cb5d9d-s92dz", "alert KubePodNotReady pending pod=memcached-reserve-6c889f84d4-jt4kq", "alert KubePodNotReady pending pod=mongodb-geo-5ff578bcb8-tjlfj", "alert KubePodNotReady pending pod=mongodb-profile-758cb77f9f-2lwhf", "alert KubePodNotReady pending pod=mongodb-rate-56cc8659c9-9c6v6", "alert KubePodNotReady pending pod=mongodb-recommendation-55699465f7-hzrnb", "alert KubePodNotReady pending pod=mongodb-reservation-5994859869-qt4gl", "alert KubePodNotReady pending pod=mongodb-user-969c6c449-5svzg", "alert KubePodNotReady pending pod=profile-8b6dd7c6c-kk84c", "alert KubePodNotReady pending pod=rate-7bdc978679-cjtvb", "alert KubePodNotReady pending pod=recommendation-6879fb56bf-b7gkg", "alert KubePodNotReady pending pod=reservation-78c9f7976b-vf8xg", "alert KubePodNotReady pending pod=search-5c64c8f5bc-s79gk", "alert KubePodNotReady pending pod=user-66d5d6f874-86rfv"], "settled": true, "signals": [], "watch_started_at": 1792078107.9866421}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+== Fault Injection ==
+Target MongoDB Pods: ['mongodb-geo-5ff578bcb8-tjlfj']
+Injection result for mongodb-geo: Removing admin user...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ab26ae9b-b3a7-46f5-9ca8-7b4adfcafff6") }
+MongoDB server version: 4.4.6
+true
+Admin user removed successfully
+
+Deleted service pod geo-84fbc958c7-nbx4s to enforce the fault: pod "geo-84fbc958c7-nbx4s" deleted
+
+Service: mongodb-geo | Namespace: test-hotel-reservation
+
+== Start Workload ==
+Checking for existing ConfigMap 'wrk2-payload-script'...
+Creating ConfigMap 'wrk2-payload-script'...
+ConfigMap 'wrk2-payload-script' created successfully.
+Job created: wrk2-job
+Job completed successfully.
+== Fault Recovery ==
+Target MongoDB Pods: ['mongodb-geo-5ff578bcb8-tjlfj']
+Recovery result for mongodb-geo: Recreating admin user...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("81a18fde-170c-4585-9628-da6fc25cb238") }
+MongoDB server version: 4.4.6
+Successfully added user: {
+	"user" : "admin",
+	"roles" : [
+		{
+			"role" : "userAdminAnyDatabase",
+			"db" : "admin"
+		}
+	]
+}
+Admin user recreated
+Granting readWrite role to admin on geo-db database...
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/admin?authSource=admin&compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("75f1626e-275a-409d-81dd-1bd6324ddd7e") }
+MongoDB server version: 4.4.6
+Privileges restored successfully
+
+Deleted service pod geo-84fbc958c7-vvrmx to enforce the fault: pod "geo-84fbc958c7-vvrmx" deleted
+
+Service: mongodb-geo | Namespace: test-hotel-reservation
+
+[15:33:27] Waiting for all pods in namespace                      kubectl.py:118
+           'test-hotel-reservation' to be ready...                              
+           All pods in namespace 'test-hotel-reservation' are     kubectl.py:134
+           ready.                                                               
+[r1] 2026-10-15T15:33:27.078783+00:00 smoke_family {"alerts": [{"alertname": "KubePodNotReady", "fingerprint": "4888e68d2f3eeb92", "labels": {"alertname": "KubePodNotReady", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-vvrmx", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "severity": "warning"}}, {"alertname": "KubePodCrashLooping", "fingerprint": "cbe990e50f53cb6a", "labels": {"alertname": "KubePodCrashLooping", "container": "hotel-reserv-geo", "endpoint": "http", "instance": "192.168.72.131:8080", "job": "kube-state-metrics", "namespace": "test-hotel-reservation", "pod": "geo-84fbc958c7-vvrmx", "prometheus": "monitoring/sslm-kube-prometheus-prometheus", "reason": "CrashLoopBackOff", "service": "sslm-kube-prometheus-kube-state-metrics", "severity": "warning", "uid": "0a8a4350-3db6-48d0-906a-79498c17b653"}}], "baseline_restored": false, "family": "user_unregistered_mongodb"}
+[r1] 2026-10-15T15:33:42.116781+00:00 smoke_receiver {"after": 4, "before": 3}
+[r1] 2026-10-15T15:33:42.278879+00:00 smoke_model {"prompt_tokens_after": 13.0, "prompt_tokens_before": 0.0, "signal": "comparator usage log request lines"}
+Namespace test-hotel-reservation already exists.
+ConfigMap 'mongo-rate-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'mongo-geo-script' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-rate' updated in namespace 'test-hotel-reservation'
+ConfigMap 'failure-admin-geo' updated in namespace 'test-hotel-reservation'
+[15:33:42] Waiting for namespace 'test-hotel-reservation' to be   kubectl.py:149
+           deleted...                                                           
+[15:33:56] Namespace 'test-hotel-reservation' has been deleted.   kubectl.py:158
+[r1] 2026-10-15T15:34:11.529427+00:00 cleanup_done {"cleanup": "app namespace deleted"}
+[r1] 2026-10-15T15:34:11.530920+00:00 smoke_finished {"failure": null, "passed": true}
+Namespace 'test-hotel-reservation' deleted successfully.
+{
+  "failure": null,
+  "passed": true,
+  "smoke": true,
+  "steps": {
+    "cleanup": {
+      "cleanup": "app namespace deleted"
+    },
+    "inject": {
+      "alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "4888e68d2f3eeb92",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-vvrmx",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "cbe990e50f53cb6a",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.72.131:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-vvrmx",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "0a8a4350-3db6-48d0-906a-79498c17b653"
+          }
+        }
+      ],
+      "family": "user_unregistered_mongodb"
+    },
+    "model": {
+      "prompt_tokens_after": 13.0,
+      "prompt_tokens_before": 0.0,
+      "signal": "comparator usage log request lines"
+    },
+    "policy_scope": {
+      "exit_code": 0,
+      "output": "ok (a): agent identity denied on memcached-profile-679775b4d4-wcv85 by the DB-pod policy\nok (b): injector identity admitted on memcached-profile-679775b4d4-wcv85 (dry-run)\n"
+    },
+    "prepare": {
+      "agent_rbac_reapplied": true,
+      "app_namespace": "test-hotel-reservation",
+      "families": [
+        "assign_to_non_existent_node_hotel_res",
+        "misconfig_app_hotel_res",
+        "redeploy_without_PV",
+        "revoke_auth_mongodb",
+        "revoke_auth_mongodb_rate",
+        "user_unregistered_mongodb",
+        "user_unregistered_mongodb_rate",
+        "wrong_bin_usage"
+      ]
+    },
+    "receiver": {
+      "after": 4,
+      "before": 3
+    },
+    "recover": {
+      "baseline_restored": false
+    },
+    "settle": {
+      "clean_for_seconds": 60.01733589172363,
+      "decided_at": 1792078228.1019197,
+      "last_dirty": [
+        "alert KubeContainerWaiting pending pod=frontend-7fc7ddc9db-c8wht",
+        "alert KubeContainerWaiting pending pod=geo-84fbc958c7-nbx4s",
+        "alert KubeContainerWaiting pending pod=memcached-profile-679775b4d4-wcv85",
+        "alert KubeContainerWaiting pending pod=memcached-rate-5b59cb5d9d-s92dz",
+        "alert KubeContainerWaiting pending pod=memcached-reserve-6c889f84d4-jt4kq",
+        "alert KubeContainerWaiting pending pod=mongodb-geo-5ff578bcb8-tjlfj",
+        "alert KubeContainerWaiting pending pod=mongodb-profile-758cb77f9f-2lwhf",
+        "alert KubeContainerWaiting pending pod=mongodb-rate-56cc8659c9-9c6v6",
+        "alert KubeContainerWaiting pending pod=mongodb-recommendation-55699465f7-hzrnb",
+        "alert KubeContainerWaiting pending pod=mongodb-reservation-5994859869-qt4gl",
+        "alert KubeContainerWaiting pending pod=mongodb-user-969c6c449-5svzg",
+        "alert KubeContainerWaiting pending pod=profile-8b6dd7c6c-kk84c",
+        "alert KubeContainerWaiting pending pod=rate-7bdc978679-cjtvb",
+        "alert KubeContainerWaiting pending pod=recommendation-6879fb56bf-b7gkg",
+        "alert KubeContainerWaiting pending pod=reservation-78c9f7976b-vf8xg",
+        "alert KubeContainerWaiting pending pod=search-5c64c8f5bc-s79gk",
+        "alert KubeContainerWaiting pending pod=user-66d5d6f874-86rfv",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-z46pb",
+        "alert KubePodNotReady pending pod=frontend-7fc7ddc9db-c8wht",
+        "alert KubePodNotReady pending pod=geo-84fbc958c7-nbx4s",
+        "alert KubePodNotReady pending pod=memcached-profile-679775b4d4-wcv85",
+        "alert KubePodNotReady pending pod=memcached-rate-5b59cb5d9d-s92dz",
+        "alert KubePodNotReady pending pod=memcached-reserve-6c889f84d4-jt4kq",
+        "alert KubePodNotReady pending pod=mongodb-geo-5ff578bcb8-tjlfj",
+        "alert KubePodNotReady pending pod=mongodb-profile-758cb77f9f-2lwhf",
+        "alert KubePodNotReady pending pod=mongodb-rate-56cc8659c9-9c6v6",
+        "alert KubePodNotReady pending pod=mongodb-recommendation-55699465f7-hzrnb",
+        "alert KubePodNotReady pending pod=mongodb-reservation-5994859869-qt4gl",
+        "alert KubePodNotReady pending pod=mongodb-user-969c6c449-5svzg",
+        "alert KubePodNotReady pending pod=profile-8b6dd7c6c-kk84c",
+        "alert KubePodNotReady pending pod=rate-7bdc978679-cjtvb",
+        "alert KubePodNotReady pending pod=recommendation-6879fb56bf-b7gkg",
+        "alert KubePodNotReady pending pod=reservation-78c9f7976b-vf8xg",
+        "alert KubePodNotReady pending pod=search-5c64c8f5bc-s79gk",
+        "alert KubePodNotReady pending pod=user-66d5d6f874-86rfv"
+      ],
+      "settled": true,
+      "signals": [],
+      "watch_started_at": 1792078107.9866421
+    }
+  }
+}
+driver rc=0
