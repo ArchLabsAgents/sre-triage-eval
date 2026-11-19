@@ -1,0 +1,21 @@
+{
+  "chain": {
+    "command_exit0": true,
+    "family": "revoke_auth_mongodb",
+    "injection": true,
+    "scorer": true,
+    "triage": true
+  },
+  "chars": {
+    "budget_chars": 14000,
+    "calls": 44,
+    "calls_over_budget": [],
+    "calls_without_chars": [],
+    "max_covered_chars": 13612,
+    "max_prompt_chars": 14945,
+    "max_prompt_tokens_descriptive": 7612,
+    "passed": true
+  },
+  "passed": true,
+  "reasons": []
+}

@@ -1,0 +1,8 @@
+{"calls": 1, "calls_without_usage": 0, "completion_tokens": 182, "episode_id": "ep-aa7cbfcee64e4349", "prompt_tokens": 2569, "t_end": 1793614677.1101184, "t_start": 1793614673.6285195}
+{"calls": 4, "calls_without_usage": 0, "completion_tokens": 882, "episode_id": "ep-6b9bf2af12da4ba3", "prompt_tokens": 21488, "t_end": 1793614807.2165213, "t_start": 1793614795.1554184}
+{"calls": 7, "calls_without_usage": 0, "completion_tokens": 1652, "episode_id": "ep-7054e3f4d99f4baa", "prompt_tokens": 40343, "t_end": 1793614948.8370407, "t_start": 1793614927.7574854}
+{"calls": 5, "calls_without_usage": 0, "completion_tokens": 1113, "episode_id": "ep-1dcc5e60a3d5419d", "prompt_tokens": 24883, "t_end": 1793614974.0421534, "t_start": 1793614957.7576206}
+{"calls": 6, "calls_without_usage": 0, "completion_tokens": 1499, "episode_id": "ep-90b6058d8c8441f8", "prompt_tokens": 31546, "t_end": 1793615231.4797878, "t_start": 1793615213.7039406}
+{"calls": 6, "calls_without_usage": 0, "completion_tokens": 1496, "episode_id": "ep-c3705c02392a4ed7", "prompt_tokens": 31821, "t_end": 1793615532.7252614, "t_start": 1793615513.4398084}
+{"calls": 8, "calls_without_usage": 0, "completion_tokens": 1876, "episode_id": "ep-f91d05fbd5c0415f", "prompt_tokens": 43048, "t_end": 1793615730.6851346, "t_start": 1793615707.7614655}
+{"calls": 7, "calls_without_usage": 0, "completion_tokens": 1726, "episode_id": "ep-2537d39a90534353", "prompt_tokens": 38861, "t_end": 1793615835.9170861, "t_start": 1793615815.153009}

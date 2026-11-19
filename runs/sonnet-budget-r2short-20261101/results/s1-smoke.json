@@ -1,0 +1,97 @@
+{
+  "complete": true,
+  "failure": null,
+  "passed": true,
+  "smoke": true,
+  "steps": {
+    "cleanup": {
+      "cleanup": "app namespace deleted"
+    },
+    "inject": {
+      "alerts": [
+        {
+          "alertname": "KubePodNotReady",
+          "fingerprint": "563cf01bf541e637",
+          "labels": {
+            "alertname": "KubePodNotReady",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-zg9b2",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "severity": "warning"
+          }
+        },
+        {
+          "alertname": "KubePodCrashLooping",
+          "fingerprint": "5cb06ff9c8f8a0f7",
+          "labels": {
+            "alertname": "KubePodCrashLooping",
+            "container": "hotel-reserv-geo",
+            "endpoint": "http",
+            "instance": "192.168.72.130:8080",
+            "job": "kube-state-metrics",
+            "namespace": "test-hotel-reservation",
+            "pod": "geo-84fbc958c7-zg9b2",
+            "prometheus": "monitoring/sslm-kube-prometheus-prometheus",
+            "reason": "CrashLoopBackOff",
+            "service": "sslm-kube-prometheus-kube-state-metrics",
+            "severity": "warning",
+            "uid": "fa956fbf-a3f6-4ddc-9cfe-d9c0dbbd90b0"
+          }
+        }
+      ],
+      "family": "user_unregistered_mongodb"
+    },
+    "model": {
+      "prompt_tokens_after": 10.0,
+      "prompt_tokens_before": 0.0,
+      "signal": "comparator usage log request lines"
+    },
+    "policy_scope": {
+      "exit_code": 0,
+      "output": "ok (a): agent identity denied on memcached-profile-679775b4d4-tcthd by the DB-pod policy\nok (b): injector identity admitted on memcached-profile-679775b4d4-tcthd (dry-run)\n"
+    },
+    "prepare": {
+      "agent_rbac_reapplied": true,
+      "app_namespace": "test-hotel-reservation",
+      "families": [
+        "assign_to_non_existent_node_hotel_res",
+        "misconfig_app_hotel_res",
+        "redeploy_without_PV",
+        "revoke_auth_mongodb",
+        "revoke_auth_mongodb_rate",
+        "user_unregistered_mongodb",
+        "user_unregistered_mongodb_rate",
+        "wrong_bin_usage"
+      ]
+    },
+    "receiver": {
+      "after": 4,
+      "before": 1
+    },
+    "recover": {
+      "baseline_restored": false
+    },
+    "settle": {
+      "clean_for_seconds": 60.02458643913269,
+      "decided_at": 1793507183.9770594,
+      "last_dirty": [
+        "alert KubeContainerWaiting pending pod=mongodb-rate-56cc8659c9-zhn5l",
+        "alert KubeContainerWaiting pending pod=mongodb-recommendation-55699465f7-b9plr",
+        "alert KubeContainerWaiting pending pod=mongodb-reservation-5994859869-km878",
+        "alert KubeContainerWaiting pending pod=mongodb-user-969c6c449-5zk77",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-q4bzd",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-q4bzd",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-q4bzd",
+        "alert KubeDeploymentReplicasMismatch pending pod=sslm-kube-prometheus-kube-state-metrics-79964bb7fc-q4bzd",
+        "alert KubePodNotReady pending pod=mongodb-rate-56cc8659c9-zhn5l",
+        "alert KubePodNotReady pending pod=mongodb-recommendation-55699465f7-b9plr",
+        "alert KubePodNotReady pending pod=mongodb-reservation-5994859869-km878",
+        "alert KubePodNotReady pending pod=mongodb-user-969c6c449-5zk77"
+      ],
+      "settled": true,
+      "signals": [],
+      "watch_started_at": 1793507078.895424
+    }
+  }
+}

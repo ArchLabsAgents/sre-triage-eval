@@ -1,0 +1,51 @@
+{
+  "beside_pair": {
+    "exact": true,
+    "family": "user_unregistered_mongodb"
+  },
+  "measure1": {
+    "budget_chars": 14000,
+    "calls": 159,
+    "calls_over_budget": [],
+    "calls_without_chars": [],
+    "max_covered_chars": 13947,
+    "max_prompt_chars": 15190,
+    "max_prompt_tokens_descriptive": 7775,
+    "model_unavailable": 0,
+    "passed": true
+  },
+  "pair": {
+    "cut": 3,
+    "exact": 5,
+    "faltas": 5,
+    "rows": [
+      {
+        "exact": true,
+        "family": "revoke_auth_mongodb",
+        "in_pair": true
+      },
+      {
+        "exact": true,
+        "family": "user_unregistered_mongodb_rate",
+        "in_pair": true
+      },
+      {
+        "exact": true,
+        "family": "revoke_auth_mongodb_rate",
+        "in_pair": true
+      },
+      {
+        "exact": true,
+        "family": "misconfig_app_hotel_res",
+        "in_pair": true
+      },
+      {
+        "exact": true,
+        "family": "assign_to_non_existent_node_hotel_res",
+        "in_pair": true
+      }
+    ]
+  },
+  "reading": "capacidade",
+  "why": "classe fina exata 5/5 >= corte 3"
+}

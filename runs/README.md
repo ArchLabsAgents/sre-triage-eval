@@ -21,6 +21,8 @@ the timestamp of this snapshot.
 | `7b-budget-r2short-20261019/` | 7.4 (T4c), 8 | short round, 7B, whole call budgeted at 14,000 characters |
 | `9b-budget-r2short-20261020/` | 7.4 (T4c), 8 | short round, 9B, same budget |
 | `9b-contract-r2short-20261029/` | 7.4 (T4c), 8 | short round, 9B, same budget plus the output-contract prompt |
+| `sonnet-budget-r2short-20261101/` | 7.5 | short round, Sonnet under the same 14,000-character budget, window 1 (null by its rule, reported) |
+| `sonnet-marker-r2short-20261102/` | 7.4 (T4c), 7.5 | short round, Sonnet under the same budget with the truncation marker inside its share, window 3, plus its smoke gate and character reading |
 | `t5-cost-20261030/` | 8 (T5) | cost per triage, local against API |
 
 Inside a run, `results/` holds what the driver collected on the VM: the event journal
@@ -37,7 +39,17 @@ PYTHONPATH=. python3.12 ../../runs/score-e7-e8-20261014/score_e7_e8.py /tmp/resc
 PYTHONPATH=. python3.12 ../../runs/t5-cost-20261030/compute_t5.py /tmp/rescore/t5.json
 ```
 
-Each run with a `score_*.py` works the same way. The scripts re-join the journal and the triage
+Each run with a `score_*.py` works the same way. The character reading of window 3 recomputes from
+its API usage logs:
+
+```
+PYTHONPATH=. python3.12 -m scenarios.chars_window read \
+  --results ../../runs/sonnet-marker-r2short-20261102/results --prefix s1-r2 \
+  --schedule scenarios/schedules/r2short-seed-1052.json \
+  --usage ../../runs/sonnet-marker-r2short-20261102/results/s1-smokegate-comparator-usage.jsonl \
+          ../../runs/sonnet-marker-r2short-20261102/results/s1-comparator-usage.jsonl \
+  --out /tmp/rescore/chars-window-reading.json
+``` The scripts re-join the journal and the triage
 records through `harness/episode_bridge.py` and refuse to run unless the scorer dry-run hash
 matches the pre-registered one. `tests/triage_eval/test_published_runs.py` does all of this in CI
 and compares the output with the files here.
@@ -45,12 +57,15 @@ and compares the output with the files here.
 The output is byte-identical to the published files, with one exception. In the two 9B scores,
 episode 5 was not measured (the app did not settle before injection), and the reason string for
 that was translated to English when the code was cleaned up for release. The published files
-keep the original Portuguese string. No count, rate or interval changes.
+keep the original Portuguese string. The same happened to the `why` string of the window-3
+character reading. No count, rate or interval changes.
 
 ## What was removed
 
 - Operator logs and the window-finishing script of E7 and E8 (`*.log`, `finish_window.sh`). They
   hold VM addresses and local paths, and nothing in the scoring reads them.
+- Window 2 of section 7.5 ended at a failed smoke gate with no round; its files are not published,
+  and the paper reports it from the dated plan.
 - R0 per-episode transcripts were not kept at the time, so R0 ships as matrix, probe readings and
   environment descriptor only.
 
