@@ -4,9 +4,11 @@ Two checks:
 - runs/MANIFEST.sha256 lists exactly the files under runs/, with matching hashes.
 - every runs/*/score_*.py and runs/t5-cost-*/compute_t5.py, run from tools/triage-eval as a reader
   would, writes JSON identical to the file the preprint reads.
+- the character reading of the budget-matched Sonnet window recomputes from its usage logs.
 
-One known difference is allowed, documented in runs/README.md: the not-measured reason string of
-one episode in the two 9B scores was translated to English after those scores were written.
+Two known differences are allowed, documented in runs/README.md: the not-measured reason string of
+one episode in the two 9B scores, and the `why` string of the character reading, were translated to
+English after those files were written.
 """
 import hashlib
 import json
@@ -96,6 +98,31 @@ def test_t5_reproduces_published(tmp_path):
     assert out.read_bytes() == (script.parent / "t5.json").read_bytes()
 
 
+def test_chars_reading_reproduces_published(tmp_path):
+    run = RUNS / "sonnet-marker-r2short-20261102"
+    out = tmp_path / "reading.json"
+    env = {**os.environ, "PYTHONPATH": "."}
+    result = subprocess.run(
+        [
+            sys.executable, "-m", "scenarios.chars_window", "read",
+            "--results", str(run / "results"),
+            "--prefix", "s1-r2",
+            "--schedule", "scenarios/schedules/r2short-seed-1052.json",
+            "--usage", str(run / "results" / "s1-smokegate-comparator-usage.jsonl"),
+            str(run / "results" / "s1-comparator-usage.jsonl"),
+            "--out", str(out),
+        ],
+        cwd=TOOLS, env=env, capture_output=True, text=True,
+    )
+    assert result.returncode == 0, result.stderr[-2000:]
+    new = json.loads(out.read_text())
+    old = json.loads((run / "score" / "chars-window-reading.json").read_text())
+    assert old.pop("why") == "classe fina exata 5/5 >= corte 3"
+    assert new.pop("why") == "exact fine class 5/5 >= cut 3"
+    assert new == old
+    assert new["reading"] == "capacidade" and new["measure1"]["passed"]
+
+
 def test_score_scripts_found():
     # A layout change that hides the scripts would make the parametrized test vacuous.
-    assert len(SCORE_SCRIPTS) == 7
+    assert len(SCORE_SCRIPTS) == 9

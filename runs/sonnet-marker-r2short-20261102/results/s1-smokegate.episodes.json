@@ -1,0 +1,106 @@
+{
+  "episodes": [
+    {
+      "alert_fired": true,
+      "alert_labels": null,
+      "episode_id": "seed1052-20261102T101837Z-f0",
+      "family": "revoke_auth_mongodb",
+      "kind": "fault",
+      "not_measured": null,
+      "record": {
+        "acao_executada": null,
+        "acao_executada_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "acao_proposta": {
+          "comandos": [],
+          "reversivel": true,
+          "tipo": "escalate"
+        },
+        "acao_recomendada": null,
+        "acao_recomendada_motivo": "the model's action schema does not emit a structured recommendation yet; the expected action lives in harness/fault_table.py as the scoring key and is never copied into the record",
+        "acoes_executadas": [
+          {
+            "classe": "C0",
+            "comando": "kubectl logs deploy/mongodb-geo -n test-hotel-reservation --tail=50",
+            "read_back": "nao aplicavel: C0/C1 nao envolve mutacao a reconferir",
+            "resultado": "executado, exit=0",
+            "t": "2026-11-02T10:20:07.190643+00:00"
+          }
+        ],
+        "alert_fingerprint": "a21b7426a45db646",
+        "blast_radius": null,
+        "blast_radius_motivo": "service topology is not wired into this harness yet (section 1.2's app graph is not data this module can read); out of build plan item 2b-ii's scope",
+        "causa_provavel": {
+          "classe": "mongo_role_revoked",
+          "detalhe": "The geo service authenticates to mongodb-geo successfully (admin auth succeeds) but gets 'Unauthorized' (code 13) on geo-db count, so the application user's role on geo-db was revoked. Exec into the database pod is denied by policy, so remediation must be escalated for a DBA to restore the readWrite role. The etcd alert is unrelated monitoring noise."
+        },
+        "confianca": 0.75,
+        "decisao": "escalar",
+        "episode_id": "ep-6b9bf2af12da4ba3",
+        "evidencia": [
+          {
+            "consulta": "sum without (instance, pod) (up{job=~\".*etcd.*\"} == bool 1) < ((count without (instance, pod) (up{job=~\".*etcd.*\"}) + 1) / 2)",
+            "fonte": "prometheus",
+            "fonte_suspeita": false,
+            "timestamp": "2026-11-02T10:20:07.190643+00:00",
+            "trecho": "query: sum without (instance, pod) (up{job=~\".*etcd.*\"} == bool 1) < ((count without (instance, pod) (up{job=~\".*etcd.*\"}) + 1) / 2)\n[\n  {\n    \"metric\": {\n      \"endpoint\": \"http-metrics\",\n      \"job\": \"kube-etcd\",\n      \"namespace\": \"kube-system\",\n      \"service\": \"sslm-kube-prometheus-kube-etcd\"\n    },\n    \"values\": [\n      [\n        1793614615.156,\n        \"0\"\n      ],\n      [\n        1793614675.156,\n        \"0\"\n      ],\n      [\n        1793614735.156,\n        \"0\"\n      ],\n      [\n        179"
+          },
+          {
+            "consulta": "k8s_pods",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-11-02T10:20:07.190643+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"v1\",\n      \"kind\": \"Pod\",\n      \"metadata\": {\n        \"annotations\": {\n          \"cni.projectcalico.org/containerID\": \"d15c42be16051f54a88760d2e47be66c2099cc4c20ff150649cdac2d4ac2499b\",\n          \"cni.projectcalico.org/podIP\": \"192.168.72.148/32\",\n          \"cni.projectcalico.org/podIPs\": \"192.168.72.148/32\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"sidecar.istio.io/st"
+          },
+          {
+            "consulta": "k8s_events",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-11-02T10:20:07.190643+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"action\": \"Binding\",\n      \"apiVersion\": \"v1\",\n      \"eventTime\": \"2026-11-02T10:18:13.067085Z\",\n      \"firstTimestamp\": null,\n      \"involvedObject\": {\n        \"apiVersion\": \"v1\",\n        \"kind\": \"Pod\",\n        \"name\": \"consul-78c8d79bb-5h6t4\",\n        \"namespace\": \"test-hotel-reservation\",\n        \"resourceVersion\": \"1846\",\n        \"uid\": \"9f28a682-9a13-4552-b7d5-34404dc8e012\"\n      },\n      \"kind\": \"Event\",\n      \"lastTimestamp\": null,\n      \"m"
+          },
+          {
+            "consulta": "k8s_deployments",
+            "fonte": "k8s_api",
+            "fonte_suspeita": false,
+            "timestamp": "2026-11-02T10:20:07.190643+00:00",
+            "trecho": "{\n  \"apiVersion\": \"v1\",\n  \"items\": [\n    {\n      \"apiVersion\": \"apps/v1\",\n      \"kind\": \"Deployment\",\n      \"metadata\": {\n        \"annotations\": {\n          \"deployment.kubernetes.io/revision\": \"1\",\n          \"kompose.cmd\": \"kompose convert\",\n          \"kompose.version\": \"1.22.0 (955b78124)\",\n          \"kubectl.kubernetes.io/last-applied-configuration\": \"{\\\"apiVersion\\\":\\\"apps/v1\\\",\\\"kind\\\":\\\"Deployment\\\",\\\"metadata\\\":{\\\"annotations\\\":{\\\"kompose.cmd\\\":\\\"kompose convert\\\",\\\"kompose.version\\\":\\\"1."
+          },
+          {
+            "consulta": "k8s_logs[geo-84fbc958c7-sxk9h]",
+            "fonte": "logs",
+            "fonte_suspeita": false,
+            "timestamp": "2026-11-02T10:20:07.190643+00:00",
+            "trecho": "{\"level\":\"info\",\"time\":\"2026-11-02T10:19:52Z\",\"message\":\"TLS disabled.\"}\n{\"level\":\"info\",\"time\":\"2026-11-02T10:19:52Z\",\"message\":\"Set global log level: info\"}\n{\"level\":\"info\",\"time\":\"2026-11-02T10:19:52Z\",\"message\":\"Tune: setGCPercent to 100\"}\n\u001b[90m2026-11-02T10:19:52Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:23\u001b[0m\u001b[36m >\u001b[0m \u001b[1mReading config...\u001b[0m\n\u001b[90m2026-11-02T10:19:52Z\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mcmd/geo/main.go:36\u001b[0m\u001b[36m >\u001b[0m \u001b[1mRead database URL: mongodb-geo:27017\u001b[0m\n\u001b[90m2026-11-02T10:19:5"
+          }
+        ],
+        "motivo_escalacao": [
+          "E2"
+        ],
+        "rollback_state": null,
+        "rollback_state_motivo": "no C2 mutation was attempted this episode (escalated, or read-only diagnosis only)",
+        "sintese": "The geo service authenticates to mongodb-geo successfully (admin auth succeeds) but gets 'Unauthorized' (code 13) on geo-db count, so the application user's role on geo-db was revoked. Exec into the database pod is denied by policy, so remediation must be escalated for a DBA to r",
+        "t_alarme": "2026-11-02T10:19:45.101Z",
+        "t_record": "2026-11-02T10:20:07.190643+00:00",
+        "urgencia": null,
+        "urgencia_motivo": "the model's action schema does not emit urgency yet; the expected urgency lives in harness/fault_table.py as the scoring key and is never copied into the record"
+      },
+      "rodada": "seed1052-20261102T101837Z",
+      "root_cause_fixed_post_action": false
+    }
+  ],
+  "extra_records": [
+    "ep-7054e3f4d99f4baa",
+    "ep-1dcc5e60a3d5419d",
+    "ep-90b6058d8c8441f8",
+    "ep-c3705c02392a4ed7"
+  ],
+  "late_records": [
+    "ep-f91d05fbd5c0415f",
+    "ep-2537d39a90534353"
+  ],
+  "malformed_records": [],
+  "orphan_records": [
+    "ep-aa7cbfcee64e4349"
+  ],
+  "rodada_id": "seed1052-20261102T101837Z"
+}
