@@ -1,8 +1,8 @@
-# Raw runs for the v1 preprint
+# Raw runs for the v1 results
 
-These are the runs behind the numbers in the v1 preprint (triage of Kubernetes incidents by small
-open-weights models against a frontier API, sections 5 to 8). Every directory the paper cites is
-here, and nothing else: smoke runs and arms the paper does not report stay out.
+These are the runs behind the v1 numbers (triage of Kubernetes incidents by small open-weights
+models against a frontier API). Every directory behind those numbers is here, and nothing else:
+smoke runs and arms the v1 results do not report stay out.
 
 `MANIFEST.sha256` lists every file in this directory with its SHA-256. The commit that added it is
 the timestamp of this snapshot.
