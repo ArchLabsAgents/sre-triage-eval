@@ -1,4 +1,4 @@
-"""7B with tools and history budget on r2-seed-1052, with api-w2, api-w1 and E7 on the same seed alongside. Paper section 7.3 (table T4b).
+"""7B with tools and history budget on r2-seed-1052, with api-w2, api-w1 and E7 on the same seed alongside.
 
 Run from tools/triage-eval with Python 3.12:
     PYTHONPATH=. python3.12 ../../runs/7b-sighted-r2-20261017/score_7b_sighted.py <output-dir>

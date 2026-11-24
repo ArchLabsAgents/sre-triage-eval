@@ -1,4 +1,4 @@
-"""API arm, window 2 (Sonnet with tools on r2-seed-1052), with window 1 and E7 on the same seed alongside. Paper section 7.3 (table T4b).
+"""API arm, window 2 (Sonnet with tools on r2-seed-1052), with window 1 and E7 on the same seed alongside.
 
 Run from tools/triage-eval with Python 3.12:
     PYTHONPATH=. python3.12 ../../runs/api-r2-w2-20261016/score_api_r2_w2.py <output-dir>

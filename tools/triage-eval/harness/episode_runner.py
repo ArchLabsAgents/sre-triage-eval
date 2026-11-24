@@ -1539,7 +1539,7 @@ class JsonlTriageSink:
 
 def usage_log_path(triage_log: str | os.PathLike) -> str:
     """Per-episode token usage lands next to the TriageRecords, never inside
-    them (TRIAGE_RECORD_SCHEMA is closed and is the paper's artifact). Derived from
+    them (TRIAGE_RECORD_SCHEMA is closed and is the published artifact). Derived from
     SSLM_TRIAGE_LOG so the Deployment needs no new variable; the harvest derives it the same way."""
     return os.fspath(triage_log) + ".usage.jsonl"
 

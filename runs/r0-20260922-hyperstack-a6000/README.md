@@ -1,6 +1,6 @@
 # R0 raw evidence (2026-09-22, Hyperstack A6000)
 
-Episodic 7x3 matrix and probe admission for paper sections 5.2 and 6 (tables T2a and T3).
+Episodic 7x3 matrix and probe admission.
 Copied unchanged from the results directory of the run.
 
 | file | content |

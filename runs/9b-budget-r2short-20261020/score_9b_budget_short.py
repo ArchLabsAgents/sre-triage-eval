@@ -1,4 +1,4 @@
-"""Short round, 9B with tools and the same 14,000-character budget, r2short-seed-1052. Paper section 7.4 (table T4c).
+"""Short round, 9B with tools and the same 14,000-character budget, r2short-seed-1052.
 
 Run from tools/triage-eval with Python 3.12:
     PYTHONPATH=. python3.12 ../../runs/9b-budget-r2short-20261020/score_9b_budget_short.py <output-dir>

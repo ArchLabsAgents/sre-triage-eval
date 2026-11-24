@@ -1,4 +1,4 @@
-"""Primary (six rounds) and sensitivity (original rule: E7 x3 + r3-seed-2425) scores for the blind 7B arm, paper section 7.2 (table T4a).
+"""Primary (six rounds) and sensitivity (original rule: E7 x3 + r3-seed-2425) scores for the blind 7B arm.
 
 Run from tools/triage-eval with Python 3.12:
     PYTHONPATH=. python3.12 ../../runs/score-e7-e8-20261014/score_e7_e8.py <output-dir>

@@ -9,26 +9,26 @@ the timestamp of this snapshot.
 
 ## What each directory backs
 
-| directory | paper | what it is |
-|---|---|---|
-| `r0-20260922-hyperstack-a6000/` | 5.2, 6 (T2a, T3) | episodic 7x3 matrix and probe admission |
-| `e7-r2b-20261001/` | 7.2 (T4a), 8 | blind 7B, rounds r2-seed-1052, 1140, 1283 |
-| `e8-r3-20261005/` | 7.2 (T4a), 8 | blind 7B, rounds r3-seed-1627, 1695, 2425, plus Prometheus alert dumps |
-| `score-e7-e8-20261014/` | 7.2 (T4a) | primary (six rounds) and sensitivity scores over E7 and E8 |
-| `api-r2-20261015/` | 7.3 (T4b), 8 | Sonnet, blind, r2-seed-1052 |
-| `api-r2-w2-20261016/` | 7.3 (T4b), 8 | Sonnet with tools, r2-seed-1052 |
-| `7b-sighted-r2-20261017/` | 7.3 (T4b), 8 | 7B with tools and history budget, r2-seed-1052 |
-| `7b-budget-r2short-20261019/` | 7.4 (T4c), 8 | short round, 7B, whole call budgeted at 14,000 characters |
-| `9b-budget-r2short-20261020/` | 7.4 (T4c), 8 | short round, 9B, same budget |
-| `9b-contract-r2short-20261029/` | 7.4 (T4c), 8 | short round, 9B, same budget plus the output-contract prompt |
-| `sonnet-budget-r2short-20261101/` | 7.5 | short round, Sonnet under the same 14,000-character budget, window 1 (null by its rule, reported) |
-| `sonnet-marker-r2short-20261102/` | 7.4 (T4c), 7.5 | short round, Sonnet under the same budget with the truncation marker inside its share, window 3, plus its smoke gate and character reading |
-| `t5-cost-20261030/` | 8 (T5) | cost per triage, local against API |
+| directory | what it is |
+|---|---|
+| `r0-20260922-hyperstack-a6000/` | episodic 7x3 matrix and probe admission |
+| `e7-r2b-20261001/` | blind 7B, rounds r2-seed-1052, 1140, 1283 |
+| `e8-r3-20261005/` | blind 7B, rounds r3-seed-1627, 1695, 2425, plus Prometheus alert dumps |
+| `score-e7-e8-20261014/` | primary (six rounds) and sensitivity scores over E7 and E8 |
+| `api-r2-20261015/` | Sonnet, blind, r2-seed-1052 |
+| `api-r2-w2-20261016/` | Sonnet with tools, r2-seed-1052 |
+| `7b-sighted-r2-20261017/` | 7B with tools and history budget, r2-seed-1052 |
+| `7b-budget-r2short-20261019/` | short round, 7B, whole call budgeted at 14,000 characters |
+| `9b-budget-r2short-20261020/` | short round, 9B, same budget |
+| `9b-contract-r2short-20261029/` | short round, 9B, same budget plus the output-contract prompt |
+| `sonnet-budget-r2short-20261101/` | short round, Sonnet under the same 14,000-character budget, window 1 (null by its rule, reported) |
+| `sonnet-marker-r2short-20261102/` | short round, Sonnet under the same budget with the truncation marker inside its share, window 3, plus its smoke gate and character reading |
+| `t5-cost-20261030/` | cost per triage, local against API |
 
 Inside a run, `results/` holds what the driver collected on the VM: the event journal
 (`*.events.jsonl`), the triage records (`*.triage.jsonl`), token usage (`*.usage.jsonl`), vLLM
 queue samples, driver output (`*.out`) and the episodes as built on the VM (`*.episodes.json`,
-kept for reference, not used by the scorer). `score/` holds the scores the paper reads.
+kept for reference, not used by the scorer). `score/` holds the scores behind the v1 numbers.
 
 ## Recompute
 
@@ -64,8 +64,8 @@ character reading. No count, rate or interval changes.
 
 - Operator logs and the window-finishing script of E7 and E8 (`*.log`, `finish_window.sh`). They
   hold VM addresses and local paths, and nothing in the scoring reads them.
-- Window 2 of section 7.5 ended at a failed smoke gate with no round; its files are not published,
-  and the paper reports it from the dated plan.
+- Window 2 of the Sonnet budget series ended at a failed smoke gate with no round; its files are
+  not published, and only the dated plan records it.
 - R0 per-episode transcripts were not kept at the time, so R0 ships as matrix, probe readings and
   environment descriptor only.
 

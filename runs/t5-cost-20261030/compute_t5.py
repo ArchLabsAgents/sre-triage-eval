@@ -1,4 +1,4 @@
-"""Paper section 8 (T5): cost per triage, local against API, from the window artifacts.
+"""Cost per triage, local against API, from the window artifacts.
 
 Run from tools/triage-eval with Python 3.12:
     PYTHONPATH=. python3.12 ../../runs/t5-cost-20261030/compute_t5.py <output.json>

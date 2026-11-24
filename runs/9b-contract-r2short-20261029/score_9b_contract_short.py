@@ -1,4 +1,4 @@
-"""Short round, 9B with the same budget plus the output-contract prompt change, r2short-seed-1052. Paper section 7.4 (table T4c).
+"""Short round, 9B with the same budget plus the output-contract prompt change, r2short-seed-1052.
 
 Run from tools/triage-eval with Python 3.12:
     PYTHONPATH=. python3.12 ../../runs/9b-contract-r2short-20261029/score_9b_contract_short.py <output-dir>

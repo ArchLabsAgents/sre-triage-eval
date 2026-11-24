@@ -149,7 +149,7 @@ def test_clusterrole_read_only_is_cluster_scoped_and_grants_only_read_verbs():
 
 
 def test_clusterrole_read_only_covers_the_resources_c0_coverage_needs():
-    # Section 7.2's table: "get, list, watch (pods, deployments, replicasets, events, services,
+    # The read-only role as specified: "get, list, watch (pods, deployments, replicasets, events, services,
     # pvc) + pods/log".
     doc = _load("clusterrole-read-only.yaml")
     shapes = _rule_shapes(doc["rules"])

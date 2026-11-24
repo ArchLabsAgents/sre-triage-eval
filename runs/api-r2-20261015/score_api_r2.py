@@ -1,4 +1,4 @@
-"""API arm, window 1 (blind Sonnet on r2-seed-1052), with E7 on the same seed alongside. Paper section 7.3 (table T4b).
+"""API arm, window 1 (blind Sonnet on r2-seed-1052), with E7 on the same seed alongside.
 
 Run from tools/triage-eval with Python 3.12:
     PYTHONPATH=. python3.12 ../../runs/api-r2-20261015/score_api_r2.py <output-dir>

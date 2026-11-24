@@ -1,5 +1,5 @@
 """Short round, Sonnet 5.5 via API under the same 14,000-character budget with the truncation marker
-counted inside its share, r2short-seed-1052. Window 3 of paper section 7.5, Sonnet column of T4c.
+counted inside its share, r2short-seed-1052. Window 3 of the Sonnet budget series.
 
 Run from tools/triage-eval with Python 3.12:
     PYTHONPATH=. python3.12 ../../runs/sonnet-marker-r2short-20261102/score_sonnet_marker_short.py <output-dir>

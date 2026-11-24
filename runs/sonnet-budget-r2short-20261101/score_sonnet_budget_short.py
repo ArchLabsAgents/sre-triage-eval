@@ -1,5 +1,5 @@
 """Short round, Sonnet 5.5 via API under the local arm's 14,000-character budget, r2short-seed-1052,
-window 1 of paper section 7.5 (null by its rule; this score is descriptive).
+window 1 of the Sonnet budget series (null by its rule; this score is descriptive).
 
 Run from tools/triage-eval with Python 3.12:
     PYTHONPATH=. python3.12 ../../runs/sonnet-budget-r2short-20261101/score_sonnet_budget_short.py <output-dir>
